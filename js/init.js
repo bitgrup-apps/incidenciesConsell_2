@@ -545,7 +545,7 @@ var bitgrup = {
                                                         var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
                                                         for (var i = 0; i < bitgrup.issues.new_.maxImgs; i++) {
                                                             if (bitgrup.issues.new_.imgs[i]) {
-                                                                dataBase.query('INSERT INTO PICTURES (ID,FK_ISSUE,BASE_64) VALUES (?,?,?)', [ID_P, ID, bitgrup.issues.new_.imgs[i]], function () {});
+                                                                dataBase.query('INSERT INTO PICTURES (ID,FK_ISSUE,BASE_64) VALUES (?,?,?)', [ID_P, idIssue, bitgrup.issues.new_.imgs[i]], function () {});
                                                                 ID_P++;
                                                             }
                                                         }
