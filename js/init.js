@@ -208,9 +208,7 @@ var bitgrup = {
 
             init: function () {
                 try {
-                    var issues = new Array();
                     bitgrup.spinner.on();
-                    var numIssues = 0;
                     api.getIssues(function () {
                         bitgrup.issues.list.setList();
                     });
@@ -236,6 +234,8 @@ var bitgrup = {
             },
 
             setList: function () {
+                var numIssues = 0;
+                var issues = new Array();
                 dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
                     numIssues = result.length;
                     if (numIssues) {

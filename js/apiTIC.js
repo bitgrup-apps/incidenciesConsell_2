@@ -120,7 +120,7 @@ var api = {
 
     getEntity: function (entityId, callback) {
         api.access(function (token) {
-            var data = 'token=' + api.token.token + '&' + 'entityId=' + entityId;
+            var data = 'token=' + token + '&' + 'entityId=' + entityId;
             api.entity = api.send(data, 'GET', 'config');
             callback(api.entity.data);
         });
