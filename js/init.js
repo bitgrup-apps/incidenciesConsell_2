@@ -219,6 +219,7 @@ var bitgrup = {
             },
 
             updateIssues: function (issuesStatus, callback) {
+                console.log(issuesStatus);
                 var total = issuesStatus.length;
                 if (total) {
                     $(issuesStatus).each(function (n) {

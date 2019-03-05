@@ -64,7 +64,7 @@ var api = {
             var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
             var resp = api.send(data, 'GET', 'issue');
             //Actualitzam l'estat de totes les incidencies a la BBDD
-            if(resp.data[0].status == 1){
+            if(resp.status){
                 bitgrup.issues.list.updateIssues(resp.data, function(){callback();});
             }else{
                 callback();
