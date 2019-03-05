@@ -148,6 +148,10 @@ var bitgrup = {
             $(categories).each(function(n){
                 var category = categories[n];
                 var img = (category.image.name && category.image.name !== 'NO IMAGE') ? category.image.name : 'icons/question.svg';
+                //cada 3 hem de ficar un row
+                if(n % 3 == 0){
+                    html += '<div class="row">';
+                }
                 html += '<div class="col-xs-4">'+
                             '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">'+
                                 '<div class="col-xs-12">' +
@@ -158,6 +162,9 @@ var bitgrup = {
                                  '</div>' +      
                             '</button>'+
                         '</div>';
+                if(n % 3 == 2){
+                    html += '</div>';
+                }
             });
             $('#type-list-issue').html(html);
         },
@@ -181,7 +188,7 @@ var bitgrup = {
 
     issues: {
 
-        types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
+        //types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
         status: [{id: 1, name: 'Pendent', color: 'yellow'}, {id: 2, name: 'En curs', color: 'orange'}, {id: 3, name: 'Resolta', color: 'green'}, {id: 0, name: 'Rebutjada', color: 'red'}],
 
         init: function () {
@@ -442,8 +449,15 @@ var bitgrup = {
             }
         },
 
-        getNameType: function (n) {
-            return bitgrup.issues.types[n - 1];
+        getNameType: function (id) {
+            //return bitgrup.issues.types[n - 1];
+            var cats = bitgrup.entities.category;
+            $(cats).each(function(n){
+                if(id == cats[n].id){
+                    return cats[n].title;
+                }
+            });
+            return 'Indefinit';
         },
 
         /*-=-=-=-=-=-=      NEW ISSUE     -=-=-=-=-=-=-=-=--*/
