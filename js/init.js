@@ -5,7 +5,7 @@ var bitgrup = {
 
     lang: 'ca',
     config: null,
-    production: 1,
+    production: 0,
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -60,10 +60,12 @@ var bitgrup = {
         setConfig: function (config) {
             bitgrup.config = config;
             //SI TENIM ENTITAT LA CARREGAM
+            console.log('config', config);
             try {
                 if (config.ENTITY_ID) {
                     //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
-                    api.getEntity(config.ENTITY_ID, function (entity) {
+                    api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
+                        console.log('entity: ' , entity);
                         if (entity) {
                             bitgrup.entities.setEntityScreen(entity);
                         } else {

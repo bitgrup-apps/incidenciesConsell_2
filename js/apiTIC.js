@@ -12,11 +12,7 @@ var api = {
 
     init: function () {
         try {
-            if (bitgrup.production) {
-                api.deviceId = device.uuid;
-            } else {
-                api.deviceId = '8b0e32cf46fcfb14';
-            }
+            api.deviceId = '8b0e32cf46fcfb14';
         } catch (e) {
 
         }
