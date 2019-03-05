@@ -79,8 +79,8 @@ var api = {
 
     sendIssue: function (id, issueDt, callback) {
         api.access(function (token) {
-            var data = {token: token, entityId: id, issue: parseInt(issueDt)};
-            console.log('send issue: ', data);
+            var data = {token: token, entityId: parseInt(id), issue: issueDt};
+            console.log('send issue: ', data); 
             var resp = api.send(data, 'POST', 'issue');
             callback(resp.ID);
         });

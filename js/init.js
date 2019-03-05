@@ -109,7 +109,9 @@ var bitgrup = {
 
         setEntityScreen: function (entity) {
             //logo
-            $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
+            if(entity.image.data){
+                $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
+            }
             //phone
             $('#phone-entity').html('<a href="tel:' + entity.phone + '"><span class="ico-phone transition before">' + entity.phone + '</span></a>');
             //NEWS
