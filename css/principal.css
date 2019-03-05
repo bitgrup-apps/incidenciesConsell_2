@@ -148,7 +148,7 @@ button{text-shadow:none !important;}
 .issues-list .ico.ico-plus{position: absolute; left: calc(50% - 5.5vw); top: calc(50% - 5.5vw);}
 .issues-list h5{margin-top:0; margin-bottom: 10px;text-align: left;}
 .issues-list .traffic-light{position: absolute; left: 15px; bottom: 15px; }
-.traffic-light > span{width: 5vw; height: 5vw; border-radius: 10vw;margin-right: 6px; display: inline-block; float: left; opacity: 0.3;}
+.traffic-light > span{width: 5vw; height: 5vw; border-radius: 10vw;margin-right: 6px; display: inline-block; float: left; opacity: 0.1;}
 .traffic-light > span.active{opacity: 1;}
 .traffic-light > span.green{background:#3aaa35;}
 .traffic-light > span.orange{background:#f39200;}

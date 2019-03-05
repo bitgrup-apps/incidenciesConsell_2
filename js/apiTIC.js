@@ -8,7 +8,7 @@ var api = {
     deviceId: null,
     token: null,
     entity: null,
-    issuesLimit: 10,
+    issuesLimit: 100,
 
     init: function () {
         try {

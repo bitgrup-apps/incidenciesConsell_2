@@ -156,7 +156,7 @@ var bitgrup = {
     issues: {
 
         types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
-        status: [{id: 0, name: 'Pendent', color: 'yellow'}, {id: 1, name: 'En curs', color: 'orange'}, {id: 2, name: 'Resolta', color: 'green'}, {id: 3, name: 'Rebutjada', color: 'red'}],
+        status: [{id: 1, name: 'Pendent', color: 'yellow'}, {id: 2, name: 'En curs', color: 'orange'}, {id: 3, name: 'Resolta', color: 'green'}, {id: 0, name: 'Rebutjada', color: 'red'}],
 
         init: function () {
             //REFRESH
@@ -220,12 +220,10 @@ var bitgrup = {
 
             updateIssues: function (issuesStatus, callback) {
                 var total = issuesStatus.length;
-                console.log(issuesStatus, total);
                 if (total) {
                     $(issuesStatus).each(function (n) {
                         var issue = issuesStatus[n];
                         var dades = [issue.status, issue.id, parseInt(bitgrup.config.ENTITY_ID)];
-                        console.log(issue, dades);
                         dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades , null);
                         if (n >= (total - 1)) {
                             callback();
@@ -536,8 +534,8 @@ var bitgrup = {
                                 if (idIssue) {
                                     //INSERT ISSUE
                                     dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
-                                            [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 0, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
-                                                bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio],
+                                            [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
+                                                bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio], 
                                             function (result) {
                                                 if (result) {
                                                     //INSERT MARKER
