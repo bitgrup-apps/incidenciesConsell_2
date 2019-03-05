@@ -52,7 +52,6 @@ var api = {
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
-        console.log('TOKEN NOU: ',token);
         callback(token.token);
     },
 
@@ -62,13 +61,14 @@ var api = {
 
     getIssues: function (callback) {
         api.access(function (token) {
-            var data = 'token=' + token + '&' + 'entityId=' + api.entity + '&' + 'limit=' + api.issuesLimit;
+            var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
             var resp = api.send(data, 'GET', 'issue');
-
             //Actualitzam l'estat de totes les incidencies a la BBDD
-
-
-            callback(resp.data);
+            if(resp.data[0].status == 1){
+                bitgrup.issues.list.updateIssues(resp.data, function(){callback();});
+            }else{
+                callback();
+            }
         });
     },
 
@@ -198,7 +198,7 @@ var api = {
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
-                    console.log('POST',resposta);
+                    console.log('RESP NEW ISSUE: ',resposta);
                     response = resposta;
                 },
                 error: function (e) {

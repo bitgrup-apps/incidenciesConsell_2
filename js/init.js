@@ -109,16 +109,27 @@ var bitgrup = {
 
         setEntityScreen: function (entity) {
             //logo
-            if(entity.image.data){
+            if (entity.image.data) {
                 $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
             }
             //phone
-            $('#phone-entity').html('<a href="tel:' + entity.phone + '"><span class="ico-phone transition before">' + entity.phone + '</span></a>');
+            if (entity.phone) {
+                $('#phone-entity').show();
+                $('#phone-entity').html('<a href="tel:' + entity.phone + '"><span class="ico-phone transition before">' + entity.phone + '</span></a>');
+            } else {
+                $('#phone-entity').hide();
+            }
             //NEWS
             if (entity.news) {
                 $('#btn-home-news').addClass('active');
             } else {
                 $('#btn-home-news').removeClass('active');
+            }
+            //web
+            if (entity.web) {
+                $('#web-entity').show();
+            } else {
+                $('#web-entity').hide();
             }
             bitgrup.news.rss = entity.rss;
             bitgrup.changePage('home');
@@ -200,40 +211,57 @@ var bitgrup = {
                     var issues = new Array();
                     bitgrup.spinner.on();
                     var numIssues = 0;
-                    api.getEntities(function (result) {
-
-                        dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
-                            numIssues = result.length;
-                            if (numIssues) {
-                                var issue_number = 0;
-                                $(result).each(function (i) {
-                                    issue_number++;
-                                    //PER A CADA INCIDENCIA AGAFAM LES IMATGES
-                                    var issue = result[i];
-                                    var imgs = new Array();
-                                    dataBase.query('SELECT * FROM PICTURES WHERE FK_ISSUE = ? ', [issue.ID], function (result_img) {
-                                        $(result_img).each(function (j) {
-                                            var img = result_img[j].BASE_64;
-                                            imgs.push(img);
-                                        });
-                                        issue.IMGS = imgs;
-                                        issues.push(issue);
-                                        bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
-                                    });
-                                });
-                            } else {
-                                bitgrup.issues.list.issues = new Array();
-                                bitgrup.issues.insertIssuesMap();
-                                $('#div-list').html('<h4>No tens cap incidència!<br><small>Aquí veuràs una llista amb les teves incidències.</small></h4>');
-                                bitgrup.spinner.off();
-                            }
-                        });
-
+                    api.getIssues(function () {
+                        bitgrup.issues.list.setList();
                     });
                 } catch (e) {
                     console.log(e);
                     bitgrup.spinner.off();
                 }
+            },
+
+            updateIssues: function (issuesStatus, callback) {
+                var total = issuesStatus.length;
+                if (total) {
+                    $(issuesStatus).each(function (n) {
+                        var issue = issuesStatus[n];
+                        dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', [issue.status, issue.id, bitgrup.config.ENTITY_ID], null);
+                        if (n >= (total - 1)) {
+                            callback();
+                        }
+                    });
+                } else {
+                    callback();
+                }
+            },
+
+            setList: function () {
+                dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
+                    numIssues = result.length;
+                    if (numIssues) {
+                        var issue_number = 0;
+                        $(result).each(function (i) {
+                            issue_number++;
+                            //PER A CADA INCIDENCIA AGAFAM LES IMATGES
+                            var issue = result[i];
+                            var imgs = new Array();
+                            dataBase.query('SELECT * FROM PICTURES WHERE FK_ISSUE = ? ', [issue.ID], function (result_img) {
+                                $(result_img).each(function (j) {
+                                    var img = result_img[j].BASE_64;
+                                    imgs.push(img);
+                                });
+                                issue.IMGS = imgs;
+                                issues.push(issue);
+                                bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
+                            });
+                        });
+                    } else {
+                        bitgrup.issues.list.issues = new Array();
+                        bitgrup.issues.insertIssuesMap();
+                        $('#div-list').html('<h4>No tens cap incidència!<br><small>Aquí veuràs una llista amb les teves incidències.</small></h4>');
+                        bitgrup.spinner.off();
+                    }
+                });
             },
 
             getHtml: function (issues, issue_number, numIssues) {
