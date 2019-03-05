@@ -392,6 +392,7 @@ var bitgrup = {
                     var issue = result[0];
                     if (issue) {
                         //DATA
+                        $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
                         $('#issue-card-description').html(issue.DESCRIPTION);
                         //STATUS
