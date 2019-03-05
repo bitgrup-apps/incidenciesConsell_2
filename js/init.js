@@ -60,14 +60,12 @@ var bitgrup = {
         setConfig: function (config) {
             bitgrup.config = config;
             //SI TENIM ENTITAT LA CARREGAM
-            console.log('config', config);
             try {
                 if (config.ENTITY_ID) {
                     //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
                     api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
-                        console.log('entity: ' , entity);
-                        if (entity) {
-                            bitgrup.entities.setEntityScreen(entity);
+                        if (entity[0].id) {
+                            bitgrup.entities.setEntityScreen(entity[0]);
                         } else {
                             //TORNAM A DEMANAR ENTITAT
                             bitgrup.entities.chooseEntity();
@@ -79,6 +77,7 @@ var bitgrup = {
                     bitgrup.entities.chooseEntity();
                 }
             } catch (e) {
+                console.log(e);
                 bitgrup.entities.chooseEntity();
             }
         },
