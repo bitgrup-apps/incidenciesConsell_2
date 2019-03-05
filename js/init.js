@@ -224,7 +224,7 @@ var bitgrup = {
                 if (total) {
                     $(issuesStatus).each(function (n) {
                         var issue = issuesStatus[n];
-                        var dades = [issue.status, issue.id, bitgrup.config.ENTITY_ID];
+                        var dades = [issue.status, issue.id, parseInt(bitgrup.config.ENTITY_ID)];
                         console.log(issue, dades);
                         dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades , null);
                         if (n >= (total - 1)) {
