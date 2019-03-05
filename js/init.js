@@ -392,7 +392,6 @@ var bitgrup = {
                     var issue = result[0];
                     if (issue) {
                         //DATA
-                        console.log('issue: ', issue);
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
                         $('#issue-card-description').html(issue.DESCRIPTION);
@@ -454,13 +453,14 @@ var bitgrup = {
         getNameType: function (id) {
             //return bitgrup.issues.types[n - 1];
             var cats = bitgrup.entities.category;
-            console.log('cats: ',cats);
+            var name = 'Indefinit';
             $(cats).each(function(n){
+                console.log('cat: ',cats[n], cats[n].id, id);
                 if(id == cats[n].id){
-                    return cats[n].title;
+                    name = cats[n].title;
                 }
             });
-            return 'Indefinit';
+            return name;
         },
 
         /*-=-=-=-=-=-=      NEW ISSUE     -=-=-=-=-=-=-=-=--*/
