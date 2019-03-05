@@ -1112,7 +1112,7 @@ var bitgrup = {
         states[Connection.CELL] = 'Cell generic connection';
         states[Connection.NONE] = 'No network connection';
 
-        console.log('Connection type: ' + states[networkState]);
+        //console.log('Connection type: ' + states[networkState]);
         return states[networkState];
     }
 

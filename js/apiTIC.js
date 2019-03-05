@@ -49,10 +49,10 @@ var api = {
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
         var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
-        console.log(deviceDT);
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
+        console.log('TOKEN NOU: ' + token);
         callback(token.token);
     },
 
@@ -80,8 +80,9 @@ var api = {
     sendIssue: function (id, issueDt, callback) {
         api.access(function (token) {
             var data = {token: token, entityId: id, issue: issueDt};
+            console.log('send issue: ', data);
             var resp = api.send(data, 'POST', 'issue');
-            return resp.ID;
+            callback(resp.ID);
         });
     },
 
@@ -121,7 +122,7 @@ var api = {
     send: function (data, type, uri) {
         var json = JSON.stringify(data);
         var response = false;
-
+        console.log(json);
         if (type === 'GET') {
             $.ajax({
                 type: type,
