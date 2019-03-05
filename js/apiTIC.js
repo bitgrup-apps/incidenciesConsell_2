@@ -81,7 +81,7 @@ var api = {
         api.access(function (token) {
             var data = {token: token, entityId: id, issue: issueDt};
             console.log('send issue: ', data);
-            var resp = api.send(data, 'POST', 'issue');
+            var resp = api.send(data, 'GET', 'issue');
             callback(resp.ID);
         });
     },
@@ -122,7 +122,7 @@ var api = {
     send: function (data, type, uri) {
         var json = JSON.stringify(data);
         var response = false;
-        console.log(json);
+        console.log(data);
         if (type === 'GET') {
             $.ajax({
                 type: type,
