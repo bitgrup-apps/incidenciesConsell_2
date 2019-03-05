@@ -81,8 +81,18 @@ var api = {
         api.access(function (token) {
             var data = {token: token, entityId: parseInt(id), issue: issueDt};
             console.log('send issue: ', data); 
-            var resp = api.sendAjaxIssue(data, 'POST', 'issue');
-            callback(resp.ID);
+            var resp = api.sendAjaxIssue(data, 'issue');
+            try{
+                if(resp.data[0].status == 1){
+                    callback(resp.data[0].id);
+                }else{
+                    callback(0);
+                }
+            }catch(e){
+                console.log('E-API-92', e);
+                callback(0);
+            }
+            
         });
     },
 
@@ -171,8 +181,9 @@ var api = {
         return response;
     },
     
-    sendAjaxIssue: function(data, type, uri){
+    sendAjaxIssue: function(data, uri){
         var json = JSON.stringify({issue:data.issue});
+        var response = false;
         $.ajax({
                 type: 'POST',
                 url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
@@ -195,6 +206,7 @@ var api = {
                 },
                 timeout: 3000
             });
+        return response;
     }
 }
 
