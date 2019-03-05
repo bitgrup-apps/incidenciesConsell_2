@@ -150,7 +150,7 @@ var bitgrup = {
                 var img = (category.image.name) ? category.image.name : 'icons/question.svg';
                 html += '<div class="col-xs-4">'+
                             '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">'+
-                                '<div class="col-xs-12">'
+                                '<div class="col-xs-12">' +
                                     '<img src="' + img + '" title="' + category.title + '"/>'+
                                  '</div>' +        
                                  '<div class="col-xs-12">' +
