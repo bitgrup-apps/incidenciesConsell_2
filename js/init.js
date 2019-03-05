@@ -99,7 +99,7 @@ var bitgrup = {
             api.getEntity(entity_ID, function (entity) {
                 bitgrup.entities.entity = entity;
                 if (entity[0].id) {
-                    dataBase.query('UPDATE CONFIG SET ENTITY_ID = ? ', [entity.id]);
+                    dataBase.query('UPDATE CONFIG SET ENTITY_ID = ? ', [entity[0].id]);
                     bitgrup.config.ENTITY_ID = entity_ID;
                     bitgrup.entities.setEntityScreen(entity[0]);
                 } else {
@@ -270,7 +270,7 @@ var bitgrup = {
             setList: function () {
                 var numIssues = 0;
                 var issues = new Array();
-                dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
+                dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ORDER BY ID DESC', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
                     numIssues = result.length;
                     if (numIssues) {
                         var issue_number = 0;
