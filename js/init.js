@@ -392,6 +392,7 @@ var bitgrup = {
                     var issue = result[0];
                     if (issue) {
                         //DATA
+                        console.log('issue: ', issue);
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
                         $('#issue-card-description').html(issue.DESCRIPTION);
@@ -453,6 +454,7 @@ var bitgrup = {
         getNameType: function (id) {
             //return bitgrup.issues.types[n - 1];
             var cats = bitgrup.entities.category;
+            console.log('cats: ',cats);
             $(cats).each(function(n){
                 if(id == cats[n].id){
                     return cats[n].title;
