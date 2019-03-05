@@ -52,7 +52,7 @@ var api = {
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
-        console.log('TOKEN NOU: ' + token);
+        console.log('TOKEN NOU: ',token);
         callback(token.token);
     },
 
@@ -79,9 +79,9 @@ var api = {
 
     sendIssue: function (id, issueDt, callback) {
         api.access(function (token) {
-            var data = {token: token, entityId: id, issue: issueDt};
+            var data = {token: token, entityId: id, issue: parseInt(issueDt)};
             console.log('send issue: ', data);
-            var resp = api.send(data, 'GET', 'issue');
+            var resp = api.send(data, 'POST', 'issue');
             callback(resp.ID);
         });
     },
@@ -136,7 +136,7 @@ var api = {
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
-                    console.log(resposta);
+                    console.log('GET',resposta);
                     response = resposta;
                 },
                 error: function (e) {
@@ -159,7 +159,7 @@ var api = {
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
-                    console.log(resposta);
+                    console.log('POST',resposta);
                     response = resposta;
                 },
                 error: function (e) {
