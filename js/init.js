@@ -530,16 +530,16 @@ var bitgrup = {
                             });
                             var locationDt = {latitude: bitgrup.issues.new_.location.lat, longitude: bitgrup.issues.new_.location.long, altitude: bitgrup.issues.new_.location.lat};
                             var issueDt = {id: ID, category: bitgrup.issues.new_.type, date: new Date(), description: bitgrup.issues.new_.description, location: locationDt, image: imagesDt};
-                            api.sendIssue(bitgrup.config.ENTITY_ID, issueDt, function (result) {
-                                if (result) {
+                            api.sendIssue(bitgrup.config.ENTITY_ID, issueDt, function (idIssue) {
+                                if (idIssue) {
                                     //INSERT ISSUE
                                     dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
-                                            [ID, parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 0, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
+                                            [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 0, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
                                                 bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio],
                                             function (result) {
                                                 if (result) {
                                                     //INSERT MARKER
-                                                    bitgrup.mapa.insertMarker({ID: ID, DESCRIPTION: bitgrup.issues.new_.description, LATITUDE: bitgrup.issues.new_.location.lat, LONGITUDE: bitgrup.issues.new_.location.long});
+                                                    bitgrup.mapa.insertMarker({ID: idIssue, DESCRIPTION: bitgrup.issues.new_.description, LATITUDE: bitgrup.issues.new_.location.lat, LONGITUDE: bitgrup.issues.new_.location.long});
                                                     //INSERT PICTURES
                                                     dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
                                                         var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
