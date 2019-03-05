@@ -80,7 +80,6 @@ var api = {
     sendIssue: function (id, issueDt, callback) {
         api.access(function (token) {
             var data = {token: token, entityId: parseInt(id), issue: issueDt};
-            console.log('send issue: ', data); 
             var resp = api.sendAjaxIssue(data, 'issue');
             try{
                 if(resp.data[0].status == 1){

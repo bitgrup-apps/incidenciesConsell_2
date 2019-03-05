@@ -219,12 +219,14 @@ var bitgrup = {
             },
 
             updateIssues: function (issuesStatus, callback) {
-                console.log(issuesStatus);
                 var total = issuesStatus.length;
+                console.log(issuesStatus, total);
                 if (total) {
                     $(issuesStatus).each(function (n) {
                         var issue = issuesStatus[n];
-                        dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', [issue.status, issue.id, bitgrup.config.ENTITY_ID], null);
+                        var dades = [issue.status, issue.id, bitgrup.config.ENTITY_ID];
+                        console.log(issue, dades);
+                        dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades , null);
                         if (n >= (total - 1)) {
                             callback();
                         }
