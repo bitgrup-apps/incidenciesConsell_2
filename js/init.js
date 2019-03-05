@@ -147,7 +147,7 @@ var bitgrup = {
             var html = '';
             $(categories).each(function(n){
                 var category = categories[n];
-                var img = (category.image.name) ? category.image.name : 'icons/question.svg';
+                var img = (category.image.name && category.image.name !== 'NO IMAGE') ? category.image.name : 'icons/question.svg';
                 html += '<div class="col-xs-4">'+
                             '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">'+
                                 '<div class="col-xs-12">' +
