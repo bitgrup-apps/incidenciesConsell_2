@@ -48,7 +48,8 @@ var api = {
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
-        var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: navigator.connection.type};
+        var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
+        console.log(deviceDT);
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);

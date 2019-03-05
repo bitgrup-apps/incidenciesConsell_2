@@ -59,19 +59,23 @@ var bitgrup = {
         setConfig: function (config) {
             bitgrup.config = config;
             //SI TENIM ENTITAT LA CARREGAM
-            if (config.ENTITY_ID) {
-                //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
-                api.getEntity(config.ENTITY_ID, function (entity) {
-                    if (entity) {
-                        bitgrup.entities.setEntityScreen(entity);
-                    } else {
-                        //TORNAM A DEMANAR ENTITAT
-                        bitgrup.entities.chooseEntity();
-                    }
-                });
-                //
-            } else {
-                //GET TOTES LES LES ENTIDATS PER TRIAR
+            try {
+                if (config.ENTITY_ID) {
+                    //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
+                    api.getEntity(config.ENTITY_ID, function (entity) {
+                        if (entity) {
+                            bitgrup.entities.setEntityScreen(entity);
+                        } else {
+                            //TORNAM A DEMANAR ENTITAT
+                            bitgrup.entities.chooseEntity();
+                        }
+                    });
+                    //
+                } else {
+                    //GET TOTES LES LES ENTIDATS PER TRIAR
+                    bitgrup.entities.chooseEntity();
+                }
+            } catch (e) {
                 bitgrup.entities.chooseEntity();
             }
         },
@@ -1094,6 +1098,22 @@ var bitgrup = {
     setLink: function (button) {
         var url = $(button).data('url');
         bitgrup.carregaPagExt(url);
+    },
+
+    getConnection: function () {
+        var networkState = navigator.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN] = 'Unknown';
+        states[Connection.ETHERNET] = 'Ethernet';
+        states[Connection.WIFI] = 'WiFi';
+        states[Connection.CELL_2G] = 'Cell 2G';
+        states[Connection.CELL_3G] = 'Cell 3G';
+        states[Connection.CELL_4G] = 'Cell 4G';
+        states[Connection.CELL] = 'Cell generic connection';
+        states[Connection.NONE] = 'No network connection';
+
+        console.log('Connection type: ' + states[networkState]);
+        return states[networkState];
     }
 
 
