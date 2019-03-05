@@ -21,7 +21,7 @@ var api = {
 
         }
         api.getConfig();
-        bitgrup.entities.chooseEntity();
+        //bitgrup.entities.chooseEntity();
     },
 
     /*########################################################################
@@ -131,7 +131,6 @@ var api = {
     send: function (data, type, uri) {
         var json = JSON.stringify(data);
         var response = false;
-        console.log(data);
         if (type === 'GET') {
             $.ajax({
                 type: type,
@@ -145,7 +144,9 @@ var api = {
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
-                    console.log('GET',resposta);
+                    if(bitgrup.production == 0){
+                        console.log('GET',resposta);
+                    }
                     response = resposta;
                 },
                 error: function (e) {
@@ -168,7 +169,9 @@ var api = {
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
-                    console.log('POST',resposta);
+                    if(bitgrup.production == 0){
+                        console.log('POST',resposta);
+                    }
                     response = resposta;
                 },
                 error: function (e) {
