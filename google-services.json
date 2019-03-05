@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "499371677221",
+    "firebase_url": "https://pushnotificacions-c1fff.firebaseio.com",
+    "project_id": "pushnotificacions-c1fff",
+    "storage_bucket": "pushnotificacions-c1fff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499371677221:android:85bda5f42b582de4",
+        "android_client_info": {
+          "package_name": "com.bitaquacampostecnics.bitgrup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499371677221-4av1mh4gtgoj8nvru4ntgrn58sjse30k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdVSmoCr82YVQoxe8BbZzAj3QCDTQ4-dk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499371677221:android:88a7d8cf1afff84d",
+        "android_client_info": {
+          "package_name": "com.formularisDinamics.bitgrup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499371677221-4av1mh4gtgoj8nvru4ntgrn58sjse30k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdVSmoCr82YVQoxe8BbZzAj3QCDTQ4-dk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499371677221:android:731f1f29f6573ce3",
+        "android_client_info": {
+          "package_name": "com.incidenciesMelchor.bitgrup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499371677221-4av1mh4gtgoj8nvru4ntgrn58sjse30k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdVSmoCr82YVQoxe8BbZzAj3QCDTQ4-dk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499371677221:android:f12433bc1f9642f1",
+        "android_client_info": {
+          "package_name": "com.incidenciesTIC.bitgrup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499371677221-4av1mh4gtgoj8nvru4ntgrn58sjse30k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdVSmoCr82YVQoxe8BbZzAj3QCDTQ4-dk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
