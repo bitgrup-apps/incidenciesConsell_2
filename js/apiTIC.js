@@ -81,7 +81,7 @@ var api = {
         api.access(function (token) {
             var data = {token: token, entityId: parseInt(id), issue: issueDt};
             console.log('send issue: ', data); 
-            var resp = api.send(data, 'POST', 'issue');
+            var resp = api.sendAjaxIssue(data, 'POST', 'issue');
             callback(resp.ID);
         });
     },
@@ -170,6 +170,32 @@ var api = {
         }
         return response;
     },
+    
+    sendAjaxIssue: function(data, type, uri){
+        var json = JSON.stringify({issue:data.issue});
+        $.ajax({
+                type: 'POST',
+                url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
+                data: json,
+                dataType: "json",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    bitgrup.spinner.on();
+                },
+                complete: function () {
+                    bitgrup.spinner.off();
+                },
+                success: function (resposta) {
+                    console.log('POST',resposta);
+                    response = resposta;
+                },
+                error: function (e) {
+                    console.log(e);
+                },
+                timeout: 3000
+            });
+    }
 }
 
 
