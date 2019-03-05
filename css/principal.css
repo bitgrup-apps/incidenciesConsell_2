@@ -171,15 +171,16 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 /*STEP 1*/
 .page-issues.step-1 .header.ui-header{background:#45b3eb;}
 .page-issues.step-1 button{background: transparent;border: none;box-shadow: none;padding: 0;}
-.page-issues.step-1 button span{white-space: initial;display: inline-block; width: 100%; padding: 22vw 10px 10px 10px; color: #fff; text-align: center; font-size: 3.2vw;}
-.page-issues.step-1 button span::before{content: " "; position: absolute; top: 0.5vw; left:4.5vw; width: 20vw; height: 20vw; background-image: url('../icons/sprite.svg'); background-size: 130vw auto; background-repeat: no-repeat;}
+.page-issues.step-1 button span{white-space: initial;display: inline-block; width: 100%; padding: 10px 10px 10px 10px; color: #fff; text-align: center; font-size: 3.2vw;}
+.page-issues.step-1 button img{width:70%;}
+/*.page-issues.step-1 button span::before{content: " "; position: absolute; top: 0.5vw; left:4.5vw; width: 20vw; height: 20vw; background-image: url('../icons/sprite.svg'); background-size: 130vw auto; background-repeat: no-repeat;}
 .page-issues.step-1 button span.type-1::before{background-position: -8.5vw -87vw;}
 .page-issues.step-1 button span.type-2::before{background-position: -36vw -87vw;}
 .page-issues.step-1 button span.type-3::before{background-position: -64.5vw -87vw;}
 .page-issues.step-1 button span.type-4::before{background-position: -91.5vw -87vw;}
 .page-issues.step-1 button span.type-5::before{background-position: -6.5vw -109.2vw}
 .page-issues.step-1 button span.type-6::before{background-position: -34.5vw -109.2vw}
-.page-issues.step-1 button span.type-7::before{background-position: -62vw -109.2vw}
+.page-issues.step-1 button span.type-7::before{background-position: -62vw -109.2vw}*/
 .page-issues.ui-page-theme-a .ui-btn:hover{background:transparent; opacity: 0.7;}
 
 

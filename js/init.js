@@ -55,6 +55,7 @@ var bitgrup = {
     entities: {
 
         entity: null,
+        category: null,
 
         setConfig: function (config) {
             bitgrup.config = config;
@@ -125,15 +126,40 @@ var bitgrup = {
             } else {
                 $('#btn-home-news').removeClass('active');
             }
-            //web
+            //URL 
             if (entity.web) {
                 $('#web-entity').show();
             } else {
                 $('#web-entity').hide();
             }
+            //NEWS
             bitgrup.news.rss = entity.rss;
+            //CATEGORIES
+            bitgrup.entities.setCategories(entity.category);
+            
+            //go to 
             bitgrup.changePage('home');
             bitgrup.initScreen();
+        },
+        
+        setCategories: function(categories){
+            bitgrup.entities.category = categories;
+            var html = '';
+            $(categories).each(function(n){
+                var category = categories[n];
+                var img = (category.image.name) ? category.image.name : 'icons/question.svg';
+                html += '<div class="col-xs-4">'+
+                            '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">'+
+                                '<div class="col-xs-12">'
+                                    '<img src="' + img + '" title="' + category.title + '"/>'+
+                                 '</div>' +        
+                                 '<div class="col-xs-12">' +
+                                    '<span>' + category.title + '</span>'+
+                                 '</div>' +      
+                            '</button>'+
+                        '</div>';
+            });
+            $('#type-list-issue').html(html);
         },
 
         logOut: function () {
