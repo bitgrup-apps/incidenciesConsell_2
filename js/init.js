@@ -122,9 +122,7 @@ var bitgrup = {
             } else {
                 $('#phone-entity').hide();
             }
-            //NEWS
-            bitgrup.news.rss = entity.rss;
-            bitgrup.news.getNode();
+
 
             //URL 
             if (entity.web) {
@@ -136,9 +134,11 @@ var bitgrup = {
             //CATEGORIES
             bitgrup.entities.setCategories(entity.category);
 
-            //go to 
-            bitgrup.changePage('home');
-            bitgrup.initScreen();
+            //NEWS
+            bitgrup.news.rss = entity.rss;
+            bitgrup.news.getNode();
+
+
         },
 
         setCategories: function (categories) {
@@ -651,24 +651,27 @@ var bitgrup = {
         },
 
         getNode: function () {
-            bitgrup.spinner.on();
             try {
                 var yql = bitgrup.news.rss;
                 $.get(yql).done(function (rss) {
-                    if ($(rss).find("item")) {
+                    var items = $(rss).find("item");
+                    if (items) {
                         bitgrup.news.node = 1;
                         $('#btn-home-news').addClass('active');
-                        bitgrup.spinner.off();
                     } else {
                         bitgrup.news.node = 0;
-                        $('#btn-home-news').removeClass('active'); 
-                        bitgrup.spinner.off();
+                        $('#btn-home-news').removeClass('active');
                     }
+                    //go to 
+                    bitgrup.changePage('home');
+                    bitgrup.initScreen();
                 });
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
-                bitgrup.spinner.off();
+                //go to 
+                bitgrup.changePage('home');
+                bitgrup.initScreen();
             }
         },
 
@@ -686,15 +689,15 @@ var bitgrup = {
                         var title = $(this).find('title').text();
                         var uri = $(this).find('link').text();
                         var description = $(this).find('resumen').text();
-                        if(!description){
+                        if (!description) {
                             description = $(this).find('description').text();
                         }
                         var img = $(this).find("ag\\:ag:image").text();
-                        if(!img){
+                        if (!img) {
                             img = $(this).find('image').text();
                         }
                         var pubDate = $(this).find("ag\\:timestamp").text();
-                        if(!pubDate){
+                        if (!pubDate) {
                             pubDate = $(this).find('pubDate').text();
                         }
                         var date = new Date(pubDate);
