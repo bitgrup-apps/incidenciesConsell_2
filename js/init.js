@@ -358,7 +358,7 @@ var bitgrup = {
                     /*INSERT HTML*/
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
-                    bitgrup.spinner.off();
+                    //bitgrup.spinner.off();
                 }
             },
 
@@ -1207,6 +1207,7 @@ var bitgrup = {
     },
 
     initScreen: function () {
+        bitgrup.spinner.on();
         setTimeout(function () {
             $('body .ui-content').removeClass('no-active');
             $('#loading').removeClass('active');
