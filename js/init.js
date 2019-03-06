@@ -124,9 +124,9 @@ var bitgrup = {
             }
             //NEWS
             bitgrup.news.rss = entity.rss;
-            bitgrup.news.getNode();
+            var node = bitgrup.news.getNode();
             console.log('news', entity.rss, bitgrup.news.node);
-            if (entity.rss && bitgrup.news.node) {
+            if (entity.rss && node) {
                 $('#btn-home-news').addClass('active');
             } else {
                 $('#btn-home-news').removeClass('active');
@@ -658,9 +658,12 @@ var bitgrup = {
         getNode: function () {
             try {
                 var yql = bitgrup.news.rss;
+                var node = 0;
+                console.log('yql', yql);
                 $.get(yql).done(function (rss) {
                     if ($(rss).find("item")) {
                         bitgrup.news.node = 1;
+                        node = 1;
                     } else {
                         bitgrup.news.node = 0;
                     }
@@ -668,7 +671,7 @@ var bitgrup = {
             } catch (e) {
                 bitgrup.news.node = 0;
             }
-
+            return node;
         },
 
         list: function () {
