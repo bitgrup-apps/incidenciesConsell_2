@@ -663,15 +663,16 @@ var bitgrup = {
                     $(rss).find("item").each(function () {
                         i++;
                         var title = $(this).find('title').text();
-                        var description = $(this).find('content\\:encoded').text();
-                        var img = $(this).find('enclosure').attr('url');
+                        var description = $(this).find('resumen').text();
+                        var img = $(this).find('image').attr('url');
                         var uri = $(this).find('link').text();
-                        var pubDate = $(this).find('pubDate').text();
+                        var pubDate = $(this).find("ag\\:timestamp").text();
                         var date = new Date(pubDate);
-                        var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
+                        //var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
+                        var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
                         bitgrup.news.newsArray.push({id: i, title: title, description: description, img: img, uri: uri, pubData: stringDate});
                         if(i >= 20){
-                            return;
+                            return false;
                         }
                     });
                     bitgrup.news.numNews = i;
@@ -690,7 +691,8 @@ var bitgrup = {
             if (news.length) {
                 $(news).each(function (i) {
                     var new_ = news[i];
-                    html = html + '<div class="col-xs-12" onclick="bitgrup.news.getNew(' + i + ');" >\n\
+                    var img = (new_.img) ? new_.img : 'images/news-background.jpg';
+                    html = html + '<div class="col-xs-12" onclick="bitgrup.news.getNew(' + img + ');" >\n\
                                     <div class="col-xs-12"><img src="' + new_.img + '"/></div>\n\
                                     <div class="col-xs-12">\n\
                                         <h5>' + new_.title + '</h5>\n\
