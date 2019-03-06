@@ -122,7 +122,9 @@ var bitgrup = {
                 $('#phone-entity').hide();
             }
             //NEWS
-            if (entity.rss) {
+            bitgrup.news.rss = entity.rss;
+            bitgrup.news.getNode();
+            if (entity.rss && bitgrup.news.node) {
                 $('#btn-home-news').addClass('active');
             } else {
                 $('#btn-home-news').removeClass('active');
@@ -132,38 +134,37 @@ var bitgrup = {
                 $('#web-entity').show();
             } else {
                 $('#web-entity').hide();
-            }
-            //NEWS
-            bitgrup.news.rss = entity.rss;
+            }           
+            
             //CATEGORIES
             bitgrup.entities.setCategories(entity.category);
-            
+
             //go to 
             bitgrup.changePage('home');
             bitgrup.initScreen();
         },
-        
-        setCategories: function(categories){
+
+        setCategories: function (categories) {
             bitgrup.entities.category = categories;
             var html = '';
-            $(categories).each(function(n){
+            $(categories).each(function (n) {
                 var category = categories[n];
                 var img = (category.image.name && category.image.name !== 'NO IMAGE') ? category.image.name : 'icons/question.svg';
                 //cada 3 hem de ficar un row
-                if(n % 3 == 0){
+                if (n % 3 == 0) {
                     html += '<div class="row">';
                 }
-                html += '<div class="col-xs-4">'+
-                            '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">'+
-                                '<div class="col-xs-12">' +
-                                    '<img src="' + img + '" title="' + category.title + '"/>'+
-                                 '</div>' +        
-                                 '<div class="col-xs-12">' +
-                                    '<span>' + category.title + '</span>'+
-                                 '</div>' +      
-                            '</button>'+
+                html += '<div class="col-xs-4">' +
+                        '<button onclick="bitgrup.issues.new_.setType(' + category.id + ')">' +
+                        '<div class="col-xs-12">' +
+                        '<img src="' + img + '" title="' + category.title + '"/>' +
+                        '</div>' +
+                        '<div class="col-xs-12">' +
+                        '<span>' + category.title + '</span>' +
+                        '</div>' +
+                        '</button>' +
                         '</div>';
-                if(n % 3 == 2){
+                if (n % 3 == 2) {
                     html += '</div>';
                 }
             });
@@ -258,7 +259,7 @@ var bitgrup = {
                     $(issuesStatus).each(function (n) {
                         var issue = issuesStatus[n];
                         var dades = [issue.status, issue.id, parseInt(bitgrup.config.ENTITY_ID)];
-                        dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades , null);
+                        dataBase.query('UPDATE ISSUES SET STATUS = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades, null);
                         if (n >= (total - 1)) {
                             callback();
                         }
@@ -455,9 +456,9 @@ var bitgrup = {
             //return bitgrup.issues.types[n - 1];
             var cats = bitgrup.entities.category;
             var name = 'Indefinit';
-            $(cats).each(function(n){
-                console.log('cat: ',cats[n], cats[n].id, id);
-                if(id == cats[n].id){
+            $(cats).each(function (n) {
+                console.log('cat: ', cats[n], cats[n].id, id);
+                if (id == cats[n].id) {
                     name = cats[n].title;
                 }
             });
@@ -579,7 +580,7 @@ var bitgrup = {
                                     //INSERT ISSUE
                                     dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
                                             [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
-                                                bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio], 
+                                                bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio],
                                             function (result) {
                                                 if (result) {
                                                     //INSERT MARKER
@@ -643,12 +644,26 @@ var bitgrup = {
         newsArray: new Array(),
         idNew: 0,
         numNews: 0,
+        node: '',
 
         init: function () {
             //REFRESH
             $('#news-list-content').xpull({callback: function () {
                     bitgrup.news.list();
                 }});
+        },
+
+        getNode: function () {
+            var yql = bitgrup.news.rss;
+            var node = '';
+            $.get(yql).done(function (rss) {
+                if ($(rss).find("item")) {
+                    node = 'item';
+                } else if ($(rss).find("channel")) {
+                    node = 'channel';
+                }
+            });
+            bitgrup.news.node = node;
         },
 
         list: function () {
@@ -658,9 +673,9 @@ var bitgrup = {
                 //GET RSS
                 var yql = bitgrup.news.rss;
                 var i = 0;
-            
+
                 $.get(yql).done(function (rss) {
-                    $(rss).find("item").each(function () {
+                    $(rss).find(bitgrup.news.node).each(function () {
                         i++;
                         var title = $(this).find('title').text();
                         var description = $(this).find('resumen').text();
@@ -671,7 +686,7 @@ var bitgrup = {
                         //var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
                         var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
                         bitgrup.news.newsArray.push({id: i, title: title, description: description, img: img, uri: uri, pubData: stringDate});
-                        if(i >= 20){
+                        if (i >= 30) {
                             return false;
                         }
                     });
@@ -692,8 +707,8 @@ var bitgrup = {
                 $(news).each(function (i) {
                     var new_ = news[i];
                     var img = (new_.img) ? new_.img : 'images/news-background.jpg';
-                    html = html + '<div class="col-xs-12" onclick="bitgrup.news.getNew(' + img + ');" >\n\
-                                    <div class="col-xs-12"><img src="' + new_.img + '"/></div>\n\
+                    html = html + '<div class="col-xs-12" onclick="bitgrup.news.getNew(' + i + ');" >\n\
+                                    <div class="col-xs-12"><img src="' + img + '"/></div>\n\
                                     <div class="col-xs-12">\n\
                                         <h5>' + new_.title + '</h5>\n\
                                         <div class="col-xs-12">\n\
