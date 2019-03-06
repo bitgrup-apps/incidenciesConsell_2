@@ -669,7 +669,6 @@ var bitgrup = {
                     //go to 
                     bitgrup.changePage('home');
                     bitgrup.initScreen();
-                    bitgrup.spinner.off();
                 });
             } catch (e) {
                 bitgrup.news.node = 0;
@@ -677,7 +676,6 @@ var bitgrup = {
                 //go to 
                 bitgrup.changePage('home');
                 bitgrup.initScreen();
-                bitgrup.spinner.off();
             }
         },
 
@@ -1205,11 +1203,12 @@ var bitgrup = {
     },
 
     initScreen: function () {
+        bitgrup.spinner.on();
         setTimeout(function () {
             $('body .ui-content').removeClass('no-active');
             bitgrup.spinner.off();
             $('#loading').removeClass('active');
-        }, 1000);
+        }, 500);
     },
 
     maxWords: function (str) {
