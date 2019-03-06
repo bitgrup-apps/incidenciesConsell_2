@@ -99,18 +99,21 @@ var bitgrup = {
         setEntity: function (entity_ID) {
             api.getEntity(entity_ID, function (entity) {
                 bitgrup.entities.entity = entity;
-                if (entity[0].id) {
-                    dataBase.query('UPDATE CONFIG SET ENTITY_ID = ? ', [entity[0].id]);
-                    bitgrup.config.ENTITY_ID = entity_ID;
-                    bitgrup.entities.setEntityScreen(entity[0]);
-                } else {
+                try{
+                    if (entity[0].id) {
+                        dataBase.query('UPDATE CONFIG SET ENTITY_ID = ? ', [entity[0].id]);
+                        bitgrup.config.ENTITY_ID = entity_ID;
+                        bitgrup.entities.setEntityScreen(entity[0]);
+                    } else {
+                        bitgrup.entities.error();
+                    }
+                }catch(e){
                     bitgrup.entities.error();
                 }
             });
         },
 
         setEntityScreen: function (entity) {
-            console.log(entity);
             //logo
             if (entity.image.data) {
                 $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
@@ -651,6 +654,7 @@ var bitgrup = {
         },
 
         getNode: function () {
+            bitgrup.spinner.on();
             try {
                 var yql = bitgrup.news.rss;
                 $.get(yql).done(function (rss) {
@@ -665,6 +669,7 @@ var bitgrup = {
                     //go to 
                     bitgrup.changePage('home');
                     bitgrup.initScreen();
+                    bitgrup.spinner.off();
                 });
             } catch (e) {
                 bitgrup.news.node = 0;
@@ -672,6 +677,7 @@ var bitgrup = {
                 //go to 
                 bitgrup.changePage('home');
                 bitgrup.initScreen();
+                bitgrup.spinner.off();
             }
         },
 
@@ -1203,7 +1209,7 @@ var bitgrup = {
             $('body .ui-content').removeClass('no-active');
             bitgrup.spinner.off();
             $('#loading').removeClass('active');
-        }, 500);
+        }, 1000);
     },
 
     maxWords: function (str) {
