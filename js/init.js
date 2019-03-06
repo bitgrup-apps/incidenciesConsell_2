@@ -110,6 +110,7 @@ var bitgrup = {
         },
 
         setEntityScreen: function (entity) {
+            console.log(entity);
             //logo
             if (entity.image.data) {
                 $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
@@ -124,6 +125,7 @@ var bitgrup = {
             //NEWS
             bitgrup.news.rss = entity.rss;
             bitgrup.news.getNode();
+            console.log('news', entity.rss, bitgrup.news.node);
             if (entity.rss && bitgrup.news.node) {
                 $('#btn-home-news').addClass('active');
             } else {
@@ -747,7 +749,8 @@ var bitgrup = {
             $('#card-news-date').html(new_.pubData);
             $('#card-news-title').html(new_.title);
             $('#card-news-description').html(new_.description);
-            $('#card-news-img').html('<img src="' + new_.img + '" title="' + new_.title + '" alt="TIC"/>');
+            var img = (new_.img) ? new_.img : 'images/news-background.jpg';
+            $('#card-news-img').html('<img src="' + img + '" title="' + new_.title + '" alt="TIC"/>');
             $('#card-news-twitter').data('url', 'https://twitter.com/home?status=' + new_.uri);
             $('#card-news-facebook').data('url', 'https://www.facebook.com/sharer/sharer.php?u=' + new_.uri);
             $('#card-news-whatsapp').data('url', 'whatsapp://send?text=' + new_.uri);

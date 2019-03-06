@@ -12,7 +12,7 @@ var api = {
 
     init: function () {
         try {
-            api.deviceId = '8b0e32cf46fcfb14';
+            api.deviceId = device.uuid;
         } catch (e) {
 
         }
