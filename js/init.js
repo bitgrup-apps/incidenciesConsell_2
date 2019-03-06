@@ -1172,9 +1172,11 @@ var bitgrup = {
     },
 
     spinner: {
+        status: 0,
         on: function () {
             try {
                 SpinnerPlugin.activityStart(" ", {dimBackground: false});
+                bitgrup.spinner.status = 1;
             } catch (e) {
                 //console.log(e);
             }
@@ -1183,7 +1185,8 @@ var bitgrup = {
             try {
                 setTimeout(function () {
                     SpinnerPlugin.activityStop();
-                }, 500);
+                    bitgrup.spinner.status = 0;
+                }, 200); 
             } catch (e) {
                 //console.log(e);
             }
@@ -1203,12 +1206,11 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        bitgrup.spinner.on();
         setTimeout(function () {
             $('body .ui-content').removeClass('no-active');
-            bitgrup.spinner.off();
             $('#loading').removeClass('active');
-        }, 500);
+            bitgrup.spinner.off();
+        }, 200);
     },
 
     maxWords: function (str) {

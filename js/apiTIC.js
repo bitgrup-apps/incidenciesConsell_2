@@ -125,6 +125,7 @@ var api = {
 
 
     send: function (data, type, uri) {
+        var statusSpinner = bitgrup.spinner.status;
         var json = JSON.stringify(data);
         var response = false;
         if (type === 'GET') {
@@ -134,10 +135,14 @@ var api = {
                 dataType: "json",
                 async: false,
                 beforeSend: function () {
-                    bitgrup.spinner.on();
+                    if(!statusSpinner){
+                        bitgrup.spinner.on();
+                    }
                 },
-                complete: function () {
-                    bitgrup.spinner.off();
+                complete: function () { 
+                    if(!statusSpinner){
+                        bitgrup.spinner.off();
+                    }
                 },
                 success: function (resposta) {
                     if(bitgrup.production == 0){
