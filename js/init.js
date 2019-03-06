@@ -140,8 +140,6 @@ var bitgrup = {
             //NEWS
             bitgrup.news.rss = entity.rss;
             bitgrup.news.getNode();
-
-
         },
 
         setCategories: function (categories) {
@@ -358,7 +356,7 @@ var bitgrup = {
                     /*INSERT HTML*/
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
-                    //bitgrup.spinner.off();
+                    bitgrup.spinner.off();
                 }
             },
 
@@ -654,10 +652,9 @@ var bitgrup = {
         },
 
         getNode: function () {
-            bitgrup.spinner.on();
             try {
                 var yql = bitgrup.news.rss;
-                $.get(yql).done(function (rss) {
+                $.ajax({type: "GET",url: yql, dataType: "xml",beforeSend: function () {  bitgrup.spinner.force(1); }, success: function(rss){
                     var items = $(rss).find("item");
                     if (items) {
                         bitgrup.news.node = 1;
@@ -667,13 +664,15 @@ var bitgrup = {
                         $('#btn-home-news').removeClass('active');
                     }
                     //go to 
+                    bitgrup.spinner.force(0);
                     bitgrup.changePage('home');
                     bitgrup.initScreen();
-                });
+                }});
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
                 //go to 
+                bitgrup.spinner.force(0);
                 bitgrup.changePage('home');
                 bitgrup.initScreen();
             }
@@ -1173,7 +1172,10 @@ var bitgrup = {
     },
 
     spinner: {
+        
         status: 0,
+        force_status: 0,
+        
         on: function () {
             try {
                 SpinnerPlugin.activityStart(" ", {dimBackground: false});
@@ -1185,12 +1187,19 @@ var bitgrup = {
         off: function () {
             try {
                 setTimeout(function () {
-                    SpinnerPlugin.activityStop();
-                    bitgrup.spinner.status = 0;
+                    if(bitgrup.spinner.force_status == 0){
+                        SpinnerPlugin.activityStop();
+                        bitgrup.spinner.status = 0;
+                    }else{
+                        console.log('spinner force = 1, no stop spinner');
+                    }
                 }, 200); 
             } catch (e) {
                 //console.log(e);
             }
+        },
+        force: function(n){
+            bitgrup.spinner.force_status = n;
         }
     },
 
@@ -1207,7 +1216,6 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        bitgrup.spinner.on();
         setTimeout(function () {
             $('body .ui-content').removeClass('no-active');
             $('#loading').removeClass('active');
