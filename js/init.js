@@ -122,7 +122,7 @@ var bitgrup = {
                 $('#phone-entity').hide();
             }
             //NEWS
-            if (entity.news) {
+            if (entity.rss) {
                 $('#btn-home-news').addClass('active');
             } else {
                 $('#btn-home-news').removeClass('active');
@@ -652,12 +652,13 @@ var bitgrup = {
         },
 
         list: function () {
-            bitgrup.spinner.on();
-            bitgrup.news.newsArray = new Array();
-            //GET RSS
-            var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from xml where url="' + bitgrup.news.rss + '"') + '&format=xml';
-            var i = 0;
             try {
+                bitgrup.spinner.on();
+                bitgrup.news.newsArray = new Array();
+                //GET RSS
+                var yql = bitgrup.news.rss;
+                var i = 0;
+            
                 $.get(yql).done(function (rss) {
                     $(rss).find("item").each(function () {
                         i++;
@@ -669,6 +670,9 @@ var bitgrup = {
                         var date = new Date(pubDate);
                         var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
                         bitgrup.news.newsArray.push({id: i, title: title, description: description, img: img, uri: uri, pubData: stringDate});
+                        if(i >= 20){
+                            return;
+                        }
                     });
                     bitgrup.news.numNews = i;
                     bitgrup.news.setList();
