@@ -743,8 +743,9 @@ var bitgrup = {
                 bitgrup.changePage('news-list');
                 bitgrup.spinner.off();
             } else {
-                bitgrup.alert('Les notícies no es troben disponibles a n\'aquest moment. Disculpi les molèsties.');
-            }
+                bitgrup.spinner.off();
+                bitgrup.alert('A n\'aquests moments no hi ha notícies publicades. Disculpi les molèsties.');
+            } 
         },
 
         getNew: function (i) {

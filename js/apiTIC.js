@@ -164,10 +164,14 @@ var api = {
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 beforeSend: function () {
-                    bitgrup.spinner.on();
+                    if(!statusSpinner){
+                        bitgrup.spinner.on();
+                    }
                 },
                 complete: function () {
-                    bitgrup.spinner.off();
+                    if(!statusSpinner){
+                        bitgrup.spinner.off();
+                    }
                 },
                 success: function (resposta) {
                     if(bitgrup.production == 0){
@@ -197,7 +201,7 @@ var api = {
                 beforeSend: function () {
                     bitgrup.spinner.on();
                 },
-                complete: function () {
+                complete: function () { 
                     bitgrup.spinner.off();
                 },
                 success: function (resposta) {
