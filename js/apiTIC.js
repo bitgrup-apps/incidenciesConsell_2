@@ -14,7 +14,7 @@ var api = {
         try {
             api.deviceId = device.uuid;
         } catch (e) {
-
+            
         }
         api.getConfig();
         //bitgrup.entities.chooseEntity();
