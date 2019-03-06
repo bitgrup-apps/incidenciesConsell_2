@@ -124,13 +124,8 @@ var bitgrup = {
             }
             //NEWS
             bitgrup.news.rss = entity.rss;
-            var node = bitgrup.news.getNode();
-            console.log('news', entity.rss, node);
-            if (entity.rss && node) {
-                $('#btn-home-news').addClass('active');
-            } else {
-                $('#btn-home-news').removeClass('active');
-            }
+            bitgrup.news.getNode();
+
             //URL 
             if (entity.web) {
                 $('#web-entity').show();
@@ -656,23 +651,25 @@ var bitgrup = {
         },
 
         getNode: function () {
+            bitgrup.spinner.on();
             try {
                 var yql = bitgrup.news.rss;
-                var node = 0;
                 $.get(yql).done(function (rss) {
                     if ($(rss).find("item")) {
-                        console.log('node trobat');
                         bitgrup.news.node = 1;
-                        node = 1;
+                        $('#btn-home-news').addClass('active');
+                        bitgrup.spinner.off();
                     } else {
-                        console.log('node NO trobat');
                         bitgrup.news.node = 0;
+                        $('#btn-home-news').removeClass('active'); 
+                        bitgrup.spinner.off();
                     }
                 });
             } catch (e) {
                 bitgrup.news.node = 0;
+                $('#btn-home-news').removeClass('active');
+                bitgrup.spinner.off();
             }
-            return node;
         },
 
         list: function () {
