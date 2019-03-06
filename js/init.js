@@ -134,8 +134,8 @@ var bitgrup = {
                 $('#web-entity').show();
             } else {
                 $('#web-entity').hide();
-            }           
-            
+            }
+
             //CATEGORIES
             bitgrup.entities.setCategories(entity.category);
 
@@ -654,16 +654,19 @@ var bitgrup = {
         },
 
         getNode: function () {
-            var yql = bitgrup.news.rss;
-            var node = '';
-            $.get(yql).done(function (rss) {
-                if ($(rss).find("item")) {
-                    node = 'item';
-                } else if ($(rss).find("channel")) {
-                    node = 'channel';
-                }
-            });
-            bitgrup.news.node = node;
+            try {
+                var yql = bitgrup.news.rss;
+                $.get(yql).done(function (rss) {
+                    if ($(rss).find("item")) {
+                        bitgrup.news.node = 1;
+                    } else {
+                        bitgrup.news.node = 0;
+                    }
+                });
+            } catch (e) {
+                bitgrup.news.node = 0;
+            }
+
         },
 
         list: function () {
@@ -675,13 +678,22 @@ var bitgrup = {
                 var i = 0;
 
                 $.get(yql).done(function (rss) {
-                    $(rss).find(bitgrup.news.node).each(function () {
+                    $(rss).find('item').each(function () {
                         i++;
                         var title = $(this).find('title').text();
-                        var description = $(this).find('resumen').text();
-                        var img = $(this).find('image').attr('url');
                         var uri = $(this).find('link').text();
+                        var description = $(this).find('resumen').text();
+                        if(!description){
+                            description = $(this).find('description').text();
+                        }
+                        var img = $(this).find("ag\\:ag:image").text();
+                        if(!img){
+                            img = $(this).find('image').text();
+                        }
                         var pubDate = $(this).find("ag\\:timestamp").text();
+                        if(!pubDate){
+                            pubDate = $(this).find('pubDate').text();
+                        }
                         var date = new Date(pubDate);
                         //var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
                         var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
