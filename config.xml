@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "0.1.1">  
+        version   = "0.1.2">  
 	
 	
     <name>TIC Incidencies</name>
@@ -28,7 +28,7 @@
     </platform>
 	
     <!-- PREFERENCE -->
-     <preference name="phonegap-version" value="cli-8.0.0" /> 
+     <preference name="phonegap-version" value="cli-8.1.1" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
