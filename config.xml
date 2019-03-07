@@ -43,9 +43,10 @@
     <!-- PLUGINS -->
     <plugin name="cordova-plugin-googlemaps" spec="2.4.6">
         <!--ANDROID PRODUCCIÓ -->
-        <!--variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/-->
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
         <!--ANDROID TEST -->
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>
+        <!--variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/-->
+        <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
     <plugin name="phonegap-plugin-push" >
