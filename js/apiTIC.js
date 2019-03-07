@@ -126,7 +126,7 @@ var api = {
 
     send: function (data, type, uri) {
         var statusSpinner = bitgrup.spinner.status;
-        var json = JSON.stringify(data);
+        //var json = JSON.stringify(data);
         var response = false;
         if (type === 'GET') {
             $.ajax({
@@ -159,7 +159,7 @@ var api = {
             $.ajax({
                 type: type,
                 url: api.url + uri,
-                data: json,
+                data: data,
                 dataType: "json",
                 async: false,
                 contentType: "application/json; charset=utf-8",
@@ -189,12 +189,12 @@ var api = {
     },
     
     sendAjaxIssue: function(data, uri){
-        var json = JSON.stringify({issue:data.issue});
+        //var json = JSON.stringify({issue:data.issue});
         var response = false;
         $.ajax({
                 type: 'POST',
                 url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
-                data: json,
+                data: data,
                 dataType: "json",
                 async: false,
                 contentType: "application/json; charset=utf-8",
