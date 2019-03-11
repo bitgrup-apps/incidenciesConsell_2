@@ -38,8 +38,6 @@ var api = {
     },
 
     access: function (callback) {
-        var hola = {test: 'test 1'};
-        api.sendTest(hola);
         var today = new Date();
         var year = today.getFullYear();
         var month = today.getMonth() + 1;
@@ -56,6 +54,7 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
+        api.sendTest(data);
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
         callback(token.token);
