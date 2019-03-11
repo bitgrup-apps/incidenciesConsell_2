@@ -48,6 +48,7 @@ var api = {
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
+        
         if(bitgrup.production){
             var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
         }else{
@@ -233,9 +234,9 @@ var api = {
                 type: 'POST',
                 url: 'https://www.bitgrup.com/test.php',
                 data: json,
-                dataType: "json",
+                //dataType: "json",
                 async: false,
-                contentType: "application/json; charset=utf-8",
+                //contentType: "application/json; charset=utf-8",
                 success: function (resposta) {
                     console.log(resposta);
                 },
