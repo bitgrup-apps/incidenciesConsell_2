@@ -36,6 +36,8 @@ var api = {
     setToken: function (token) {
         api.token = token;
     },
+    
+    cntCalls: 0,
 
     access: function (callback) {
         var today = new Date(); 
@@ -48,7 +50,6 @@ var api = {
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
-        
         if(bitgrup.production){
             var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
         }else{
@@ -56,8 +57,19 @@ var api = {
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
-        api.setToken(token);
-        callback(token.token);
+        if(token.token){
+            api.setToken(token);
+            callback(token.token);
+        }else{
+            api.cntCalls++;
+            if(api.cntCalls >= 5){
+                alert('No s\ha pogut connectar amb el servidor, prova més tart.');
+                return false;
+            }else{
+                api.access(callback);
+            }
+        }
+        
     },
 
     /*########################################################################
