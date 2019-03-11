@@ -12,13 +12,13 @@ var api = {
 
     init: function () {
         try {
-            if(bitgrup.production){
+            if (bitgrup.production) {
                 api.deviceId = device.uuid;
-            }else{
+            } else {
                 api.deviceId = '8b0e32cf46fcfb14';
             }
         } catch (e) {
-            
+
         }
         api.getConfig();
         //bitgrup.entities.chooseEntity();
@@ -36,11 +36,11 @@ var api = {
     setToken: function (token) {
         api.token = token;
     },
-    
+
     cntCalls: 0,
 
     access: function (callback) {
-        var today = new Date(); 
+        var today = new Date();
         var year = today.getFullYear();
         var month = today.getMonth() + 1;
         var day = today.getDate();
@@ -50,30 +50,35 @@ var api = {
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
-        if(bitgrup.production){
+        if (bitgrup.production) {
             var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
-        }else{
+        } else {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
-        $.ajax({type: 'POST',url: 'https://www.bitgrup.com/test.php',data:data,async: false, timeout: 3000 });
+        $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data: data, async: false, timeout: 3000});
         var token = api.send(data, 'POST', 'access');
-        if(token.token){
+        if (token.token) {
             api.setToken(token);
             callback(token.token);
-        }else{
+        } else {
             api.cntCalls++;
-            if(api.cntCalls >= 5){
-                alert('No s\ha pogut connectar amb el servidor, prova més tart.');
-                bitgrup.spinner.force(0);
-                bitgrup.spinner.off();
-                bitgrup.changePage('noCompatible');
+            if (api.cntCalls >= 5) {
+                api.errorApi();
                 return false;
-            }else{
+            } else {
                 api.access(callback);
             }
         }
-        
+
+    },
+
+    errorApi: function () {
+        bitgrup.spinner.force(0);
+        bitgrup.spinner.off();
+        //bitgrup.initScreen();
+        bitgrup.alert('No s\ha pogut connectar amb el servidor, prova més tart.');
+        //bitgrup.changePage('noCompatible');
     },
 
     /*########################################################################
@@ -81,39 +86,59 @@ var api = {
      ########################################################################*/
 
     getIssues: function (callback) {
-        api.access(function (token) {
-            var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
-            var resp = api.send(data, 'GET', 'issue');
-            //Actualitzam l'estat de totes les incidencies a la BBDD
-            if(resp.status){
-                bitgrup.issues.list.updateIssues(resp.data, function(){callback();});
-            }else{
-                callback();
-            }
-        });
+        try {
+            api.access(function (token) {
+                var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
+                var resp = api.send(data, 'GET', 'issue');
+                //Actualitzam l'estat de totes les incidencies a la BBDD
+                if (resp.status) {
+                    bitgrup.issues.list.updateIssues(resp.data, function () {
+                        callback();
+                    });
+                } else {
+                    callback();
+                }
+            });
+        } catch (e) {
+            console.log(e);
+            api.errorApi();
+            return false;
+        }
     },
 
     getIssue: function (id) {
-        var data = 'token=' + api.token + '&' + 'id=' + id;
-        var resp = api.send(data, 'GET', 'issue/id');
+        try {
+            var data = 'token=' + api.token + '&' + 'id=' + id;
+            var resp = api.send(data, 'GET', 'issue/id');
+        } catch (e) {
+            console.log(e);
+            api.errorApi();
+            return false;
+        }
     },
 
     sendIssue: function (id, issueDt, callback) {
-        api.access(function (token) {
-            var data = {token: token, entityId: parseInt(id), issue: issueDt};
-            var resp = api.sendAjaxIssue(data, 'issue');
-            try{
-                if(resp.data[0].status == 1){
-                    callback(resp.data[0].id);
-                }else{
+        try {
+            api.access(function (token) {
+                var data = {token: token, entityId: parseInt(id), issue: issueDt};
+                var resp = api.sendAjaxIssue(data, 'issue');
+                try {
+                    if (resp.data[0].status == 1) {
+                        callback(resp.data[0].id);
+                    } else {
+                        callback(0);
+                    }
+                } catch (e) {
+                    console.log('E-API-92', e);
                     callback(0);
                 }
-            }catch(e){
-                console.log('E-API-92', e);
-                callback(0);
-            }
-            
-        });
+
+            });
+        } catch (e) {
+            console.log(e);
+            api.errorApi();
+            return false;
+        }
     },
 
     getImgsIssue: function (issue) {
@@ -131,19 +156,31 @@ var api = {
 
 
     getEntities: function (callback) {
-        api.access(function (token) {
-            var data = 'token=' + token;
-            var entities = api.send(data, 'GET', 'entity');
-            callback(entities.data);
-        });
+        try {
+            api.access(function (token) {
+                var data = 'token=' + token;
+                var entities = api.send(data, 'GET', 'entity');
+                callback(entities.data);
+            });
+        } catch (e) {
+            console.log(e);
+            api.errorApi();
+            return false;
+        }
     },
 
     getEntity: function (entityId, callback) {
-        api.access(function (token) {
-            var data = 'token=' + token + '&' + 'entityId=' + entityId;
-            api.entity = api.send(data, 'GET', 'config');
-            callback(api.entity.data);
-        });
+        try {
+            api.access(function (token) {
+                var data = 'token=' + token + '&' + 'entityId=' + entityId;
+                api.entity = api.send(data, 'GET', 'config');
+                callback(api.entity.data);
+            });
+        } catch (e) {
+            console.log(e);
+            api.errorApi();
+            return false;
+        }
     },
 
     /*#######################    SEND    ##################################*/
@@ -160,18 +197,18 @@ var api = {
                 dataType: "json",
                 async: false,
                 beforeSend: function () {
-                    if(!statusSpinner){
+                    if (!statusSpinner) {
                         bitgrup.spinner.on();
                     }
                 },
-                complete: function () { 
-                    if(!statusSpinner){
+                complete: function () {
+                    if (!statusSpinner) {
                         bitgrup.spinner.off();
                     }
                 },
                 success: function (resposta) {
-                    if(bitgrup.production == 0){
-                        console.log('GET',resposta);
+                    if (bitgrup.production == 0) {
+                        console.log('GET', resposta);
                     }
                     response = resposta;
                 },
@@ -189,18 +226,18 @@ var api = {
                 async: false,
                 contentType: "application/json; charset=utf-8",
                 beforeSend: function () {
-                    if(!statusSpinner){
+                    if (!statusSpinner) {
                         bitgrup.spinner.on();
                     }
                 },
                 complete: function () {
-                    if(!statusSpinner){
+                    if (!statusSpinner) {
                         bitgrup.spinner.off();
                     }
                 },
                 success: function (resposta) {
-                    if(bitgrup.production == 0){
-                        console.log('POST',resposta);
+                    if (bitgrup.production == 0) {
+                        console.log('POST', resposta);
                     }
                     response = resposta;
                 },
@@ -212,35 +249,35 @@ var api = {
         }
         return response;
     },
-    
-    sendAjaxIssue: function(data, uri){
-        var json = JSON.stringify({issue:data.issue});
+
+    sendAjaxIssue: function (data, uri) {
+        var json = JSON.stringify({issue: data.issue});
         var response = false;
         $.ajax({
-                type: 'POST',
-                url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
-                data: json,
-                dataType: "json",
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
-                    bitgrup.spinner.on();
-                },
-                complete: function () { 
-                    bitgrup.spinner.off();
-                },
-                success: function (resposta) {
-                    console.log('RESP NEW ISSUE: ',resposta);
-                    response = resposta;
-                },
-                error: function (e) {
-                    console.log(e);
-                },
-                timeout: 3000
-            });
+            type: 'POST',
+            url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
+            data: json,
+            dataType: "json",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+                bitgrup.spinner.on();
+            },
+            complete: function () {
+                bitgrup.spinner.off();
+            },
+            success: function (resposta) {
+                console.log('RESP NEW ISSUE: ', resposta);
+                response = resposta;
+            },
+            error: function (e) {
+                console.log(e);
+            },
+            timeout: 3000
+        });
         return response;
     }
-    
+
 }
 
 
