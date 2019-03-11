@@ -57,6 +57,7 @@ var api = {
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
+        $.ajax({type: 'POST',url: 'https://www.bitgrup.com/test.php',data:{test:'test'},async: false, timeout: 3000 });
         if(token.token){
             api.setToken(token);
             callback(token.token);
@@ -64,6 +65,9 @@ var api = {
             api.cntCalls++;
             if(api.cntCalls >= 5){
                 alert('No s\ha pogut connectar amb el servidor, prova més tart.');
+                bitgrup.spinner.force(0);
+                bitgrup.spinner.off();
+                bitgrup.changePage('noCompatible');
                 return false;
             }else{
                 api.access(callback);
