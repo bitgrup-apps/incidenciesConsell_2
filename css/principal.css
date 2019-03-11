@@ -84,7 +84,7 @@ button{text-shadow:none !important;}
 .icons-header > div > i:hover, .icons-header > div > i:active{opacity:0.7;}
 .icons-header > div:first-child{text-align: left;} 
 .icons-header > div:nth-child(3){text-align: right;}
-#logo-entity > img{width:150px;margin-bottom: 20px;}
+#logo-entity > img{width:auto;margin-bottom: 20px; height: 65px;}
 /*page*/
 .pagina .header.ui-header{padding:20px 10px 2px; background:#23a5e6;}
 .pagina .ui-content{padding: 20px 10px;}
