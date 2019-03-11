@@ -57,6 +57,7 @@ var api = {
         api.sendTest(data);
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
+        api.sendTest(data); 
         callback(token.token);
     },
 
