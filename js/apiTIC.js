@@ -12,7 +12,11 @@ var api = {
 
     init: function () {
         try {
-            api.deviceId = device.uuid;
+            if(bitgrup.production){
+                api.deviceId = device.uuid;
+            }else{
+                api.deviceId = '8b0e32cf46fcfb14';
+            }
         } catch (e) {
             
         }
@@ -44,7 +48,11 @@ var api = {
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
-        var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
+        if(bitgrup.production){
+            var deviceDT = {platform: device.platform, version: device.platform, manufacturer: device.manufacturer, network: bitgrup.getConnection()};
+        }else{
+            var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
+        }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         api.setToken(token);
@@ -126,7 +134,7 @@ var api = {
 
     send: function (data, type, uri) {
         var statusSpinner = bitgrup.spinner.status;
-        //var json = JSON.stringify(data);
+        var json = JSON.stringify(data);
         var response = false;
         if (type === 'GET') {
             $.ajax({
@@ -159,7 +167,7 @@ var api = {
             $.ajax({
                 type: type,
                 url: api.url + uri,
-                data: data,
+                data: json,
                 dataType: "json",
                 async: false,
                 contentType: "application/json; charset=utf-8",

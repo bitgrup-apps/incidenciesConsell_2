@@ -1205,10 +1205,12 @@ var bitgrup = {
 
     includes: function () {
         //INCLUDES:
-        /*menu*/
-        $('.header-menu').each(function () {
-            $(this).load('header.html');
-        });
+        /*menu*/ 
+        try{
+            $('.header-menu').each(function () {
+                $(this).load('header.html');
+            });
+        }catch(e){}
     },
 
     back: function () {
