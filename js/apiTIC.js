@@ -64,14 +64,14 @@ var api = {
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         try { 
-            bitgrup.log('apiTIC ACCESS 67', data);
-            bitgrup.log('apiTIC TOKEN 67', token);
-            if (token.token) {
-                api.setToken(token);
-                callback(token.token);
-            } else {
-                callback(false);
-            }
+            setTimeuout(function(){
+                if (token.token) {
+                    api.setToken(token);
+                    callback(token.token);
+                } else {
+                    callback(false);
+                }
+            }, 500);
         } catch (e) {
             callback(false);
         }
@@ -172,6 +172,7 @@ var api = {
                 }
             });
         } catch (e) {
+            
            callback(false);
         }
     },
