@@ -62,22 +62,16 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
-        bitgrup.log('API TIC 65', data);
         var token = api.send(data, 'POST', 'access');
-        bitgrup.log('API TIC 67', token);
         try {
             if (token.token) {
                 api.setToken(token);
                 callback(token.token);
             } else {
-                bitgrup.log('API TIC ERROR 73: NO TENIM TOKEN');
-                api.errorApi(74);
-                return false;
+                callback(false);
             }
         } catch (e) {
-            bitgrup.log('API TIC ERROR 79: NO TENIM TOKEN');
-            api.errorApi(79);
-            return false;
+            callback(false);
         }
 
     },
@@ -167,14 +161,16 @@ var api = {
     getEntities: function (callback) {
         try {
             api.access(function (token) {
-                var data = 'token=' + token;
-                var entities = api.send(data, 'GET', 'entity');
-                callback(entities.data);
+                if(token){
+                    var data = 'token=' + token;
+                    var entities = api.send(data, 'GET', 'entity');
+                    callback(entities.data);
+                }else{
+                    callback(false);
+                }
             });
         } catch (e) {
-            bitgrup.log('api tic 175',e);
-            api.errorApi(176);
-            return false;
+           callback(false);
         }
     },
 

@@ -82,17 +82,29 @@ var bitgrup = {
                 bitgrup.entities.chooseEntity();
             }
         },
+        
+        tryChoose: 0,
 
         chooseEntity: function () {
+            bitgrup.entities.tryChoose++;
             api.getEntities(function (entities) {
-                var html = '';
-                $(entities).each(function (i) {
-                    var entity = entities[i];
-                    html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
-                });
-                $('#entities-list').html(html);
-                //TOT APUNT
-                bitgrup.initScreen();
+                if(entities){
+                    var html = '';
+                    $(entities).each(function (i) {
+                        var entity = entities[i];
+                        html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
+                    });
+                    $('#entities-list').html(html);
+                    //TOT APUNT
+                    bitgrup.initScreen();
+                }else{
+                    if(bitgrup.entities.tryChoose < 4){
+                        setTimeout('bitgrup.entities.chooseEntity();',500);
+                    }else{
+                        bitgrup.log('init ERROR 104: NO TENIM TOKEN');
+                        api.errorApi(104);
+                    }
+                }
             });
         },
 
