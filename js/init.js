@@ -101,7 +101,7 @@ var bitgrup = {
                     if(bitgrup.entities.tryChoose < 4){
                         setTimeout('bitgrup.entities.chooseEntity();',500);
                     }else{
-                        bitgrup.log('init ERROR 104: NO TENIM TOKEN');
+                        bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
                         api.errorApi(104);
                     }
                 }
@@ -1259,7 +1259,7 @@ var bitgrup = {
     
     log: function(str, data){
         if(bitgrup.production){ 
-            $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
+            //$.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
         }else{
             console.log(str, data); 
         }

@@ -64,7 +64,7 @@ var api = {
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         var token = api.send(data, 'POST', 'access');
         try { 
-            setTimeuout(function(){
+             setTimeout(function(){
                 if (token.token) {
                     api.setToken(token);
                     callback(token.token);
