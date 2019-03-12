@@ -10,7 +10,14 @@ var bitgrup = {
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
     /* ###########################################################################*/
-
+    initDevice: function(){
+        document.addEventListener("deviceready", bitgrup.onDeviceReady, false);
+    },
+    
+    onDeviceReady: function(){
+        bitgrup.initApp();
+    },
+    
     initApp: function () {
         //ESPERAM A FINALITZAR INIT
         bitgrup.spinner.on();
@@ -1271,5 +1278,5 @@ var bitgrup = {
 
 
 
-document.addEventListener("deviceready", bitgrup.initApp(), false);
+
 
