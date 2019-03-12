@@ -92,6 +92,7 @@ var bitgrup = {
                             html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                         });
                         $('#entities-list').html(html);
+                        bitgrup.changePage('config');
                         //TOT APUNT
                         bitgrup.initScreen();
                     } else {
@@ -1229,7 +1230,6 @@ var bitgrup = {
     initScreen: function () {
         $('body .ui-content').removeClass('no-active');
         $('#loading').removeClass('active');
-        bitgrup.changePage('config');
         bitgrup.spinner.off();
     },
 
@@ -1270,17 +1270,6 @@ var bitgrup = {
 }
 
 
-function onLoad() {
-    if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-        document.addEventListener('deviceready', bitgrup.initApp, false);
-        //document.addEventListener("resume", bitgrup.home, false);
-    } else {
-        bitgrup.initApp();
-    }
-}
 
-
-//$(document).ready(function () {
-//    bitgrup.initApp();
-//});
+document.addEventListener("deviceready", bitgrup.initApp(), false);
 

@@ -45,6 +45,7 @@ var api = {
     },
 
     access: function (callback) {
+        bitgrup.log('TOKEN INIT 48 ');
         var today = new Date();
         var year = today.getFullYear();
         var month = today.getMonth() + 1;
