@@ -209,7 +209,7 @@ var api = {
             $.ajax({
                 type: type,
                 url: api.url + uri + '?' + data,
-                dataType: "json",
+                dataType: "jsonp",
                 //async: false,
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -228,7 +228,7 @@ var api = {
                     callback(resposta);
                 },
                 error: function (e) {
-                    bitgrup.log('apitic 226', e);
+                    console.log('apitic 226', e);
                     callback(0);
                 },
                 timeout: 3000
@@ -238,7 +238,7 @@ var api = {
                 type: type,
                 url: api.url + uri,
                 data: json,
-                dataType: "json",
+                dataType: "jsonp",
                 contentType: "application/json; charset=utf-8",
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -272,7 +272,7 @@ var api = {
             type: 'POST',
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
             data: json,
-            dataType: "json",
+            dataType: "jsonp",
             async: false,
             contentType: "application/json; charset=utf-8",
             beforeSend: function () {

@@ -28,7 +28,7 @@
     </platform>
 	
     <!-- PREFERENCE -->
-     <preference name="phonegap-version" value="cli-8.1.1" /> 
+    <preference name="phonegap-version" value="cli-8.1.1" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
@@ -78,6 +78,10 @@
     
     <allow-navigation href="*" />
     <allow-intent href="*" />	
+    
+    <uses-permission android:name="android.permissions.INTERNET" />
+    <uses-permission android:name="android.permissions.NETWORK_ACCESS" />
+    <uses-permission android:name="android.permissions.ACCESS_NETWORK_STATE" />
 	
 	
     <platform name="android">
