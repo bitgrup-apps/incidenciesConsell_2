@@ -36,7 +36,6 @@ var api = {
      ########################################################################*/
     getConfig: function () {
         dataBase.query('SELECT * FROM CONFIG WHERE ID = ? ', [1], function (result) {
-            bitgrup.log('api tic 39', result);
             bitgrup.entities.setConfig(result[0]);
         });
     },
@@ -63,6 +62,7 @@ var api = {
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
         api.send(data, 'POST', 'access', function (token) {
+            bitgrup.log('TOKEN API TIC 66 ', token);
             try {
                 if (token.token) {
                     api.setToken(token);

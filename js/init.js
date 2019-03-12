@@ -81,11 +81,8 @@ var bitgrup = {
                 bitgrup.entities.chooseEntity();
             }
         },
-        
-        tryChoose: 0,
 
         chooseEntity: function () {
-            bitgrup.entities.tryChoose++;
             api.getEntities(function (entities) {
                 if(entities){
                     var html = '';
@@ -97,12 +94,8 @@ var bitgrup = {
                     //TOT APUNT
                     bitgrup.initScreen();
                 }else{
-                    if(bitgrup.entities.tryChoose < 4){
-                        setTimeout('bitgrup.entities.chooseEntity();',500);
-                    }else{
-                        bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
-                        api.errorApi(104);
-                    }
+                    bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
+                    api.errorApi(104);
                 }
             });
         },
@@ -1259,7 +1252,7 @@ var bitgrup = {
     
     log: function(str, data){
         if(bitgrup.production){ 
-            //$.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
+            $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
         }else{
             console.log(str, data); 
         }
