@@ -69,17 +69,25 @@
  
 	
     <access origin="*" />
+    
+    <!-- The above is equivalent to these three declarations -->
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <allow-navigation href="*" />
+    
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
+    <allow-intent href="data:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="*" />
     
-    <allow-navigation href="*" />
-    <allow-intent href="*" />	
-    
+    	
 
+    
 	
 	
     <platform name="android">
