@@ -36,7 +36,7 @@ var api = {
      ########################################################################*/
     getConfig: function () {
         dataBase.query('SELECT * FROM CONFIG WHERE ID = ? ', [1], function (result) {
-            bitgrup.log('api tic 39',result);
+            bitgrup.log('api tic 39', result);
             bitgrup.entities.setConfig(result[0]);
         });
     },
@@ -62,19 +62,18 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
-        var token = api.send(data, 'POST', 'access');
-        try { 
-             setTimeout(function(){
+        api.send(data, 'POST', 'access', function (token) {
+            try {
                 if (token.token) {
                     api.setToken(token);
                     callback(token.token);
                 } else {
                     callback(false);
                 }
-            }, 500);
-        } catch (e) {
-            callback(false);
-        }
+            } catch (e) {
+                callback(false);
+            }
+        });
 
     },
 
@@ -82,7 +81,7 @@ var api = {
         bitgrup.spinner.force(0);
         bitgrup.spinner.off();
         //bitgrup.initScreen();
-        bitgrup.alert('E-'+linia+': No s\ha pogut connectar amb el servidor, prova més tart.');
+        bitgrup.alert('E-' + linia + ': No s\ha pogut connectar amb el servidor, prova més tart.');
         //bitgrup.changePage('noCompatible');
     },
 
@@ -94,53 +93,53 @@ var api = {
         try {
             api.access(function (token) {
                 var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
-                var resp = api.send(data, 'GET', 'issue');
-                //Actualitzam l'estat de totes les incidencies a la BBDD
-                if (resp.status) {
-                    bitgrup.issues.list.updateIssues(resp.data, function () {
+                var resp = api.send(data, 'GET', 'issue', function (resp) {
+                    //Actualitzam l'estat de totes les incidencies a la BBDD
+                    if (resp.status) {
+                        bitgrup.issues.list.updateIssues(resp.data, function () {
+                            callback();
+                        });
+                    } else {
                         callback();
-                    });
-                } else {
-                    callback();
-                }
+                    }
+                });
+
             });
         } catch (e) {
-            bitgrup.log('apitic 112',e);
+            bitgrup.log('apitic 112', e);
             api.errorApi(113);
             return false;
         }
     },
 
-    getIssue: function (id) {
-        try {
-            var data = 'token=' + api.token + '&' + 'id=' + id;
-            var resp = api.send(data, 'GET', 'issue/id');
-        } catch (e) {
-            bitgrup.log('apitic 123',e);
-            api.errorApi(124);
-            return false;
-        }
+    getIssue: function (id, callback) {
+        var data = 'token=' + api.token + '&' + 'id=' + id;
+        api.send(data, 'GET', 'issue/id', function (resp) {
+            callback(resp);
+        });
+
     },
 
     sendIssue: function (id, issueDt, callback) {
         try {
             api.access(function (token) {
                 var data = {token: token, entityId: parseInt(id), issue: issueDt};
-                var resp = api.sendAjaxIssue(data, 'issue');
-                try {
-                    if (resp.data[0].status == 1) {
-                        callback(resp.data[0].id);
-                    } else {
+                api.sendAjaxIssue(data, 'issue', function (resp) {
+                    try {
+                        if (resp.data[0].status == 1) {
+                            callback(resp.data[0].id);
+                        } else {
+                            callback(0);
+                        }
+                    } catch (e) {
+                        bitgrup.log('E-API-92', e);
                         callback(0);
                     }
-                } catch (e) {
-                    bitgrup.log('E-API-92', e);
-                    callback(0);
-                }
+                });
 
             });
         } catch (e) {
-            bitgrup.log('apiTic 147',e);
+            bitgrup.log('apiTic 147', e);
             api.errorApi(147);
             return false;
         }
@@ -163,17 +162,18 @@ var api = {
     getEntities: function (callback) {
         try {
             api.access(function (token) {
-                if(token){
+                if (token) {
                     var data = 'token=' + token;
-                    var entities = api.send(data, 'GET', 'entity');
-                    callback(entities.data);
-                }else{
+                    api.send(data, 'GET', 'entity', function (entities) {
+                        callback(entities.data);
+                    });
+                } else {
                     callback(false);
                 }
             });
         } catch (e) {
-            
-           callback(false);
+
+            callback(false);
         }
     },
 
@@ -181,11 +181,13 @@ var api = {
         try {
             api.access(function (token) {
                 var data = 'token=' + token + '&' + 'entityId=' + entityId;
-                api.entity = api.send(data, 'GET', 'config');
-                callback(api.entity.data);
+                api.send(data, 'GET', 'config', function(resp){
+                    api.entity = resp;
+                    callback(api.entity.data);
+                });
             });
         } catch (e) {
-            bitgrup.log('api tic 190',e);
+            bitgrup.log('api tic 190', e);
             api.errorApi(190);
             return false;
         }
@@ -194,17 +196,16 @@ var api = {
     /*#######################    SEND    ##################################*/
 
 
-    send: function (data, type, uri) {
+    send: function (data, type, uri, callback) {
         var statusSpinner = bitgrup.spinner.status;
         var json = JSON.stringify(data);
-        var response = false;
-        
+
         if (type === 'GET') {
             $.ajax({
                 type: type,
                 url: api.url + uri + '?' + data,
                 dataType: "json",
-                async: false,
+                //async: false,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -219,10 +220,11 @@ var api = {
                     if (bitgrup.production == 0) {
                         bitgrup.log('apitic 221', resposta);
                     }
-                    response = resposta;
+                    callback(resposta);
                 },
                 error: function (e) {
-                    bitgrup.log('apitic 226',e);
+                    bitgrup.log('apitic 226', e);
+                    callback(0);
                 },
                 timeout: 3000
             });
@@ -232,7 +234,6 @@ var api = {
                 url: api.url + uri,
                 data: json,
                 dataType: "json",
-                async: false,
                 contentType: "application/json; charset=utf-8",
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -248,20 +249,20 @@ var api = {
                     if (bitgrup.production == 0) {
                         console.log('apitic 250', resposta);
                     }
-                    response = resposta;
+                    callback(resposta);
                 },
                 error: function (e) {
-                    bitgrup.log('apitic 255',e);
+                    bitgrup.log('apitic 255', e);
+                    callback(0);
                 },
                 timeout: 3000
             });
         }
-        return response;
+
     },
 
-    sendAjaxIssue: function (data, uri) {
+    sendAjaxIssue: function (data, uri, callback) {
         var json = JSON.stringify({issue: data.issue});
-        var response = false;
         $.ajax({
             type: 'POST',
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
@@ -277,14 +278,14 @@ var api = {
             },
             success: function (resposta) {
                 bitgrup.log('RESP NEW ISSUE: ', resposta);
-                response = resposta;
+                callback(resposta);
             },
             error: function (e) {
-                bitgrup.log('apitic 284',e);
+                bitgrup.log('apitic 284', e);
+                callback(0);
             },
             timeout: 3000
         });
-        return response;
     }
 
 }
