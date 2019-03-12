@@ -209,7 +209,7 @@ var api = {
             $.ajax({
                 type: type,
                 url: api.url + uri + '?' + data,
-                dataType: "jsonp",
+                dataType: "json",
                 //async: false,
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -238,7 +238,7 @@ var api = {
                 type: type,
                 url: api.url + uri,
                 data: json,
-                dataType: "jsonp",
+                dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -272,7 +272,7 @@ var api = {
             type: 'POST',
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
             data: json,
-            dataType: "jsonp",
+            dataType: "json",
             async: false,
             contentType: "application/json; charset=utf-8",
             beforeSend: function () {
