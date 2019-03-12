@@ -5,7 +5,7 @@ var bitgrup = {
 
     lang: 'ca',
     config: null,
-    production: 0, 
+    production: 1, 
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -1246,8 +1246,11 @@ var bitgrup = {
     },
     
     log: function(str, data){
-        console.log(str, data);
-        $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
+        if(production){
+            //$.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
+        }else{
+            console.log(str, data); 
+        }
     }
 
 
