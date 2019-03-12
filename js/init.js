@@ -77,7 +77,7 @@ var bitgrup = {
                     bitgrup.entities.chooseEntity();
                 }
             } catch (e) {
-                console.log(e);
+                //console.log(e);
                 bitgrup.entities.chooseEntity();
             }
         },
@@ -90,7 +90,6 @@ var bitgrup = {
                     html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                 });
                 $('#entities-list').html(html);
-                bitgrup.changePage('config');
                 //TOT APUNT
                 bitgrup.initScreen();
             });
@@ -1218,11 +1217,9 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        setTimeout(function () {
-            $('body .ui-content').removeClass('no-active');
-            $('#loading').removeClass('active');
-            bitgrup.spinner.off();
-        }, 500);
+        $('body .ui-content').removeClass('no-active');
+        $('#loading').removeClass('active');
+        bitgrup.spinner.off();
     },
 
     maxWords: function (str) {

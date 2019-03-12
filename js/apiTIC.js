@@ -14,13 +14,20 @@ var api = {
         try {
             if (bitgrup.production) {
                 api.deviceId = device.uuid;
+                if (api.deviceId) {
+                    api.getConfig();
+                } else {
+                    console.log('ERROR API-TEC 20: No tenemos deviceId');
+                    api.errorApi();
+                }
             } else {
                 api.deviceId = '8b0e32cf46fcfb14';
+                api.getConfig();
             }
         } catch (e) {
-
+            api.errorApi();
         }
-        api.getConfig();
+
         //bitgrup.entities.chooseEntity();
     },
 
@@ -29,6 +36,7 @@ var api = {
      ########################################################################*/
     getConfig: function () {
         dataBase.query('SELECT * FROM CONFIG WHERE ID = ? ', [1], function (result) {
+            console.log(result);
             bitgrup.entities.setConfig(result[0]);
         });
     },
@@ -36,8 +44,6 @@ var api = {
     setToken: function (token) {
         api.token = token;
     },
-
-    cntCalls: 0,
 
     access: function (callback) {
         var today = new Date();
@@ -56,19 +62,22 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
+        console.log(data);
         $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data: data, async: false, timeout: 3000});
         var token = api.send(data, 'POST', 'access');
-        if (token.token) {
-            api.setToken(token);
-            callback(token.token);
-        } else {
-            api.cntCalls++;
-            if (api.cntCalls >= 5) {
+        try {
+            if (token.token) {
+                api.setToken(token);
+                callback(token.token);
+            } else {
+                console.log('API TIC ERROR 73: NO TENIM TOKEN');
                 api.errorApi();
                 return false;
-            } else {
-                api.access(callback);
             }
+        } catch (e) {
+            console.log('API TIC ERROR 79: NO TENIM TOKEN');
+            api.errorApi();
+            return false;
         }
 
     },
@@ -190,6 +199,7 @@ var api = {
         var statusSpinner = bitgrup.spinner.status;
         var json = JSON.stringify(data);
         var response = false;
+        
         if (type === 'GET') {
             $.ajax({
                 type: type,
