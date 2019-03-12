@@ -1246,7 +1246,7 @@ var bitgrup = {
     },
     
     log: function(str, data){
-        if(production){
+        if(bitgrup.production){ 
             $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
         }else{
             console.log(str, data); 
