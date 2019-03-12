@@ -26,7 +26,7 @@ var dataBase = {
         //CREATE TABLE PICTURES
         dataBase.query('CREATE TABLE IF NOT EXISTS PICTURES (ID unique, FK_ISSUE, BASE_64)');
         //CREATE TALBE CONFIG
-        dataBase.query('CREATE TABLE IF NOT EXISTS CONFIG (ID unique, ENTITY_ID, EMAIL)', function (result) {
+        dataBase.query('CREATE TABLE IF NOT EXISTS CONFIG (ID unique, ENTITY_ID, EMAIL)',null, function (result) {
             dataBase.configInit();
         });
 
@@ -47,6 +47,7 @@ var dataBase = {
     },
 
     query: function (sql, inputs, callback) {
+         console.log(sql, inputs);
         try {
             if (!inputs) {
                 inputs = new Array();
@@ -72,8 +73,8 @@ var dataBase = {
 
             });
         } catch (e) {
-            console.log(sql, inputs);
-            return false;
+            console.log(sql, inputs, e);
+            callback(false);
         }
     }
 
