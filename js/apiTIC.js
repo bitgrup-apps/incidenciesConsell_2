@@ -61,19 +61,22 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
-        api.send(data, 'POST', 'access', function (token) {
-            bitgrup.log('TOKEN API TIC 66 ', token);
-            try {
+        try {
+            api.send(data, 'POST', 'access', function (token) {
+                bitgrup.log('TOKEN API TIC 66 ', token);
                 if (token.token) {
                     api.setToken(token);
                     callback(token.token);
                 } else {
                     callback(false);
                 }
-            } catch (e) {
-                callback(false);
-            }
-        });
+
+            });
+        } catch (e) {
+            bitgrup.log('TOKEN API TIC 76: TOKEN UNDEFINED ');
+            bitgrup.log('TOKEN API TIC 76: data ', data);
+            callback(false);
+        }
 
     },
 
@@ -182,7 +185,7 @@ var api = {
         try {
             api.access(function (token) {
                 var data = 'token=' + token + '&' + 'entityId=' + entityId;
-                api.send(data, 'GET', 'config', function(resp){
+                api.send(data, 'GET', 'config', function (resp) {
                     api.entity = resp;
                     callback(api.entity.data);
                 });

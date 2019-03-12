@@ -5,7 +5,7 @@ var bitgrup = {
 
     lang: 'ca',
     config: null,
-    production: 1, 
+    production: 1,
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -84,18 +84,23 @@ var bitgrup = {
 
         chooseEntity: function () {
             api.getEntities(function (entities) {
-                if(entities){
-                    var html = '';
-                    $(entities).each(function (i) {
-                        var entity = entities[i];
-                        html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
-                    });
-                    $('#entities-list').html(html);
-                    //TOT APUNT
-                    bitgrup.initScreen();
-                }else{
+                try {
+                    if (entities) {
+                        var html = '';
+                        $(entities).each(function (i) {
+                            var entity = entities[i];
+                            html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
+                        });
+                        $('#entities-list').html(html);
+                        //TOT APUNT
+                        bitgrup.initScreen();
+                    } else {
+                        bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
+                        api.errorApi(104);
+                    }
+                } catch (e) {
                     bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
-                    api.errorApi(104);
+                    api.errorApi(103);
                 }
             });
         },
@@ -103,7 +108,7 @@ var bitgrup = {
         setEntity: function (entity_ID) {
             api.getEntity(entity_ID, function (entity) {
                 bitgrup.entities.entity = entity;
-                try{
+                try {
                     if (entity[0].id) {
                         dataBase.query('UPDATE CONFIG SET ENTITY_ID = ? ', [entity[0].id]);
                         bitgrup.config.ENTITY_ID = entity_ID;
@@ -111,7 +116,7 @@ var bitgrup = {
                     } else {
                         bitgrup.entities.error();
                     }
-                }catch(e){
+                } catch (e) {
                     bitgrup.entities.error();
                 }
             });
@@ -658,20 +663,22 @@ var bitgrup = {
         getNode: function () {
             try {
                 var yql = bitgrup.news.rss;
-                $.ajax({type: "GET",url: yql, dataType: "xml",beforeSend: function () {  bitgrup.spinner.force(1); }, success: function(rss){
-                    var items = $(rss).find("item");
-                    if (items) {
-                        bitgrup.news.node = 1;
-                        $('#btn-home-news').addClass('active');
-                    } else {
-                        bitgrup.news.node = 0;
-                        $('#btn-home-news').removeClass('active');
-                    }
-                    //go to 
-                    bitgrup.spinner.force(0);
-                    bitgrup.changePage('home');
-                    bitgrup.initScreen();
-                }});
+                $.ajax({type: "GET", url: yql, dataType: "xml", beforeSend: function () {
+                        bitgrup.spinner.force(1);
+                    }, success: function (rss) {
+                        var items = $(rss).find("item");
+                        if (items) {
+                            bitgrup.news.node = 1;
+                            $('#btn-home-news').addClass('active');
+                        } else {
+                            bitgrup.news.node = 0;
+                            $('#btn-home-news').removeClass('active');
+                        }
+                        //go to 
+                        bitgrup.spinner.force(0);
+                        bitgrup.changePage('home');
+                        bitgrup.initScreen();
+                    }});
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
@@ -748,7 +755,7 @@ var bitgrup = {
             } else {
                 bitgrup.spinner.off();
                 bitgrup.alert('A n\'aquests moments no hi ha notícies publicades. Disculpi les molèsties.');
-            } 
+            }
         },
 
         getNew: function (i) {
@@ -1173,10 +1180,10 @@ var bitgrup = {
     },
 
     spinner: {
-        
+
         status: 0,
         force_status: 0,
-        
+
         on: function () {
             try {
                 SpinnerPlugin.activityStart(" ", {dimBackground: false});
@@ -1188,30 +1195,31 @@ var bitgrup = {
         off: function () {
             try {
                 setTimeout(function () {
-                    if(bitgrup.spinner.force_status == 0){
+                    if (bitgrup.spinner.force_status == 0) {
                         SpinnerPlugin.activityStop();
                         bitgrup.spinner.status = 0;
-                    }else{
+                    } else {
                         bitgrup.log('spinner force = 1, no stop spinner');
                     }
-                }, 200); 
+                }, 200);
             } catch (e) {
                 //bitgrup.log(e);
             }
         },
-        force: function(n){
+        force: function (n) {
             bitgrup.spinner.force_status = n;
         }
     },
 
     includes: function () {
         //INCLUDES:
-        /*menu*/ 
-        try{
+        /*menu*/
+        try {
             $('.header-menu').each(function () {
                 $(this).load('header.html');
             });
-        }catch(e){}
+        } catch (e) {
+        }
     },
 
     back: function () {
@@ -1249,12 +1257,12 @@ var bitgrup = {
         //bitgrup.log('Connection type: ' + states[networkState]);
         return states[networkState];
     },
-    
-    log: function(str, data){
-        if(bitgrup.production){ 
-            $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
-        }else{
-            console.log(str, data); 
+
+    log: function (str, data) {
+        if (bitgrup.production) {
+            $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data: {str: str, data: data}, async: false, timeout: 3000});
+        } else {
+            console.log(str, data);
         }
     }
 
