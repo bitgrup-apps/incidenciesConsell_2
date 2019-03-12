@@ -17,7 +17,7 @@ var api = {
                 if (api.deviceId) {
                     api.getConfig();
                 } else {
-                    console.log('ERROR API-TEC 20: No tenemos deviceId');
+                    bitgrup.log('ERROR API-TEC 20: No tenemos deviceId');
                     api.errorApi();
                 }
             } else {
@@ -36,7 +36,7 @@ var api = {
      ########################################################################*/
     getConfig: function () {
         dataBase.query('SELECT * FROM CONFIG WHERE ID = ? ', [1], function (result) {
-            console.log(result);
+            bitgrup.log('api tic 39',result);
             bitgrup.entities.setConfig(result[0]);
         });
     },
@@ -62,20 +62,20 @@ var api = {
             var deviceDT = {platform: 'Desktop', version: 'test', manufacturer: 'test', network: 'wifi'};
         }
         var data = {phrase: sha512.hex(phrase), instance: api.deviceId, device: deviceDT};
-        console.log(data);
-        $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data: data, async: false, timeout: 3000});
+        bitgrup.log('API TIC 65', data);
         var token = api.send(data, 'POST', 'access');
+        bitgrup.log('API TIC 67', token);
         try {
             if (token.token) {
                 api.setToken(token);
                 callback(token.token);
             } else {
-                console.log('API TIC ERROR 73: NO TENIM TOKEN');
+                bitgrup.log('API TIC ERROR 73: NO TENIM TOKEN');
                 api.errorApi();
                 return false;
             }
         } catch (e) {
-            console.log('API TIC ERROR 79: NO TENIM TOKEN');
+            bitgrup.log('API TIC ERROR 79: NO TENIM TOKEN');
             api.errorApi();
             return false;
         }
@@ -109,7 +109,7 @@ var api = {
                 }
             });
         } catch (e) {
-            console.log(e);
+            bitgrup.log('apitic 112',e);
             api.errorApi();
             return false;
         }
@@ -120,7 +120,7 @@ var api = {
             var data = 'token=' + api.token + '&' + 'id=' + id;
             var resp = api.send(data, 'GET', 'issue/id');
         } catch (e) {
-            console.log(e);
+            bitgrup.log('apitic 123',e);
             api.errorApi();
             return false;
         }
@@ -138,13 +138,13 @@ var api = {
                         callback(0);
                     }
                 } catch (e) {
-                    console.log('E-API-92', e);
+                    bitgrup.log('E-API-92', e);
                     callback(0);
                 }
 
             });
         } catch (e) {
-            console.log(e);
+            bitgrup.log('apiTic 147',e);
             api.errorApi();
             return false;
         }
@@ -172,7 +172,7 @@ var api = {
                 callback(entities.data);
             });
         } catch (e) {
-            console.log(e);
+            bitgrup.log('api tic 175',e);
             api.errorApi();
             return false;
         }
@@ -186,7 +186,7 @@ var api = {
                 callback(api.entity.data);
             });
         } catch (e) {
-            console.log(e);
+            bitgrup.log('api tic 190',e);
             api.errorApi();
             return false;
         }
@@ -218,12 +218,12 @@ var api = {
                 },
                 success: function (resposta) {
                     if (bitgrup.production == 0) {
-                        console.log('GET', resposta);
+                        bitgrup.log('apitic 221', resposta);
                     }
                     response = resposta;
                 },
                 error: function (e) {
-                    console.log(e);
+                    bitgrup.log('apitic 226',e);
                 },
                 timeout: 3000
             });
@@ -247,12 +247,12 @@ var api = {
                 },
                 success: function (resposta) {
                     if (bitgrup.production == 0) {
-                        console.log('POST', resposta);
+                        console.log('apitic 250', resposta);
                     }
                     response = resposta;
                 },
                 error: function (e) {
-                    console.log(e);
+                    bitgrup.log('apitic 255',e);
                 },
                 timeout: 3000
             });
@@ -277,11 +277,11 @@ var api = {
                 bitgrup.spinner.off();
             },
             success: function (resposta) {
-                console.log('RESP NEW ISSUE: ', resposta);
+                bitgrup.log('RESP NEW ISSUE: ', resposta);
                 response = resposta;
             },
             error: function (e) {
-                console.log(e);
+                bitgrup.log('apitic 284',e);
             },
             timeout: 3000
         });

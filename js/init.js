@@ -30,7 +30,7 @@ var bitgrup = {
         try {
             //bitgrup.initPushNotification();
         } catch (e) {
-            console.log('E INIT-95 INIT PUSH NOTIFICATION');
+            bitgrup.log('E INIT-95 INIT PUSH NOTIFICATION');
         }
 
         //CARREGAR PAGINES EXTERNES
@@ -74,10 +74,11 @@ var bitgrup = {
                     //
                 } else {
                     //GET TOTES LES LES ENTIDATS PER TRIAR
+                    bitgrup.log('CHOOSE ENTITY'); 
                     bitgrup.entities.chooseEntity();
                 }
             } catch (e) {
-                //console.log(e);
+                //bitgrup.log(e);
                 bitgrup.entities.chooseEntity();
             }
         },
@@ -245,7 +246,7 @@ var bitgrup = {
                         bitgrup.issues.list.setList();
                     });
                 } catch (e) {
-                    console.log(e);
+                    bitgrup.log('init 248', e);
                     bitgrup.spinner.off();
                 }
             },
@@ -435,7 +436,7 @@ var bitgrup = {
                 });
 
             } catch (e) {
-                console.log(e);
+                bitgrup.log('init 439', e);
                 bitgrup.spinner.off();
                 bitgrup.alert('No ha estat possible llegir la incidència');
             }
@@ -454,7 +455,7 @@ var bitgrup = {
             var cats = bitgrup.entities.category;
             var name = 'Indefinit';
             $(cats).each(function (n) {
-                console.log('cat: ', cats[n], cats[n].id, id);
+                //bitgrup.log('cat: ', cats[n], cats[n].id, id);
                 if (id == cats[n].id) {
                     name = cats[n].title;
                 }
@@ -715,7 +716,7 @@ var bitgrup = {
                 });
             } catch (e) {
                 bitgrup.spinner.off();
-                console.log(e);
+                bitgrup.log('init 719', e);
                 bitgrup.alert('Les notícies no es troben disponibles a n\'aquest moment. Disculpi les molèsties.');
             }
         },
@@ -1002,7 +1003,7 @@ var bitgrup = {
         },
 
         onFail: function (e) {
-            console.log(e);
+            bitgrup.log('init 1005', e);
             bitgrup.alert('No s\'ha pogut aconseguir la imatge');
         },
 
@@ -1042,7 +1043,7 @@ var bitgrup = {
             numImg--;
             var imgs = bitgrup.issues.new_.imgs;
             //if exist img
-            console.log(imgs[numImg]);
+            //bitgrup.log(imgs[numImg]);
             if (imgs[numImg]) {
                 bitgrup.confirm('Està segur?', function (buttonIndex) {
                     if (buttonIndex == 1) {
@@ -1103,7 +1104,7 @@ var bitgrup = {
                     // Read from disk the data as base64
                     reader.readAsDataURL(fileObject);
                 }, function () {
-                    console.log("There was an error reading or processing this file.");
+                    bitgrup.log("There was an error reading or processing this file.");
                 });
             });
         }
@@ -1159,14 +1160,11 @@ var bitgrup = {
     },
 
     error_: function (code, json, error) {
-        console.log(code);
-        console.log(json);
-        console.log(error);
+        bitgrup.log(code, json);
         bitgrup.alert_.error('Ho sentim, qualque cosa no ha anat bé, hem enviat un correu a l\'administrador avisant del problema. Gràcies per la seva col·laboració.');
     },
 
     exitApp: function () {
-        console.log('exit');
         window.location = 'index.html';
     },
 
@@ -1180,7 +1178,7 @@ var bitgrup = {
                 SpinnerPlugin.activityStart(" ", {dimBackground: false});
                 bitgrup.spinner.status = 1;
             } catch (e) {
-                //console.log(e);
+                //bitgrup.log(e);
             }
         },
         off: function () {
@@ -1190,11 +1188,11 @@ var bitgrup = {
                         SpinnerPlugin.activityStop();
                         bitgrup.spinner.status = 0;
                     }else{
-                        console.log('spinner force = 1, no stop spinner');
+                        bitgrup.log('spinner force = 1, no stop spinner');
                     }
                 }, 200); 
             } catch (e) {
-                //console.log(e);
+                //bitgrup.log(e);
             }
         },
         force: function(n){
@@ -1243,8 +1241,13 @@ var bitgrup = {
         states[Connection.CELL] = 'Cell generic connection';
         states[Connection.NONE] = 'No network connection';
 
-        //console.log('Connection type: ' + states[networkState]);
+        //bitgrup.log('Connection type: ' + states[networkState]);
         return states[networkState];
+    },
+    
+    log: function(str, data){
+        console.log(str, data);
+        $.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data:{str:str, data:data}, async: false, timeout: 3000});
     }
 
 
