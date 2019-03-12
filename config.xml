@@ -79,9 +79,7 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />	
     
-    <uses-permission android:name="android.permissions.INTERNET" />
-    <uses-permission android:name="android.permissions.NETWORK_ACCESS" />
-    <uses-permission android:name="android.permissions.ACCESS_NETWORK_STATE" />
+
 	
 	
     <platform name="android">
