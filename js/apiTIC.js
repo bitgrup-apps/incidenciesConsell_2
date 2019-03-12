@@ -18,14 +18,14 @@ var api = {
                     api.getConfig();
                 } else {
                     bitgrup.log('ERROR API-TEC 20: No tenemos deviceId');
-                    api.errorApi();
+                    api.errorApi(21);
                 }
             } else {
                 api.deviceId = '8b0e32cf46fcfb14';
                 api.getConfig();
             }
         } catch (e) {
-            api.errorApi();
+            api.errorApi(28);
         }
 
         //bitgrup.entities.chooseEntity();
@@ -71,22 +71,22 @@ var api = {
                 callback(token.token);
             } else {
                 bitgrup.log('API TIC ERROR 73: NO TENIM TOKEN');
-                api.errorApi();
+                api.errorApi(74);
                 return false;
             }
         } catch (e) {
             bitgrup.log('API TIC ERROR 79: NO TENIM TOKEN');
-            api.errorApi();
+            api.errorApi(79);
             return false;
         }
 
     },
 
-    errorApi: function () {
+    errorApi: function (linia) {
         bitgrup.spinner.force(0);
         bitgrup.spinner.off();
         //bitgrup.initScreen();
-        bitgrup.alert('No s\ha pogut connectar amb el servidor, prova més tart.');
+        bitgrup.alert('E-'+linia+': No s\ha pogut connectar amb el servidor, prova més tart.');
         //bitgrup.changePage('noCompatible');
     },
 
@@ -110,7 +110,7 @@ var api = {
             });
         } catch (e) {
             bitgrup.log('apitic 112',e);
-            api.errorApi();
+            api.errorApi(113);
             return false;
         }
     },
@@ -121,7 +121,7 @@ var api = {
             var resp = api.send(data, 'GET', 'issue/id');
         } catch (e) {
             bitgrup.log('apitic 123',e);
-            api.errorApi();
+            api.errorApi(124);
             return false;
         }
     },
@@ -145,7 +145,7 @@ var api = {
             });
         } catch (e) {
             bitgrup.log('apiTic 147',e);
-            api.errorApi();
+            api.errorApi(147);
             return false;
         }
     },
@@ -173,7 +173,7 @@ var api = {
             });
         } catch (e) {
             bitgrup.log('api tic 175',e);
-            api.errorApi();
+            api.errorApi(176);
             return false;
         }
     },
@@ -187,7 +187,7 @@ var api = {
             });
         } catch (e) {
             bitgrup.log('api tic 190',e);
-            api.errorApi();
+            api.errorApi(190);
             return false;
         }
     },
