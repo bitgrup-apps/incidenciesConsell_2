@@ -165,6 +165,7 @@ var api = {
                 if (token) {
                     var data = 'token=' + token;
                     api.send(data, 'GET', 'entity', function (entities) {
+                        bitgrup.log('APITIC 166 ENTITIES ', entities);
                         callback(entities.data);
                     });
                 } else {
@@ -172,7 +173,7 @@ var api = {
                 }
             });
         } catch (e) {
-
+            bitgrup.log('APITIC 175 ', e);
             callback(false);
         }
     },

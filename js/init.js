@@ -74,7 +74,6 @@ var bitgrup = {
                     //
                 } else {
                     //GET TOTES LES LES ENTIDATS PER TRIAR
-                    bitgrup.log('CHOOSE ENTITY'); 
                     bitgrup.entities.chooseEntity();
                 }
             } catch (e) {
@@ -1229,6 +1228,7 @@ var bitgrup = {
     initScreen: function () {
         $('body .ui-content').removeClass('no-active');
         $('#loading').removeClass('active');
+        bitgrup.changePage('config');
         bitgrup.spinner.off();
     },
 
