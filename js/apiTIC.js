@@ -206,42 +206,36 @@ var api = {
         var json = JSON.stringify(data);
 
         if (type === 'GET') {
+//            $.ajax({
+//                type: type,
+//                headers: {"Accept": "*, Content-Type"},
+//                url: api.url + uri + '?' + data,
+//                dataType: "json",
+//                //async: false,
+//                beforeSend: function () {
+//                    if (!statusSpinner) {
+//                        bitgrup.spinner.on();
+//                    }
+//                },
+//                complete: function () {
+//                    if (!statusSpinner) {
+//                        bitgrup.spinner.off();
+//                    }
+//                },
+//                success: function (resposta) {
+//                    if (bitgrup.production == 0) {
+//                        bitgrup.log('apitic 221', resposta);
+//                    }
+//                    callback(resposta);
+//                },
+//                error: function (e) {
+//                    console.log('apitic 226', e);
+//                    callback(0);
+//                },
+//                timeout: 3000
+//            });
             $.ajax({
-                type: type,
-                headers: {"Accept":"*, Content-Type"},
-                url: api.url + uri + '?' + data,
-                dataType: "json",
-                //async: false,
-                beforeSend: function () {
-                    if (!statusSpinner) {
-                        bitgrup.spinner.on();
-                    }
-                },
-                complete: function () {
-                    if (!statusSpinner) {
-                        bitgrup.spinner.off();
-                    }
-                },
-                success: function (resposta) {
-                    if (bitgrup.production == 0) {
-                        bitgrup.log('apitic 221', resposta);
-                    }
-                    callback(resposta);
-                },
-                error: function (e) {
-                    console.log('apitic 226', e);
-                    callback(0);
-                },
-                timeout: 3000
-            });
-        } else {
-            $.ajax({
-                type: type,
-                headers: {"Accept":"*, Content-Type"},
-                url: api.url + uri,
-                data: json,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
+                url: api.url + uri + '?' + data, timeout: 3000, type: 'POST', cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -259,12 +253,70 @@ var api = {
                     callback(resposta);
                 },
                 error: function (e) {
+                    $('#loading').hide();
+                    var resposta = {error: 1};
+                    refreshCallback(resposta);
                     bitgrup.log('apitic 255', e);
                     callback(0);
+                }
+            });
+        } else {
+//            $.ajax({
+//                type: type,
+//                url: api.url + uri,
+//                data: json,
+//                dataType: "json",
+//                contentType: "application/json; charset=utf-8",
+//                beforeSend: function () {
+//                    if (!statusSpinner) {
+//                        bitgrup.spinner.on();
+//                    }
+//                },
+//                complete: function () {
+//                    if (!statusSpinner) {
+//                        bitgrup.spinner.off();
+//                    }
+//                },
+//                success: function (resposta) {
+//                    if (bitgrup.production == 0) {
+//                        console.log('apitic 250', resposta);
+//                    }
+//                    callback(resposta);
+//                },
+//                error: function (e) {
+//                    bitgrup.log('apitic 255', e);
+//                    callback(0);
+//                },
+//                timeout: 3000
+//            });
+            $.ajax({
+                url:  api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
+                beforeSend: function () {
+                    if (!statusSpinner) {
+                        bitgrup.spinner.on();
+                    }
                 },
-                timeout: 3000
+                complete: function () {
+                    if (!statusSpinner) {
+                        bitgrup.spinner.off();
+                    }
+                },
+                success: function (resposta) {
+                    if (bitgrup.production == 0) {
+                        console.log('apitic 250', resposta);
+                    }
+                    callback(resposta);
+                },
+                error: function (e) {
+                    $('#loading').hide();
+                    var resposta = {error: 1};
+                    refreshCallback(resposta);
+                    bitgrup.log('apitic 255', e);
+                    callback(0);
+                }
             });
         }
+
 
     },
 
@@ -272,7 +324,7 @@ var api = {
         var json = JSON.stringify({issue: data.issue});
         $.ajax({
             type: 'POST',
-            
+
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
             data: json,
             dataType: "json",
