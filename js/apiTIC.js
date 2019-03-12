@@ -235,7 +235,7 @@ var api = {
 //                timeout: 3000
 //            });
             $.ajax({
-                url: api.url + uri + '?' + data, timeout: 3000, type: 'POST', cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
+                url: api.url + uri + '?' + data, timeout: 3000, type: 'GET', cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -253,9 +253,6 @@ var api = {
                     callback(resposta);
                 },
                 error: function (e) {
-                    $('#loading').hide();
-                    var resposta = {error: 1};
-                    refreshCallback(resposta);
                     bitgrup.log('apitic 255', e);
                     callback(0);
                 }
@@ -308,9 +305,6 @@ var api = {
                     callback(resposta);
                 },
                 error: function (e) {
-                    $('#loading').hide();
-                    var resposta = {error: 1};
-                    refreshCallback(resposta);
                     bitgrup.log('apitic 255', e);
                     callback(0);
                 }
