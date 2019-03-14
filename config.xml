@@ -40,7 +40,9 @@
     <preference name="deployment-target" value="7.0" />
     <preference name="UIWebViewBounce" value="false" />
 
-    <application android:debuggable="true"  />
+    <gap:config-file platform="android" parent="/manifest">
+        <application android:debuggable="true" />
+    </gap:config-file>
     
 	   
     <!-- PLUGINS -->
