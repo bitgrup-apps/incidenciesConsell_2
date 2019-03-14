@@ -206,34 +206,6 @@ var api = {
         var json = JSON.stringify(data);
 
         if (type === 'GET') {
-//            $.ajax({
-//                type: type,
-//                headers: {"Accept": "*, Content-Type"},
-//                url: api.url + uri + '?' + data,
-//                dataType: "json",
-//                //async: false,
-//                beforeSend: function () {
-//                    if (!statusSpinner) {
-//                        bitgrup.spinner.on();
-//                    }
-//                },
-//                complete: function () {
-//                    if (!statusSpinner) {
-//                        bitgrup.spinner.off();
-//                    }
-//                },
-//                success: function (resposta) {
-//                    if (bitgrup.production == 0) {
-//                        bitgrup.log('apitic 221', resposta);
-//                    }
-//                    callback(resposta);
-//                },
-//                error: function (e) {
-//                    console.log('apitic 226', e);
-//                    callback(0);
-//                },
-//                timeout: 3000
-//            });
             $.ajax({
                 url: api.url + uri + '?' + data, timeout: 3000, type: 'GET', cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
@@ -258,36 +230,9 @@ var api = {
                 }
             });
         } else {
-//            $.ajax({
-//                type: type,
-//                url: api.url + uri,
-//                data: json,
-//                dataType: "json",
-//                contentType: "application/json; charset=utf-8",
-//                beforeSend: function () {
-//                    if (!statusSpinner) {
-//                        bitgrup.spinner.on();
-//                    }
-//                },
-//                complete: function () {
-//                    if (!statusSpinner) {
-//                        bitgrup.spinner.off();
-//                    }
-//                },
-//                success: function (resposta) {
-//                    if (bitgrup.production == 0) {
-//                        console.log('apitic 250', resposta);
-//                    }
-//                    callback(resposta);
-//                },
-//                error: function (e) {
-//                    bitgrup.log('apitic 255', e);
-//                    callback(0);
-//                },
-//                timeout: 3000
-//            });
+
             $.ajax({
-                url:  api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
+                url: api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -343,21 +288,3 @@ var api = {
     }
 
 }
-
-
-
-//                        if (jqXHR.status === 0) {
-//                            console.log('Not connect: Verify Network.');
-//                        } else if (jqXHR.status == 404) {
-//                            console.log('Requested page not found [404]');
-//                        } else if (jqXHR.status == 500) {
-//                            console.log('Internal Server Error [500].');
-//                        } else if (textStatus === 'parsererror') {
-//                            console.log('Requested JSON parse failed.');
-//                        } else if (textStatus === 'timeout') {
-//                            console.log('Time out error.');
-//                        } else if (textStatus === 'abort') {
-//                            console.log('Ajax request aborted.');
-//                        } else {
-//                            console.log('Error desconocido: ' + jqXHR.responseText);
-//                        }
