@@ -207,7 +207,7 @@ var api = {
 
         if (type === 'GET') {
             $.ajax({
-                url: api.url + uri + '?' + data, timeout: 3000, type: 'GET', cache: false, contentType: "application/jsonp; charset=utf-8", processData: false, async: true,
+                url: api.url + uri + '?' + data, timeout: 3000, type: 'GET', cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -232,7 +232,7 @@ var api = {
         } else {
 
             $.ajax({
-                url: api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/jsonp; charset=utf-8", processData: false, async: true,
+                url: api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
                         bitgrup.spinner.on();
@@ -266,7 +266,7 @@ var api = {
 
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
             data: json,
-            dataType: "jsonp",
+            dataType: "json",
             async: false,
             contentType: "application/json; charset=utf-8",
             beforeSend: function () {
