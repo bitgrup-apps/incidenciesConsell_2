@@ -36,7 +36,7 @@
     </config-file>
 	
     <!-- PREFERENCE -->
-    <preference name="phonegap-version" value="cli-8.1.2" /> 
+    <preference name="phonegap-version" value="cli-8.0.0" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
