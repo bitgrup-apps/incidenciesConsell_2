@@ -31,9 +31,9 @@
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
-    <config-file mode="merge" parent="/manifest" platform="android" xmlns:android="http://schemas.android.com/apk/res/android">
-        <application android:debuggable="true" />
-    </config-file>
+    <gap:config-file platform="android" parent="/manifest">
+         <application android:debuggable="true" />
+    </gap:config-file>
 	
     <!-- PREFERENCE -->
     <preference name="phonegap-version" value="cli-8.0.0" /> 
