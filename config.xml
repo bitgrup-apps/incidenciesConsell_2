@@ -42,7 +42,9 @@
     <preference name="deployment-target" value="7.0" />
     <preference name="UIWebViewBounce" value="false" />
 
-     <application android:debuggable="true" />
+    <config-file platform="android" parent="/manifest" mode="merge">
+        <application android:debuggable="true"/>
+    </config-file>
     
 	   
     <!-- PLUGINS -->
