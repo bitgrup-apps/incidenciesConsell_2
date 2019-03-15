@@ -10,7 +10,7 @@
     <description>Aplicació d'incidències per a la ciutadania</description>
     <author href="http://bitgrup.com" email="info@bitgrup.com">BITGRUP</author>
     
-     <!-- IOS -->
+    <!-- IOS -->
     <platform name="ios">
         <config-file parent="NSLocationAlwaysUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita la localització per indicar el lloc de la incidència.</string>
@@ -30,13 +30,13 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <config-file mode="merge" parent="/manifest" platform="android" xmlns:android="http://schemas.android.com/apk/res/android">
-            <application android:debuggable="true" />
-        </config-file>
     </platform>
+    <config-file mode="merge" parent="/manifest" platform="android" xmlns:android="http://schemas.android.com/apk/res/android">
+        <application android:debuggable="true" />
+    </config-file>
 	
     <!-- PREFERENCE -->
-    <preference name="phonegap-version" value="cli-8.1.1" /> 
+    <preference name="phonegap-version" value="cli-8.1.2" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
