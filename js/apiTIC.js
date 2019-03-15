@@ -3,7 +3,7 @@
 
 var api = {
 
-    url: 'https://issueapp.ticmallorca.net/rest/',
+    url: 'http://issueapp.ticmallorca.net/rest/',
     password: 'h^t2N6$ZtI5&T1xjxxv2uGZ7&wQT^aJW7CO329nBPbLHpSPj0U4FaEEG&wqqOtX9z@I2z*xP#5gQEQgIhVCv7p9o&XrV0e2YNbt',
     deviceId: null,
     token: null,
