@@ -99,7 +99,7 @@ var bitgrup = {
                             html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                         });
                         $('#entities-list').html(html);
-                        bitgrup.changePage('config');
+                        $.mobile.changePage("#config", {transition: "slide", reverse: true});
                         //TOT APUNT
                         bitgrup.initScreen();
                     } else {
