@@ -10,14 +10,14 @@ var bitgrup = {
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
     /* ###########################################################################*/
-    initDevice: function(){
+    initDevice: function () {
         document.addEventListener("deviceready", bitgrup.onDeviceReady, false);
     },
-    
-    onDeviceReady: function(){
+
+    onDeviceReady: function () {
         bitgrup.initApp();
     },
-    
+
     initApp: function () {
         //ESPERAM A FINALITZAR INIT
         bitgrup.spinner.on();
@@ -671,22 +671,29 @@ var bitgrup = {
         getNode: function () {
             try {
                 var yql = bitgrup.news.rss;
-                $.ajax({type: "GET", url: yql, dataType: "xml", beforeSend: function () {
-                        bitgrup.spinner.force(1);
-                    }, success: function (rss) {
-                        var items = $(rss).find("item");
-                        if (items) {
-                            bitgrup.news.node = 1;
-                            $('#btn-home-news').addClass('active');
-                        } else {
-                            bitgrup.news.node = 0;
-                            $('#btn-home-news').removeClass('active');
-                        }
-                        //go to 
-                        bitgrup.spinner.force(0);
-                        bitgrup.changePage('home');
-                        bitgrup.initScreen();
-                    }});
+                if (yql) {
+                    $.ajax({type: "GET", url: yql, dataType: "xml", beforeSend: function () {
+                            bitgrup.spinner.force(1);
+                        }, success: function (rss) {
+                            var items = $(rss).find("item");
+                            if (items) {
+                                bitgrup.news.node = 1;
+                                $('#btn-home-news').addClass('active');
+                            } else {
+                                bitgrup.news.node = 0;
+                                $('#btn-home-news').removeClass('active');
+                            }
+                            //go to 
+                            bitgrup.spinner.force(0); 
+                            bitgrup.changePage('home');
+                            bitgrup.initScreen();
+                        }});
+                } else {
+                    //go to 
+                    bitgrup.spinner.force(0);
+                    bitgrup.changePage('home');
+                    bitgrup.initScreen();
+                }
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
