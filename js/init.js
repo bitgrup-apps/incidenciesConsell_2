@@ -753,7 +753,7 @@ var bitgrup = {
             if (news.length) {
                 $(news).each(function (i) {
                     var new_ = news[i];
-                    var img = (new_.img) ? new_.img : 'images/news-background.jpg';
+                    var img = (new_.img) ? new_.img : 'images/news-background-pred.jpg';
                     html = html + '<div class="col-xs-12" onclick="bitgrup.news.getNew(' + i + ');" >\n\
                                     <div class="col-xs-12"><img src="' + img + '"/></div>\n\
                                     <div class="col-xs-12">\n\
@@ -783,7 +783,7 @@ var bitgrup = {
             $('#card-news-date').html(new_.pubData);
             $('#card-news-title').html(new_.title);
             $('#card-news-description').html(new_.description);
-            var img = (new_.img) ? new_.img : 'images/news-background.jpg';
+            var img = (new_.img) ? new_.img : 'images/news-background-pred.jpg';
             $('#card-news-img').html('<img src="' + img + '" title="' + new_.title + '" alt="TIC"/>');
             $('#card-news-twitter').data('url', 'https://twitter.com/home?status=' + new_.uri);
             $('#card-news-facebook').data('url', 'https://www.facebook.com/sharer/sharer.php?u=' + new_.uri);
