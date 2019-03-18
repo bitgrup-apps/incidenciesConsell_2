@@ -672,9 +672,12 @@ var bitgrup = {
             try {
                 var yql = bitgrup.news.rss;
                 if (yql) {
-                    $.ajax({type: "GET", url: yql, dataType: "xml", beforeSend: function () {
+                    $.ajax({type: "GET", url: yql, dataType: "xml", 
+                        beforeSend: function () {
                             bitgrup.spinner.force(1);
-                        }, success: function (rss) {
+                            bitgrup.spinner.on();
+                        }, 
+                        success: function (rss) {
                             var items = $(rss).find("item");
                             if (items) {
                                 bitgrup.news.node = 1;
@@ -689,11 +692,13 @@ var bitgrup = {
                             bitgrup.initScreen();
                         }});
                 } else {
+                    bitgrup.news.node = 0;
+                    $('#btn-home-news').removeClass('active');
                     //go to 
                     bitgrup.spinner.force(0);
                     bitgrup.changePage('home');
                     bitgrup.initScreen();
-                }
+                } 
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
