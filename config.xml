@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "0.1.3">  
+        version   = "0.1.6">  
 	
 	
     <name>TIC Incidencies</name>
@@ -31,9 +31,6 @@
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
-    <gap:config-file platform="android" parent="/manifest">
-         <application android:debuggable="true" />
-    </gap:config-file>
 	
     <!-- PREFERENCE -->
     <preference name="phonegap-version" value="cli-8.0.0" /> 
