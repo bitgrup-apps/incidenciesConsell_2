@@ -46,7 +46,7 @@
     </head> 
 
     <body> 
-        <div id="loading" class="active"></div>
+        <div id="loading" class="active"><button><i class="ico ico-refresh" onclick="window.location = 'index.html';"></i></button></div>
 
 
 
@@ -71,8 +71,13 @@
         <div data-role="page"   id="home">
             <div data-role="content"  class="no-active transition" >
                 <!-- LOGO TIC --> 
-                <div class="col-xs-6" id="logo-entity"></div>
-                <div class="col-xs-6 log-out"><i onclick="bitgrup.entities.logOut();" class="ico ico-logOut"></i></div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4 log-out"><i onclick="bitgrup.entities.logOut();" class="ico ico-back-blau"></i></div>
+                    <div class="col-xs-4" id="logo-entity"></div>
+                </div>
+                <div class="col-xs-12">
+                    <h4 id="nameEntity"></h4>
+                </div>
                 <!-- ISSUES / NEWS -->
                 <div class="col-xs-12 btn-home">
                     <button class="btn-incidencies" onclick="bitgrup.issues.list.toList();"><span class="transition">Incidències</span></button>
@@ -258,7 +263,7 @@
             <div data-role="content">
                 <!-- FORM -->
                 <div class="col-xs-12">
-                    <input type="email" maxlength="150" id="email-issue" placeholder="Direcció de correu electrònic"/>
+                    <!--input type="email" maxlength="150" id="email-issue" placeholder="Direcció de correu electrònic"/-->
                     <textarea id="desc-issue" class="before" maxlength="1000" placeholder="La descripció de la incidència (Entre 20 i 1000 caràcters)"></textarea>
                 </div>
             </div>
@@ -297,7 +302,7 @@
                         <div class="col-xs-6"><span class="before" id="new-issue-card-img-2"></span></div>
                         <div class="col-xs-6"><span class="before" id="new-issue-card-img-3"></span></div>
                         <div class="col-xs-6"><span class="before" id="new-issue-card-img-4"></span></div>
-                        <div class="col-xs-12 text-center"><button class="btn" onclick="bitgrup.issues.new_.send();">Confirmar</button></div>
+                        <!--div class="col-xs-12 text-center"><button class="btn" onclick="bitgrup.issues.new_.send();">Confirmar</button></div-->
                     </div>
 
                 </div>

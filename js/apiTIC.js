@@ -86,6 +86,7 @@ var api = {
         bitgrup.spinner.off();
         //bitgrup.initScreen();
         bitgrup.alert('E-' + linia + ': No s\ha pogut connectar amb el servidor, prova més tart.');
+        $('#loading button').show();
         //bitgrup.changePage('noCompatible');
     },
 

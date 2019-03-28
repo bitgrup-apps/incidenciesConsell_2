@@ -5,7 +5,7 @@ var bitgrup = {
 
     lang: 'ca',
     config: null,
-    production: 1,
+    production: 0,
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -142,6 +142,11 @@ var bitgrup = {
             if (entity.image.data) {
                 $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
             }
+            //name
+            if(entity.name){
+                $('#nameEntity').html(entity.name);
+            }
+            
             //phone
             if (entity.phone) {
                 $('#phone-entity').show();
@@ -528,33 +533,22 @@ var bitgrup = {
             },
 
             setData: function () {
-                //EMAIL
-                if (bitgrup.production) {
-                    var email = $('#email-issue').val();
-                    var desc = $('#desc-issue').val();
+                var desc = $('#desc-issue').val();
+                var countDesc = desc.length;
+                if (countDesc > 19) {
+                    //bitgrup.issues.new_.email = email;
+                    bitgrup.issues.new_.description = desc;
+                    bitgrup.issues.new_.setCard();
                 } else {
-                    var email = 'tmarqueno@bitgrup.com';
-                    var desc = 'Lorem ipsum fistro pecador de la padrera, candemore anau jaar.';
+                    bitgrup.alert('La descripció ha de tenir un mínim de 20 caràcters.');
                 }
 
-                var countDesc = desc.length;
-                if (email) {
-                    if (countDesc > 19) {
-                        bitgrup.issues.new_.email = email;
-                        bitgrup.issues.new_.description = desc;
-                        bitgrup.issues.new_.setCard();
-                    } else {
-                        bitgrup.alert('La descripció ha de tenir un mínim de 20 caràcters.');
-                    }
-                } else {
-                    bitgrup.alert('La direcció de correu es obligatoria.');
-                }
             },
 
             setCard: function () {
                 var fecha = new Date();
-                var today = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
-                var time = fecha.getHours() + ':' + fecha.getMinutes();
+                var today = ("0" + fecha.getDate()).slice(-2) + '/' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '/' + fecha.getFullYear();
+                var time = ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
                 $('#new-issue-type').html(bitgrup.issues.getNameType(bitgrup.issues.new_.type));
                 $('#new-issue-description').html(bitgrup.issues.new_.description);
                 try {
@@ -1032,16 +1026,16 @@ var bitgrup = {
                 if (type === 'camera') {
                     navigator.camera.getPicture(bitgrup.pictures.onSuccess, bitgrup.pictures.onFail, {
                         quality: 50,
-                        targetWidth:1024,
-                        targetHeight:1024,
+                        targetWidth: 1024,
+                        targetHeight: 1024,
                         destinationType: Camera.DestinationType.FILE_URI,
                         correctOrientation: true
                     });
                 } else if (type === 'gallery') {
                     navigator.camera.getPicture(bitgrup.pictures.onSuccess, bitgrup.pictures.onFail, {
                         quality: 50,
-                        targetWidth:1024,
-                        targetHeight:1024,
+                        targetWidth: 1024,
+                        targetHeight: 1024,
                         destinationType: Camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
                         correctOrientation: true
@@ -1175,11 +1169,12 @@ var bitgrup = {
     home: function () {
         //window.location.href = "index.html";
         $.mobile.changePage("#home", {transition: "slide", reverse: true});
-        try{
+        try {
             webView.clearHistory();
-        }catch(e){}
+        } catch (e) {
+        }
 
-        },
+    },
 
     changePage: function (page) {
         $.mobile.changePage("#" + page, {transition: "slide", reverse: false});
@@ -1272,22 +1267,22 @@ var bitgrup = {
     },
 
     back: function () {
-       var currentPage = $.mobile.activePage.attr("id");
-       console.log(currentPage);
-       if(currentPage == 'home'){
-           $.mobile.changePage("#config", {transition: "slide", reverse: true});
-       }else if(currentPage == 'config'){
-           navigator.app.exitApp();
-       }else if(currentPage == 'issues-step-6'){
-           if($('#issues-step-6').hasClass('msg-error')){
-               navigator.app.backHistory(); 
-           }else{
-               $.mobile.changePage("#home", {transition: "slide", reverse: true});
-           }
-       }else{
-           navigator.app.backHistory(); 
-       }
-       
+        var currentPage = $.mobile.activePage.attr("id");
+        console.log(currentPage);
+        if (currentPage == 'home') {
+            bitgrup.entities.logOut();
+        } else if (currentPage == 'config') {
+            navigator.app.exitApp();
+        } else if (currentPage == 'issues-step-6') {
+            if ($('#issues-step-6').hasClass('msg-error')) {
+                navigator.app.backHistory();
+            } else {
+                $.mobile.changePage("#home", {transition: "slide", reverse: true});
+            }
+        } else {
+            navigator.app.backHistory();
+        }
+
     },
 
     initScreen: function () {

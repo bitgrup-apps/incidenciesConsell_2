@@ -17,14 +17,16 @@ img{width:100%;}
 .img{background-size: cover; background-position: center; background-repeat: no-repeat;width: 100%;height: 20vw; max-width: 300px;}
 .ui-page { -webkit-backface-visibility: hidden !important; }
 
-a:hover{text-decoration:none;}
-a:active, a:focus{opacity:0.6; text-decoration:none;}
+a:hover, a:active, a:focus{text-decoration:none;}
+a:active{opacity:0.6;}
 ::-webkit-input-placeholder{color:#999;}:-moz-placeholder{color:#999; opacity: 1;}::-moz-placeholder {color:#999;opacity: 1;}:-ms-input-placeholder { color:#999;}
 
 /*######## LOADING #############*/
 #loading{position:fixed; z-index:10; display:none; width:100%; height:100%; background-image:url('../icons/SplashScreen-TICMallorca.png'); background-position:center center; background-repeat:no-repeat; background-size: cover;}
 #loading.active{display: block;}
 #home .ui-content.no-active{opacity: 0;} 
+#loading button{position: absolute; top: 70vh; width:100%; text-align: center; background:transparent; left:0;    border: none; display: none;}
+#loading .ico-refresh{}
 
 
 /*######## FONTS #############*/
@@ -55,6 +57,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 .ico{background-image: url('../icons/sprite.svg'); background-size: 200vw auto; background-repeat: no-repeat; height: 11vw; width: 11vw;display: inline-block;}
 .ico.ico-logo{background-image: url('../icons/logo.svg');background-size: 25vw;height: 21vw;width: 32vw;}
 .ico.ico-back{    background-position: -60vw -28vw;    background-size: 81vw auto; }
+.ico.ico-back-blau{    background-position:-5vw -111vw;    background-size: 81vw auto; }
 .ico.ico-next{    background-position: -72vw -28vw;    background-size: 81vw auto; }
 .ico.ico-plus{background-position:-61vw -36vw;background-size: 100vw auto; }
 .ico.ico-home{background-position: -18.5vw -24.5vw;background-size: 71vw auto;} 
@@ -71,6 +74,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 .ico.ico-logOut{background-position: -41vw -96vw;background-size: 80vw;}
 .ico.ico-trash{background-position: -23.5vw -97vw;height: 9vw;width: 9vw;background-size: 80vw auto;}
 .before::before{position:absolute; background-position: -86.5vw -125.1vw; content: " ";background-image: url('../icons/sprite.svg'); background-size: 120vw auto; background-repeat: no-repeat;}
+.ico.ico-refresh{background-position:-166.5vw -247vw;    width: 18vw;    height: 18vw;}
 
 /*######## BOTONS #############*/
 button{text-shadow:none !important;}
@@ -94,12 +98,12 @@ button{text-shadow:none !important;}
 /*######## HOME #############*/
 #home .ui-content{height: 100vh;padding: 20px 35px;}
 #home .btn-home button{ border-radius: 4px;background-position: center; background-repeat: no-repeat; background-size: cover; width:100%; padding: 0;margin-bottom: 12px; }
-#home .btn-home button span{padding:12vh 0; display: inline-block; width: 100%; text-align: center; color:#fff;font-family: 'Noto Serif', serif;font-weight: 700; font-size: 21px;}
+#home .btn-home button span{padding:9vh 0; display: inline-block; width: 100%; text-align: center; color:#fff;font-family: 'Noto Serif', serif;font-weight: 700; font-size: 21px;}
 #home .btn-home .btn-incidencies{background-image: url('../images/issues-background.jpg');}
 #home .btn-home .btn-incidencies span{background:rgba(0,55,96,0.7);}
 #home .btn-home .btn-news{background-image: url('../images/news-background.jpg');}
 #home .btn-home .btn-news span{background:rgba(0,0,0,0.7);}
-#home .btn-home button span::before{content: " "; position:absolute; left: 15px; top: 15px; width: 0; height: 0;border-right: 7vw solid transparent;border-top: 7vw solid rgba(256,256,256,0.2);border-left: 39vw solid rgba(256,256,256,0.2);border-bottom: 37vw solid transparent;}
+#home .btn-home button span::before{content: " "; position:absolute; left: 15px; top: 15px; width: 0; height: 0;border-right: 10vw solid transparent;    border-top: 7vw solid rgba(256,256,256,0.2);    border-left: 39vw solid rgba(256,256,256,0.2);    border-bottom: 25vw solid transparent;}
 #home .footer{position: fixed; bottom: 25px; width: calc(100% - 70px);}
 #home .footer > div{padding:0 5px 0 0;}
 #home .footer > div:last-child{padding:0 0 0 5px;}
@@ -111,7 +115,8 @@ button{text-shadow:none !important;}
 #home .footer span.ico-phone::before{background-position: -78.5vw -23.1vw;}
 #btn-home-news{display: none;}
 #btn-home-news.active{display: block;}
-#home .log-out{text-align: right;padding-top: 3vw;}
+#home .log-out{text-align: left;padding-top: 3vw;}
+#home #nameEntity{text-align: center; margin-bottom: 30px;}
 
 /*########################      CONFIG      ###############################*/
 #config .ui-content{height: 100%;}
