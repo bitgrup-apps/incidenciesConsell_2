@@ -104,7 +104,7 @@ var bitgrup = {
                         });
                         $('#entities-list').html(html);
                         //$.mobile.changePage("#config", {transition: "slide", reverse: true});
-                        navigator.app.backHistory();
+                        bitgrup.back();
                         //TOT APUNT
                         bitgrup.initScreen();
                     } else {
@@ -637,6 +637,8 @@ var bitgrup = {
 
             sendOK: function () {
                 bitgrup.pictures.optionsArray = new Array();
+                $('#issues-step-6-btn-error').hide();
+                $('#issues-step-6-btn-ok').show();
                 $('#issues-step-6').removeClass('msg-error');
                 $('#ico-step-6').addClass('ico-end');
                 $('#ico-step-6').removeClass('ico-error');
@@ -645,6 +647,8 @@ var bitgrup = {
                 bitgrup.spinner.off();
             },
             sendNoOK: function () {
+                $('#issues-step-6-btn-error').show();
+                $('#issues-step-6-btn-ok').hide();
                 $('#issues-step-6').addClass('msg-error');
                 $('#ico-step-6').addClass('ico-error');
                 $('#ico-step-6').removeClass('ico-end');
@@ -1026,12 +1030,16 @@ var bitgrup = {
                 if (type === 'camera') {
                     navigator.camera.getPicture(bitgrup.pictures.onSuccess, bitgrup.pictures.onFail, {
                         quality: 50,
+                        targetWidth:1024,
+                        targetHeight:1024,
                         destinationType: Camera.DestinationType.FILE_URI,
                         correctOrientation: true
                     });
                 } else if (type === 'gallery') {
                     navigator.camera.getPicture(bitgrup.pictures.onSuccess, bitgrup.pictures.onFail, {
                         quality: 50,
+                        targetWidth:1024,
+                        targetHeight:1024,
                         destinationType: Camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
                         correctOrientation: true
@@ -1163,9 +1171,13 @@ var bitgrup = {
 
 
     home: function () {
-        window.location.href = "index.html";
-        //$.mobile.changePage("#home", {transition: "slide", reverse: true});
-    },
+        //window.location.href = "index.html";
+        $.mobile.changePage("#home", {transition: "slide", reverse: true});
+        try{
+            webView.clearHistory();
+        }catch(e){}
+
+        },
 
     changePage: function (page) {
         $.mobile.changePage("#" + page, {transition: "slide", reverse: false});
@@ -1258,7 +1270,7 @@ var bitgrup = {
     },
 
     back: function () {
-        window.history.back();
+       navigator.app.backHistory(); 
     },
 
     initScreen: function () {
