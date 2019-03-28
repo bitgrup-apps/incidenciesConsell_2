@@ -97,6 +97,7 @@ var bitgrup = {
 
         chooseEntity: function () {
             api.getEntities(function (entities) {
+                console.log(entities);
                 try {
                     if (entities) {
                         var html = '';
@@ -105,8 +106,7 @@ var bitgrup = {
                             html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                         });
                         $('#entities-list').html(html);
-                        //$.mobile.changePage("#config", {transition: "slide", reverse: true});
-                        bitgrup.back();
+                        $.mobile.changePage("#config", {transition: "slide", reverse: true});
                         //TOT APUNT
                         bitgrup.initScreen();
                     } else {
@@ -114,7 +114,7 @@ var bitgrup = {
                         api.errorApi(104);
                     }
                 } catch (e) {
-                    bitgrup.log('init ERROR 104: NO TENIM ENTITITES');
+                    bitgrup.log(e,'init ERROR 104: NO TENIM ENTITITES');
                     api.errorApi(103);
                 }
             });
