@@ -15,6 +15,8 @@ var bitgrup = {
     },
 
     onDeviceReady: function () {
+        document.addEventListener("backbutton", bitgrup.back, false);
+
         bitgrup.initApp();
     },
 
@@ -1270,7 +1272,22 @@ var bitgrup = {
     },
 
     back: function () {
-       navigator.app.backHistory(); 
+       var currentPage = $.mobile.activePage.attr("id");
+       console.log(currentPage);
+       if(currentPage == 'home'){
+           $.mobile.changePage("#config", {transition: "slide", reverse: true});
+       }else if(currentPage == 'config'){
+           navigator.app.exitApp();
+       }else if(currentPage == 'issues-step-6'){
+           if($('#issues-step-6').hasClass('msg-error')){
+               navigator.app.backHistory(); 
+           }else{
+               $.mobile.changePage("#home", {transition: "slide", reverse: true});
+           }
+       }else{
+           navigator.app.backHistory(); 
+       }
+       
     },
 
     initScreen: function () {
