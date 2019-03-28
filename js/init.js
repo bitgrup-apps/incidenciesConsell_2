@@ -5,7 +5,7 @@ var bitgrup = {
 
     lang: 'ca',
     config: null,
-    production: 1,
+    production: 0,
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -44,6 +44,10 @@ var bitgrup = {
         $(document).bind("mobileinit", function () {
             $.support.cors = true;
             $.mobile.allowCrossDomainPages = true;
+            $.mobile.hashListeningEnabled = false;
+            if (device.platform === "iOS" && parseInt(device.version) === 9) {
+                $.mobile.hashListeningEnabled = false;
+            }
         });
 
         //ISSUES
@@ -99,7 +103,8 @@ var bitgrup = {
                             html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                         });
                         $('#entities-list').html(html);
-                        $.mobile.changePage("#config", {transition: "slide", reverse: true});
+                        //$.mobile.changePage("#config", {transition: "slide", reverse: true});
+                        navigator.app.backHistory();
                         //TOT APUNT
                         bitgrup.initScreen();
                     } else {
@@ -164,7 +169,7 @@ var bitgrup = {
             var html = '';
             $(categories).each(function (n) {
                 var category = categories[n];
-                var img = (category.image.name && category.image.name !== 'NO IMAGE') ? category.image.name : 'icons/question.svg';
+                var img = (category.image.name && category.image.name !== 'NO IMAGE') ? category.image.data : 'icons/question.svg';
                 //cada 3 hem de ficar un row
                 if (n % 3 == 0) {
                     html += '<div class="row">';
@@ -206,7 +211,7 @@ var bitgrup = {
     issues: {
 
         //types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
-        status: [{id: 1, name: 'Pendent', color: 'yellow'}, {id: 2, name: 'En curs', color: 'orange'}, {id: 3, name: 'Resolta', color: 'green'}, {id: 0, name: 'Rebutjada', color: 'red'}],
+        status: [{id: 0, name: 'Rebutjada', color: '#78909c'}, {id: 1, name: 'Pendent', color: '#ef5350'}, {id: 2, name: 'En curs', color: '#ff7043'}, {id: 3, name: 'Resolta', color: '#66bb6a'}],
 
         init: function () {
             //REFRESH
@@ -631,6 +636,7 @@ var bitgrup = {
             },
 
             sendOK: function () {
+                bitgrup.pictures.optionsArray = new Array();
                 $('#issues-step-6').removeClass('msg-error');
                 $('#ico-step-6').addClass('ico-end');
                 $('#ico-step-6').removeClass('ico-error');
@@ -672,11 +678,11 @@ var bitgrup = {
             try {
                 var yql = bitgrup.news.rss;
                 if (yql) {
-                    $.ajax({type: "GET", url: yql, dataType: "xml", 
+                    $.ajax({type: "GET", url: yql, dataType: "xml",
                         beforeSend: function () {
                             bitgrup.spinner.force(1);
                             bitgrup.spinner.on();
-                        }, 
+                        },
                         success: function (rss) {
                             var items = $(rss).find("item");
                             if (items) {
@@ -687,10 +693,19 @@ var bitgrup = {
                                 $('#btn-home-news').removeClass('active');
                             }
                             //go to 
-                            bitgrup.spinner.force(0); 
+                            bitgrup.spinner.force(0);
                             bitgrup.changePage('home');
                             bitgrup.initScreen();
-                        }});
+                        },
+                        error: function (e) {
+                            bitgrup.news.node = 0;
+                            $('#btn-home-news').removeClass('active');
+                            //go to 
+                            bitgrup.spinner.force(0);
+                            bitgrup.changePage('home');
+                            bitgrup.initScreen();
+                        }
+                    });
                 } else {
                     bitgrup.news.node = 0;
                     $('#btn-home-news').removeClass('active');
@@ -698,7 +713,7 @@ var bitgrup = {
                     bitgrup.spinner.force(0);
                     bitgrup.changePage('home');
                     bitgrup.initScreen();
-                } 
+                }
             } catch (e) {
                 bitgrup.news.node = 0;
                 $('#btn-home-news').removeClass('active');
@@ -1148,8 +1163,8 @@ var bitgrup = {
 
 
     home: function () {
-        //window.location.href = "index.html";
-        $.mobile.changePage("#home", {transition: "slide", reverse: true});
+        window.location.href = "index.html";
+        //$.mobile.changePage("#home", {transition: "slide", reverse: true});
     },
 
     changePage: function (page) {

@@ -47,7 +47,6 @@ var dataBase = {
     },
 
     query: function (sql, inputs, callback) {
-         console.log(sql, inputs);
         try {
             if (!inputs) {
                 inputs = new Array();
