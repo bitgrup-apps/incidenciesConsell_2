@@ -77,8 +77,10 @@ var bitgrup = {
                 if (config.ENTITY_ID) {
                     //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
                     api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
-                        if (entity[0].id) {
-                            bitgrup.entities.setEntityScreen(entity[0]);
+                        if (entity) {
+                            if(entity[0].id){
+                                bitgrup.entities.setEntityScreen(entity[0]);
+                            }
                         } else {
                             //TORNAM A DEMANAR ENTITAT
                             bitgrup.entities.chooseEntity();
@@ -90,7 +92,7 @@ var bitgrup = {
                     bitgrup.entities.chooseEntity();
                 }
             } catch (e) {
-                //bitgrup.log(e);
+                bitgrup.log(e);
                 bitgrup.entities.chooseEntity();
             }
         },
@@ -1320,10 +1322,8 @@ var bitgrup = {
     },
 
     log: function (str, data) {
-        if (bitgrup.production) {
-            //$.ajax({type: 'POST', url: 'https://www.bitgrup.com/test.php', data: {str: str, data: data}, async: false, timeout: 3000});
-        } else {
-            console.log(str, data);
+        if (!bitgrup.production) {
+            console.log(str, data); 
         }
     },
     
@@ -1331,7 +1331,7 @@ var bitgrup = {
         var fecha = (date_) ? date_ : new Date();
         return ("0" + fecha.getDate()).slice(-2) + '/' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '/' + fecha.getFullYear();
                 
-    },
+    }, 
     
     getTime: function(){
         var fecha = new Date();
