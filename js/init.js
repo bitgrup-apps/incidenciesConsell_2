@@ -362,13 +362,12 @@ var bitgrup = {
                         var html_status = '';
                         var str_status = '';
                         $(status).each(function (n) {
-                            var i = n+1;
                             var active = '';
                             if (status[n].id == issue.STATUS) {
                                 active = 'active';
                                 str_status = status[i].name;
                             }
-                            html_status = html_status + '<span class="' + status[i].color + ' ' + active + '"></span>';
+                            html_status = html_status + '<span class="' + status[n].color + ' ' + active + '"></span>';
                         });
 
                         /*#################     DESCRIPTION        ####################*/
@@ -431,8 +430,7 @@ var bitgrup = {
                         var status = bitgrup.issues.status;
                         var str_status = '';
                         var status_name = '';
-                        $(status).each(function (n) {
-                            var i = n+1;
+                        $(status).each(function (i) {
                             var active = '';
                             if (status[i].id == issue.STATUS) {
                                 active = 'active';
