@@ -1275,7 +1275,8 @@ var bitgrup = {
         var currentPage = $.mobile.activePage.attr("id");
         console.log(currentPage);
         if (currentPage == 'home') {
-            bitgrup.entities.logOut();
+            //bitgrup.entities.logOut();
+            navigator.app.exitApp();
         } else if (currentPage == 'config') {
             navigator.app.exitApp();
         } else if (currentPage == 'issues-step-6') {

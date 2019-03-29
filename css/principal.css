@@ -86,6 +86,9 @@ button{text-shadow:none !important;}
 .header.ui-header{ height: 14vw; border:none; padding:10px; overflow: hidden;}
 .icons-header > div{text-align: center; }
 .icons-header > div > i:active{opacity:0.7;}
+.icons-header > div > i:hover, .icons-header > div > i:active, .icons-header > div > i:focus{border:none;}
+.ui-page-theme-a .ui-btn:focus{box-shadow: none;background: initial;}  
+.ui-page-theme-a .ui-btn:active{opacity:0.7;}
 .icons-header > div:first-child{text-align: left;} 
 .icons-header > div:nth-child(3){text-align: right;}
 #logo-entity > img{width:auto;margin-bottom: 20px; height: 65px;}
@@ -140,7 +143,7 @@ button{text-shadow:none !important;}
 .issues-list .sub-step > div:last-child{background: #8acff2;}
 .issues-list .sub-step{padding: 0;}
 .issues-list .sub-step > div{padding: 6px 0 5px;cursor:pointer;}
-.issues-list .sub-step > div:active{opacity: 0.7;}
+.issues-list .sub-step > div:active{opacity: 0.5;}
 .issues-list .list > .col-xs-12{margin-bottom: 15px;}
 .issues-list h5{font-size: 4.3vw;}
 .issues-list .list > div:last-child{padding-bottom: 16vh;}
@@ -187,7 +190,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .page-issues.step-1 button span.type-5::before{background-position: -6.5vw -109.2vw}
 .page-issues.step-1 button span.type-6::before{background-position: -34.5vw -109.2vw}
 .page-issues.step-1 button span.type-7::before{background-position: -62vw -109.2vw}*/
-.page-issues.ui-page-theme-a .ui-btn:active{background:transparent; opacity: 0.7;}
+.page-issues.ui-page-theme-a .ui-btn:active{background:transparent; opacity: 0.5;}
 
 
 /*STEP 2*/
