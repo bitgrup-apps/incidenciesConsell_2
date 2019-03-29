@@ -512,8 +512,8 @@ var bitgrup = {
                     bitgrup.changePage('issues-step-5');
                 }else if(bitgrup.issues.new_.location){
                     bitgrup.changePage('issues-step-4');
-                }else if(bitgrup.issues.new_.imgs){
-                    bitgrup.changePage('issues-step-3');
+                }else if(bitgrup.issues.new_.numImgs){
+                    bitgrup.issues.new_.setLocation();
                 }else if(bitgrup.issues.new_.type){
                     bitgrup.changePage('issues-step-2');
                 }else{
@@ -528,7 +528,7 @@ var bitgrup = {
             },
             
             reset: function(){
-                $('#seguir-incidencia').hide();
+                $('#continue-issue').hide();
                 bitgrup.issues.new_.type = 0;
                 bitgrup.issues.new_.imgs = new Array('', '', '', '');
                 bitgrup.issues.new_.description = '';

@@ -168,7 +168,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .issues-list .new-issue{position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px; margin: 0;  padding: 0;}
 .issues-list .new-issue h3{margin: 7px 0;}
 .issues-list .new-issue .ico-next{height: 9vw;}
-.issues-list .new-issue #continue-issue{background: #e29665;}
+.issues-list .new-issue #continue-issue{background: #e29665; display: none;}
 .issues-list .new-issue #new-reset-issue{background: #5bbced;}
 /*map*/
 #div-map{display: none;height: 100%;}
