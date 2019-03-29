@@ -431,7 +431,8 @@ var bitgrup = {
                         var status = bitgrup.issues.status;
                         var str_status = '';
                         var status_name = '';
-                        $(status).each(function (i) {
+                        $(status).each(function (n) {
+                            var i = n+1;
                             var active = '';
                             if (status[i].id == issue.STATUS) {
                                 active = 'active';
@@ -962,7 +963,7 @@ var bitgrup = {
                     var result = results[0];
                     var position = result.position;
                     var address = [result.thoroughfare || "", result.locality || "", result.postalCode || ""].join(", ");
-                    bitgrup.mapa.map.addMarker({'position': position, 'title': address}, function (marker) {
+                    bitgrup.mapa.map.addMarker({'position': posicio, 'title': address}, function (marker) {
                         marker.showInfoWindow();
                         bitgrup.mapa.map.addEventListenerOnce("MARKER_REMOVE", function () {
                             marker.remove();
