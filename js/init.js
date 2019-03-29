@@ -508,7 +508,17 @@ var bitgrup = {
             numImgs: 0,
 
             init: function () {
-                bitgrup.changePage('issues-step-1');
+                if(bitgrup.issues.new_.description){
+                    bitgrup.changePage('issues-step-5');
+                }else if(bitgrup.issues.new_.location){
+                    bitgrup.changePage('issues-step-4');
+                }else if(bitgrup.issues.new_.imgs){
+                    bitgrup.changePage('issues-step-3');
+                }else if(bitgrup.issues.new_.type){
+                    bitgrup.changePage('issues-step-2');
+                }else{
+                    bitgrup.changePage('issues-step-1');
+                }
                 setTimeout(function(){$('#seguir-incidencia').show()},500);
             },
             
