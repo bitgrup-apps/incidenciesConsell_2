@@ -85,7 +85,7 @@ button{text-shadow:none !important;}
 /*######## HEADER #############*/
 .header.ui-header{ height: 14vw; border:none; padding:10px; overflow: hidden;}
 .icons-header > div{text-align: center; }
-.icons-header > div > i:hover, .icons-header > div > i:active{opacity:0.7;}
+.icons-header > div > i:active{opacity:0.7;}
 .icons-header > div:first-child{text-align: left;} 
 .icons-header > div:nth-child(3){text-align: right;}
 #logo-entity > img{width:auto;margin-bottom: 20px; height: 65px;}
@@ -117,6 +117,7 @@ button{text-shadow:none !important;}
 #btn-home-news.active{display: block;}
 #home .log-out{text-align: left;padding-top: 3vw;}
 #home #nameEntity{text-align: center; margin-bottom: 30px;}
+#home #logo-entity{text-align: center;}
 
 /*########################      CONFIG      ###############################*/
 #config .ui-content{height: 100%;}
@@ -155,10 +156,10 @@ button{text-shadow:none !important;}
 .issues-list .traffic-light{position: absolute; left: 15px; bottom: 15px; }
 .traffic-light > span{width: 5vw; height: 5vw; border-radius: 10vw;margin-right: 6px; display: inline-block; float: left; opacity: 0.1;}
 .traffic-light > span.active{opacity: 1;}
-.traffic-light > span.green{background:#3aaa35;}
-.traffic-light > span.orange{background:#f39200;}
-.traffic-light > span.yellow{background:#f3d12b;}
-.traffic-light > span.red{background:#e30413;}
+.traffic-light > span.green{background:#66bb6a;}
+.traffic-light > span.orange{background:#ff7043;}
+.traffic-light > span.yellow{background:#ef5350;}
+.traffic-light > span.red{background:#78909c;}
 p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font-size: 3vw; text-transform: uppercase; color:#6f6f6f;}
 /*new*/
 .issues-list .new-issue{position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px; background: #5bbced;}

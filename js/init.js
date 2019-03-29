@@ -218,7 +218,7 @@ var bitgrup = {
     issues: {
 
         //types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
-        status: [{id: 0, name: 'Rebutjada', color: '#78909c'}, {id: 1, name: 'Pendent', color: '#ef5350'}, {id: 2, name: 'En curs', color: '#ff7043'}, {id: 3, name: 'Resolta', color: '#66bb6a'}],
+        status: [{id: 1, name: 'Rebutjada', color: 'red'}, {id: 2, name: 'Pendent', color: 'yellow'}, {id: 3, name: 'En curs', color: 'orange'}, {id: 4, name: 'Resolta', color: 'green'}],
 
         init: function () {
             //REFRESH
@@ -546,9 +546,10 @@ var bitgrup = {
             },
 
             setCard: function () {
-                var fecha = new Date();
-                var today = ("0" + fecha.getDate()).slice(-2) + '/' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '/' + fecha.getFullYear();
-                var time = ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
+                
+                var today = bitgrup.getToday();
+                var time = bitgrup.getTime();
+                
                 $('#new-issue-type').html(bitgrup.issues.getNameType(bitgrup.issues.new_.type));
                 $('#new-issue-description').html(bitgrup.issues.new_.description);
                 try {
@@ -571,9 +572,8 @@ var bitgrup = {
 
             send: function () {
                 bitgrup.spinner.on();
-                var fecha = new Date();
-                var today = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
-                var time = fecha.getHours() + ':' + fecha.getMinutes();
+                var today = bitgrup.getToday();
+                var time = bitgrup.getTime();
 
                 /*SAVE ON DATA BASE*/
                 //GET LAST ID
@@ -750,8 +750,7 @@ var bitgrup = {
                             pubDate = $(this).find('pubDate').text();
                         }
                         var date = new Date(pubDate);
-                        //var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes();
-                        var stringDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                        var stringDate = bitgrup.getToday(date);
                         bitgrup.news.newsArray.push({id: i, title: title, description: description, img: img, uri: uri, pubData: stringDate});
                         if (i >= 30) {
                             return false;
@@ -1284,6 +1283,10 @@ var bitgrup = {
         }
 
     },
+    
+    backButton: function(){
+      window.history.back();  
+    },
 
     initScreen: function () {
         $('body .ui-content').removeClass('no-active');
@@ -1322,6 +1325,17 @@ var bitgrup = {
         } else {
             console.log(str, data);
         }
+    },
+    
+    getToday: function(date_){
+        var fecha = (date_) ? date_ : new Date();
+        return ("0" + fecha.getDate()).slice(-2) + '/' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '/' + fecha.getFullYear();
+                
+    },
+    
+    getTime: function(){
+        var fecha = new Date();
+        return ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
     }
 
 
