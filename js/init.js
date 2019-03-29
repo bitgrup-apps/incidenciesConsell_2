@@ -519,7 +519,7 @@ var bitgrup = {
                 }else{
                     bitgrup.changePage('issues-step-1');
                 }
-                setTimeout(function(){$('#seguir-incidencia').show()},500);
+                setTimeout(function(){$('#ontinue-issue').show()},500);
             },
             
             resetAndInit: function(){
