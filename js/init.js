@@ -252,7 +252,7 @@ var bitgrup = {
                     //ELIMINAM
                     dataBase.query('DELETE FROM ISSUES WHERE ID = ? ', [id], function (result) {
                         bitgrup.issues.list.init();
-                        bitgrup.back();
+                        bitgrup.backButton();
                     });
                 }
             });
@@ -362,12 +362,13 @@ var bitgrup = {
                         var html_status = '';
                         var str_status = '';
                         $(status).each(function (n) {
+                            var i = n+1;
                             var active = '';
                             if (status[n].id == issue.STATUS) {
                                 active = 'active';
-                                str_status = status[n].name;
+                                str_status = status[i].name;
                             }
-                            html_status = html_status + '<span class="' + status[n].color + ' ' + active + '"></span>';
+                            html_status = html_status + '<span class="' + status[i].color + ' ' + active + '"></span>';
                         });
 
                         /*#################     DESCRIPTION        ####################*/
