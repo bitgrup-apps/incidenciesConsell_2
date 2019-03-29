@@ -365,7 +365,7 @@ var bitgrup = {
                             var active = '';
                             if (status[n].id == issue.STATUS) {
                                 active = 'active';
-                                str_status = status[i].name;
+                                str_status = status[n].name;
                             }
                             html_status = html_status + '<span class="' + status[n].color + ' ' + active + '"></span>';
                         });
@@ -508,6 +508,10 @@ var bitgrup = {
             numImgs: 0,
 
             init: function () {
+                bitgrup.changePage('issues-step-1');
+            },
+            
+            reset: function(){
                 bitgrup.issues.new_.type = 0;
                 bitgrup.issues.new_.imgs = new Array('', '', '', '');
                 bitgrup.issues.new_.description = '';
@@ -519,7 +523,6 @@ var bitgrup = {
                 for (var i = 0; i < bitgrup.issues.new_.maxImgs; i++) {
                     bitgrup.pictures.setNoPicture(i + 1);
                 }
-                bitgrup.changePage('issues-step-1');
             },
 
             setType: function (type) {
@@ -634,6 +637,7 @@ var bitgrup = {
             },
 
             sendOK: function () {
+                bitgrup.issues.new_.reset();
                 bitgrup.pictures.optionsArray = new Array();
                 $('#issues-step-6-btn-error').hide();
                 $('#issues-step-6-btn-ok').show();

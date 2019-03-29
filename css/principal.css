@@ -17,7 +17,7 @@ img{width:100%;}
 .img{background-size: cover; background-position: center; background-repeat: no-repeat;width: 100%;height: 20vw; max-width: 300px;}
 .ui-page { -webkit-backface-visibility: hidden !important; }
 
-a:hover, a:active, a:focus{text-decoration:none;}
+a:active, a:active, a:focus{text-decoration:none;}
 a:active{opacity:0.6;}
 ::-webkit-input-placeholder{color:#999;}:-moz-placeholder{color:#999; opacity: 1;}::-moz-placeholder {color:#999;opacity: 1;}:-ms-input-placeholder { color:#999;}
 
@@ -80,7 +80,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 button{text-shadow:none !important;}
 .transition, button, a{transition: all 0.8s ease-in-out;}
 .ui-page-theme-a .ui-btn{padding:0; margin: 0; background: transparent; border: none; box-shadow: none;}
-.ui-page-theme-a button.ui-btn:hover{box-shadow: none;}
+.ui-page-theme-a button.ui-btn:active{box-shadow: none;}
 
 /*######## HEADER #############*/
 .header.ui-header{ height: 14vw; border:none; padding:10px; overflow: hidden;}
@@ -108,8 +108,8 @@ button{text-shadow:none !important;}
 #home .footer > div{padding:0 5px 0 0;}
 #home .footer > div:last-child{padding:0 0 0 5px;}
 #home .footer span{border-radius: 4px;text-shadow:none;display: inline-block; width: 100%; text-align: center;padding: 19vw 0 10px; background: #d2d2d2; color:#4c4c4c; font-size: 14px; font-weight: 400;}
-#home .btn-home button:hover span{background-color:transparent;}
-#home .footer span:hover{opacity: 0.5;}
+#home .btn-home button:active span{background-color:transparent;}
+#home .footer span:active{opacity: 0.5;}
 #home .footer span::before{width: 20vw;height: 20vw;top: 2vw;left: calc(50% - 10vw);background-size: 147vw auto;}
 #home .footer span.ico-wold::before{background-position: -55.5vw -22.1vw}
 #home .footer span.ico-phone::before{background-position: -78.5vw -23.1vw;}
@@ -140,12 +140,12 @@ button{text-shadow:none !important;}
 .issues-list .sub-step > div:last-child{background: #8acff2;}
 .issues-list .sub-step{padding: 0;}
 .issues-list .sub-step > div{padding: 6px 0 5px;cursor:pointer;}
-.issues-list .sub-step > div:hover{opacity: 0.7;}
+.issues-list .sub-step > div:active{opacity: 0.7;}
 .issues-list .list > .col-xs-12{margin-bottom: 15px;}
 .issues-list h5{font-size: 4.3vw;}
 .issues-list .list > div:last-child{padding-bottom: 16vh;}
 .issues-list .list > .col-xs-12 > div > a:first-child{display: inline-block;float: left;width: 100%;height: 100%;}
-.issues-list .list > .col-xs-12 > div > a:first-child:hover{background:rgba(22,159,230,0.3);}
+.issues-list .list > .col-xs-12 > div > a:first-child:active{background:rgba(22,159,230,0.3);}
 .issues-list .list > .col-xs-12 > div{height: 47vw; min-height: 150px;background-color:#fff;}
 .issues-list .list > .col-xs-12 > div:first-child{background-position: center; background-size: cover; padding: 0;}
 .issues-list .list > .col-xs-12 > div:last-child{padding: 15px;}
@@ -172,7 +172,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .pgm-html-info-content-frame .mapInfowindow > div{text-align: center; margin-top:20px;}
 /*card*/
 .ui-page-theme-a.step-5 .ui-btn.trash{padding: 5px 45px; width: 100%;}
-.ui-page-theme-a.step-5 .ui-btn.trash:hover, .ui-page-theme-a.step-5 .ui-btn.trash:active{background:#169fe6; color:#fff;opacity:0.8;}
+ .ui-page-theme-a.step-5 .ui-btn.trash:active{background:#169fe6; color:#fff;opacity:0.8;}
 
 /*STEP 1*/
 .page-issues.step-1 .header.ui-header{background:#45b3eb;}
@@ -187,7 +187,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .page-issues.step-1 button span.type-5::before{background-position: -6.5vw -109.2vw}
 .page-issues.step-1 button span.type-6::before{background-position: -34.5vw -109.2vw}
 .page-issues.step-1 button span.type-7::before{background-position: -62vw -109.2vw}*/
-.page-issues.ui-page-theme-a .ui-btn:hover{background:transparent; opacity: 0.7;}
+.page-issues.ui-page-theme-a .ui-btn:active{background:transparent; opacity: 0.7;}
 
 
 /*STEP 2*/
@@ -195,7 +195,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .pagina .imgs > div span{ height: 37vw; display: inline-block; width: 100%;background:#eeeeee;background-size: cover; background-position: center;}
 .pagina .imgs > div span::before{height: 18vw;width: 18vw;left: calc(50% - 9vw); top:calc(50% - 9vw); background-position: -86.5vw -125.1vw;  }
 .pagina .imgs > div span.remove::before{background-position: -24.5vw -112vw;height: 13vw;width: 12vw;right: 5px;top: 0;left: initial;background-size: 92vw auto;}
-.pagina .imgs > div span.remove:hover{opacity:0.5;}
+.pagina .imgs > div span.remove:active{opacity:0.5;}
 .pagina .imgs .img{background-size: cover; background-position: center;}
 .pagina .imgs > div{padding: 1px 3px;}
 
@@ -209,7 +209,7 @@ textarea#desc-issue.ui-input-text{background:#eeeeee; width: 100%; height: 40vh 
 
 /*STEP 5*/
 .ui-page-theme-a.step-5 .ui-btn{background: #169fe6;border: 1px solid #169fe6;box-shadow: none;color: #fff;font-weight: 700;font-size: 4vw;width: auto;margin: 30px 0;padding: 11px 45px;}
-.ui-page-theme-a.step-5 .ui-btn:hover{background: #fff;color: #169fe6;border: 1px solid #169fe6;}
+.ui-page-theme-a.step-5 .ui-btn:active{background: #fff;color: #169fe6;border: 1px solid #169fe6;}
 
 /*STEP 6*/
 .page-issues.steps.step-6 .ui-content{height: 100vh; background: transparent;padding-top: 20vh;}
@@ -234,7 +234,7 @@ textarea#desc-issue.ui-input-text{background:#eeeeee; width: 100%; height: 40vh 
 
 /*LIST*/
 .page-news .traffic-light p{margin-bottom: 0;}
-.page-news.issues-list .list > .col-xs-12 > div > a:first-child:hover{background:rgba(76,76,76,0.3);}
+.page-news.issues-list .list > .col-xs-12 > div > a:first-child:active{background:rgba(76,76,76,0.3);}
 .page-news.issues-list .list > .col-xs-12 > div{background-color:#fff;}
 .page-news.issues-list .ui-content > div:nth-child(1) {padding: 10px;}
 .page-news .list > .col-xs-12 > div{background-color:#fff;}
@@ -257,9 +257,9 @@ textarea#desc-issue.ui-input-text{background:#eeeeee; width: 100%; height: 40vh 
 #share {position: absolute; top:0; right:calc(50% - 7vw); width: 15vw; height: 15vw;  cursor: pointer;   line-height: 10vw;  list-style-type: none;  margin: 0;  padding: 0;  text-align: center;  color: #fff;  cursor: pointer;background-image: url('../icons/sprite.svg');background-size: 131vw;background-position: -83vw -69vw;}
 #share > li {  position: absolute;  left: 0;  top: 0;  width: 100%;  height: 100%;}
 #share > li {z-index: -1;  transition: all .6s;  -webkit-transition: all .6s;  -moz-transition: .6s;opacity: 0;left: 0; top: 0; }
-/*#share.active, #share:hover { opacity:0.5; }*/
+/*#share.active, #share:active { opacity:0.5; }*/
 #share.active > li {z-index: 2;opacity: 1;}
-#share.active li:hover { opacity:0.5; }
+#share.active li:active { opacity:0.5; }
 #share .ico{height: 13vw;width: 13vw;background-size: 150vw auto;}
 
 /*  ----    TABLETS     -----  */
