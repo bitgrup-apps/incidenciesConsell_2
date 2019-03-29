@@ -79,7 +79,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 
 /*######## BOTONS #############*/
 button{text-shadow:none !important;}
-.transition, button, a{transition: all 0.8s ease-in-out;}
+.transition{transition: all 0.8s ease-in-out;}
 .ui-page-theme-a .ui-btn{padding:0; margin: 0; background: transparent; border: none; box-shadow: none;}
 .ui-page-theme-a button.ui-btn:active, .ui-page-theme-a button.ui-btn:focus, .ui-page-theme-a button.ui-btn:hover{box-shadow: none;background:initial;}
 
