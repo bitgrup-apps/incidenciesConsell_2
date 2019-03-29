@@ -509,9 +509,16 @@ var bitgrup = {
 
             init: function () {
                 bitgrup.changePage('issues-step-1');
+                setTimeout(function(){$('#seguir-incidencia').show()},500);
+            },
+            
+            resetAndInit: function(){
+              bitgrup.issues.new_.reset();
+              bitgrup.issues.new_.init();
             },
             
             reset: function(){
+                $('#seguir-incidencia').hide();
                 bitgrup.issues.new_.type = 0;
                 bitgrup.issues.new_.imgs = new Array('', '', '', '');
                 bitgrup.issues.new_.description = '';
@@ -912,7 +919,9 @@ var bitgrup = {
                     //CHANGE DIV MAP AND LOCATION
                     var div = document.getElementById(id);
                     bitgrup.mapa.map.setDiv(div);
-                    bitgrup.mapa.getLocation();
+                    if(!bitgrup.issues.new_.location){
+                        bitgrup.mapa.getLocation();
+                    }
                 }
                 return true;
             } catch (e) {
@@ -1296,9 +1305,11 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        $('body .ui-content').removeClass('no-active');
-        $('#loading').removeClass('active');
-        bitgrup.spinner.off();
+        setTimeout(function(){
+            $('body .ui-content').removeClass('no-active');
+            $('#loading').removeClass('active');
+            bitgrup.spinner.off();
+        }, 500);
     },
 
     maxWords: function (str) {

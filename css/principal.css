@@ -165,9 +165,11 @@ button{text-shadow:none !important;}
 .traffic-light > span.red{background:#78909c;}
 p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font-size: 3vw; text-transform: uppercase; color:#6f6f6f;}
 /*new*/
-.issues-list .new-issue{position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px; background: #5bbced;}
+.issues-list .new-issue{position: fixed; bottom: 0; left: 0; width: 100%; padding: 10px; margin: 0;  padding: 0;}
 .issues-list .new-issue h3{margin: 7px 0;}
 .issues-list .new-issue .ico-next{height: 9vw;}
+.issues-list .new-issue #continue-issue{background: #e29665;}
+.issues-list .new-issue #new-reset-issue{background: #5bbced;}
 /*map*/
 #div-map{display: none;height: 100%;}
 .pgm-html-info-content-frame{width:200px !important;}
@@ -197,7 +199,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .pagina .new-img{padding-top: 50px; padding-bottom: 50px; background: #eeeeee;}
 .pagina .imgs > div span{ height: 37vw; display: inline-block; width: 100%;background:#eeeeee;background-size: cover; background-position: center;}
 .pagina .imgs > div span::before{height: 18vw;width: 18vw;left: calc(50% - 9vw); top:calc(50% - 9vw); background-position: -86.5vw -125.1vw;  }
-.pagina .imgs > div span.remove::before{background-position: -24.5vw -112vw;height: 13vw;width: 12vw;right: 5px;top: 0;left: initial;background-size: 92vw auto;}
+.pagina .imgs > div span.remove::before{background-position: -24.5vw -112vw;height: 13vw;width: 12vw;right: 3px;top: 1px;left: initial;background-size: 92vw auto;}
 .pagina .imgs > div span.remove:active{opacity:0.5;}
 .pagina .imgs .img{background-size: cover; background-position: center;}
 .pagina .imgs > div{padding: 1px 3px;}
