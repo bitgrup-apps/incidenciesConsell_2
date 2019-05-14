@@ -108,7 +108,14 @@ var bitgrup = {
                             var n = entity.name.replace("Ajuntament de", "");
                             var n2 = n.replace("Ajuntament d'", "");
                             var name = n2.trim();
-                            html = html + '<div class="menu-item-container"><div class="menu-item"><p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p></div><div class="menu-item-button"><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button></div></div>';
+                            html = html + '<div class="menu-item-container">\n\
+                                                <div class="menu-item">\n\
+                                                    <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
+                                                </div>\n\
+                                                <div class="menu-item-button">\n\
+                                                    <button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>\n\
+                                                </div>\n\
+                                            </div>';
                         });
                         $('#entities-list').html(html);
                         $('.pre-btn').hide();
