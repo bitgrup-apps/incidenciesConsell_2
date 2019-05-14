@@ -129,6 +129,10 @@ button{text-shadow:none !important;}
 #entities-list button{position: relative; font-size: 4vw; width: 89%; float: left; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
 /*#entities-list button::before{content: " "; position:absolute; left: 10px; top: 10px; width: 0; height: 0;border-right: 2vw solid transparent;  border-top: 0vw solid rgba(256,256,256,0.15); border-left: 33vw solid rgba(256,256,256,0.15); border-bottom: 34vw solid transparent;}*/
 #entities-list .pre-btn {background: #169fe6; float: left; width: 7%; text-align: center; border-radius: 50%; color: #fff; margin: 5px; font-size: 4vw;}
+#entities-list menu-item-container {width: 100%}
+#entities-list menu-item-container:after {content:"";clear: both;}
+#entities-list menu-item {width: 25px; text-align: center; float: left;}
+#entities-list menu-item-button {width: calc(100% - 25px); padding-left: 5px; float: left;}
 
 
 /*########################      ISSUES      ###############################*/
