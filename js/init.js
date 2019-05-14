@@ -106,7 +106,8 @@ var bitgrup = {
                         $(entities).each(function (i) {
                             var entity = entities[i];
                             var n = entity.name.replace("Ajuntament de", "");
-                            var name = n.replace("Ajuntament d'", "");
+                            var n2 = n.replace("Ajuntament d'", "");
+                            var name = n2.trim();
                             html = html + '<p class="pre-btn">' + name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>';
                         });
                         $('#entities-list').html(html);
