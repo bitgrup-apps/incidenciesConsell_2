@@ -99,13 +99,13 @@ var bitgrup = {
 
         chooseEntity: function () {
             api.getEntities(function (entities) {
-                console.log(entities);
+                
                 try {
                     if (entities) {
                         var html = '';
                         $(entities).each(function (i) {
                             var entity = entities[i];
-                            html = html + '<button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
+                            html = html + '<p class="pre-btn">' + entity.name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
                         });
                         $('#entities-list').html(html);
                         $.mobile.changePage("#config", {transition: "slide", reverse: true});
