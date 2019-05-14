@@ -108,9 +108,14 @@ var bitgrup = {
                             var n = entity.name.replace("Ajuntament de", "");
                             var n2 = n.replace("Ajuntament d'", "");
                             var name = n2.trim();
-                            html = html + '<p class="pre-btn">' + name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>';
+                            html = html + '<p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>';
                         });
                         $('#entities-list').html(html);
+                        $('.pre-btn').hide();
+                        $('.pre-btn').each(function () {
+                            var letra = $(this).data("letra");
+                            $('.pre-btn[data-letra='+letra+']').first().show();
+                        });
                         $.mobile.changePage("#config", {transition: "slide", reverse: true});
                         //TOT APUNT
                         bitgrup.initScreen();
