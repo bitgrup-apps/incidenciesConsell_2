@@ -105,7 +105,9 @@ var bitgrup = {
                         var html = '';
                         $(entities).each(function (i) {
                             var entity = entities[i];
-                            html = html + '<p class="pre-btn">' + entity.name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + entity.name + ' </button>';
+                            var n = entity.name.replace("Ajuntament de", "");
+                            var name = n.replace("Ajuntament d'", "");
+                            html = html + '<p class="pre-btn">' + name[0] + '</p><button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>';
                         });
                         $('#entities-list').html(html);
                         $.mobile.changePage("#config", {transition: "slide", reverse: true});

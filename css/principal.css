@@ -126,9 +126,9 @@ button{text-shadow:none !important;}
 
 /*########################      CONFIG      ###############################*/
 #config .ui-content{height: 100%;}
-#entities-list button{position: relative; font-size: 4vw;width: 80%;  float: left;  white-space: initial; font-weight: 400; background: transparent; text-align: left;}
+#entities-list button{position: relative; font-size: 4vw;width: 93%;  float: left;  white-space: initial; font-weight: 400; background: transparent; text-align: left;}
 /*#entities-list button::before{content: " "; position:absolute; left: 10px; top: 10px; width: 0; height: 0;border-right: 2vw solid transparent;  border-top: 0vw solid rgba(256,256,256,0.15); border-left: 33vw solid rgba(256,256,256,0.15); border-bottom: 34vw solid transparent;}*/
-#entities-list .pre-btn {background: blue;}
+#entities-list .pre-btn {background: blue; float: left; width: 7%; text-align: center; border-radius: 50%; color: #fff}
 
 
 /*########################      ISSUES      ###############################*/
