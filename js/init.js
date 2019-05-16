@@ -1310,9 +1310,9 @@ var bitgrup = {
         console.log(currentPage);
         if (currentPage == 'home') {
             //bitgrup.entities.logOut();
-            navigator.app.exitApp();
+            //navigator.app.exitApp();
         } else if (currentPage == 'config') {
-            navigator.app.exitApp();
+            $.mobile.changePage("#home", {transition: "slide", reverse: true});
         } else if (currentPage == 'issues-step-6') {
             if ($('#issues-step-6').hasClass('msg-error')) {
                 navigator.app.backHistory();
@@ -1322,7 +1322,6 @@ var bitgrup = {
         } else {
             navigator.app.backHistory();
         }
-
     },
     
     backButton: function(){

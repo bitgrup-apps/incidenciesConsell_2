@@ -74,6 +74,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 .ico.ico-location{    background-position: -69vw -11.5vw;  background-size: 81vw auto;}
 .ico.ico-logOut{background-position: -41vw -96vw;background-size: 80vw;}
 .ico.ico-trash{background-position: -23.5vw -97vw;height: 9vw;width: 9vw;background-size: 80vw auto;}
+.ico.ico-menu { background-position: -72.5vw -14vw; background-size: 100vw auto;}
 .before::before{position:absolute; background-position: -86.5vw -125.1vw; content: " ";background-image: url('../icons/sprite.svg'); background-size: 120vw auto; background-repeat: no-repeat;}
 .ico.ico-refresh{background-position:-172.5vw -253vw; width: 12vw; height: 12vw; }
 
@@ -95,7 +96,7 @@ button{text-shadow:none !important;}
 .icons-header > div:nth-child(3){text-align: right;}
 #logo-entity > img{width:auto;margin-bottom: 20px; height: 65px;}
 /*page*/
-.pagina .header.ui-header{padding:20px 10px 2px; background:#23a5e6;}
+.pagina .header.ui-header{background:#23a5e6;}
 .pagina .ui-content{padding: 20px 10px;}
 .ui-header .ico, .sub-step .ico{height: 7vw; width: 7vw;}
 
