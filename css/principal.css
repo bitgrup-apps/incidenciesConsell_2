@@ -143,6 +143,9 @@ div#entities-list {margin-top: 20px;}
 #entities-list .menu-item {width: 25px; text-align: center; min-height: 1px; display: inline-block; vertical-align: middle;}
 #entities-list .menu-item-button {width: calc(100% - 30px); padding-left: 5px; display: inline-block; vertical-align: middle;}
 
+/*########################      CONTACT      ###############################*/
+.ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset { border-radius: 25px 25px 25px 25px; border: 1px solid lightgrey; background: #fff;}
+button.ui-btn.ui-shadow.ui-corner-all {background: #169fe6; color: #fff;padding: 15px;width: 60%;position: absolute;left: 20%;}
 
 /*########################      ISSUES      ###############################*/
 .page-issues{background:#23a5e6; }
