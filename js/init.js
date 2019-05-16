@@ -1137,9 +1137,7 @@ var bitgrup = {
                 bitgrup.confirm('Està segur?', function (buttonIndex) {
                     if (buttonIndex == 1) {
                         //RESET ALL IMATGES
-                        for (var i = 0; i < bitgrup.issues.new_.maxImgs; i++) {
-                            bitgrup.pictures.setNoPicture(i + 1);
-                        }
+                        bitgrup.pictures.setNoPicture(numImg);
                         //Reorder imgs in array
                         imgs.splice((numImg), 1);
                         //set img
