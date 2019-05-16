@@ -126,13 +126,14 @@ button{text-shadow:none !important;}
 
 /*########################      CONFIG      ###############################*/
 #config .ui-content{height: 100%;}
+div#entities-list {margin-top: 20px;}
 #entities-list button{position: relative; font-size: 4vw; width: 100%; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
 /*#entities-list button::before{content: " "; position:absolute; left: 10px; top: 10px; width: 0; height: 0;border-right: 2vw solid transparent;  border-top: 0vw solid rgba(256,256,256,0.15); border-left: 33vw solid rgba(256,256,256,0.15); border-bottom: 34vw solid transparent;}*/
-#entities-list .pre-btn {background: #169fe6; float: left; width: 100%; text-align: center; border-radius: 50%; color: #fff; margin: 0px; font-size: 4vw;}
-#entities-list .menu-item-container {width: 100%}
+#entities-list .pre-btn {background: #169fe6; float: left; width: 90%; text-align: center; border-radius: 50%; color: #fff; margin: 1px; font-size: 4vw;}
+#entities-list .menu-item-container {width: 100%; height: 25px;}
 #entities-list .menu-item-container:after {content:"";clear: both;}
 #entities-list .menu-item {width: 25px; text-align: center; min-height: 1px; display: inline-block; vertical-align: middle;}
-#entities-list .menu-item-button {    width: calc(100% - 25px);padding-left: 5px; display: inline-block;vertical-align: middle;}
+#entities-list .menu-item-button {width: calc(100% - 30px); padding-left: 5px; display: inline-block; vertical-align: middle;}
 
 
 /*########################      ISSUES      ###############################*/
