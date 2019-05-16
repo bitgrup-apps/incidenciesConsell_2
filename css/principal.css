@@ -101,6 +101,11 @@ button{text-shadow:none !important;}
 .ui-header .ico, .sub-step .ico{height: 7vw; width: 7vw;}
 
 
+/*######## MENU #############*/
+div#menu {background: #fff;}
+div#menu h3{color: #23a5e6;}
+
+
 /*######## HOME #############*/
 #home .ui-content{height: 100vh;padding: 20px 35px;}
 #home .btn-home button{ border-radius: 4px;background-position: center; background-repeat: no-repeat; background-size: cover; width:100%; padding: 0;margin-bottom: 12px; }
