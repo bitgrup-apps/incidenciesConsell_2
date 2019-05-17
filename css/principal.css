@@ -102,6 +102,10 @@ button{text-shadow:none !important;}
 
 
 /*######## MENU #############*/
+#home_menu {background: #fff;}
+#home_menu h3{color: #23a5e6;}
+#home_menu .menu-item {margin: 10px;}
+#home_menu .menu-close {margin: 20px 0px 10px 0px;}
 #menu {background: #fff;}
 #menu h3{color: #23a5e6;}
 #menu .menu-item {margin: 10px;}
