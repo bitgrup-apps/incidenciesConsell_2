@@ -1138,16 +1138,22 @@ var bitgrup = {
                     if (buttonIndex == 1) {
                         //RESET ALL IMATGES
                         debugger;
-                        bitgrup.pictures.setNoPicture(numImg);
+                        //bitgrup.pictures.setNoPicture(numImg);
+                        for (var i=0;i<imgs.length;i++) {
+                            bitgrup.pictures.setPicture(i+1);
+                        }
                         //Reorder imgs in array
                         imgs.splice((numImg), 1);
                         var imgsNew = imgs.filter(Boolean);
                         //set img
-                        $(imgsNew).each(function (i) {
-                            if (imgsNew[i]) {
-                                bitgrup.pictures.setPicture(imgsNew[i], (i + 1));
-                            }
-                        });
+//                        $(imgsNew).each(function (i) {
+//                            if (imgsNew[i]) {
+//                                bitgrup.pictures.setPicture(imgsNew[i], (i + 1));
+//                            }
+//                        });
+                        for (var i=0;i<imgsNew.length;i++) {
+                            bitgrup.pictures.setPicture(imgsNew[i], i+1);
+                        }
                         bitgrup.issues.new_.imgs = imgsNew;
                         bitgrup.issues.new_.numImgs--;
                     }
