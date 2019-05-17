@@ -1096,9 +1096,8 @@ var bitgrup = {
             bitgrup.alert('No s\'ha pogut aconseguir la imatge');
         },
 
-        setPicture: function (imageData, num_imgs) {
+                setPicture: function (imageData, num_imgs) {
             bitgrup.pictures.getPictureOptions(imageData, function (result) {
-
                 result['name'] = 'img' + api.deviceId + num_imgs;
                 bitgrup.pictures.optionsArray.push(result);
 
@@ -1137,10 +1136,9 @@ var bitgrup = {
                 bitgrup.confirm('Està segur?', function (buttonIndex) {
                     if (buttonIndex == 1) {
                         //RESET ALL IMATGES
-                        debugger;
                         //bitgrup.pictures.setNoPicture(numImg);
                         for (var i=0;i<imgs.length;i++) {
-                            bitgrup.pictures.setPicture(i+1);
+                            bitgrup.pictures.setNoPicture(i+1);
                         }
                         //Reorder imgs in array
                         imgs.splice((numImg), 1);
@@ -1152,7 +1150,16 @@ var bitgrup = {
 //                            }
 //                        });
                         for (var i=0;i<imgsNew.length;i++) {
-                            bitgrup.pictures.setPicture(imgsNew[i], i+1);
+                            //bitgrup.pictures.setPicture(imgsNew[i], i+1);
+                            var id = 'new-issue-img-' + (i+1);
+                            var id_card = 'new-issue-card-img-' + (i+1);
+                            //get img
+                            $('#' + id).addClass('remove');
+                            $('#' + id).css('background-image', "url('" + imgsNew[i] + "')");
+                            //card img
+                            $('#' + id_card).addClass('img');
+                            $('#' + id_card).removeClass('before');
+                            $('#' + id_card).css('background-image', "url('" + imgsNew[i] + "')");
                         }
                         bitgrup.issues.new_.imgs = imgsNew;
                         bitgrup.issues.new_.numImgs--;
