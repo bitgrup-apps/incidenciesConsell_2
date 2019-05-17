@@ -155,6 +155,7 @@ div#entities-list {margin-top: 20px;}
 .page-issues.steps .ui-content > div:first-child{padding:23vw 25px 25px;}
 .page-issues .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 10px 25px;}
 .page-issues .sub-step h3{margin:0;}
+.page-issues .sub-step h3.right{text-align: right;}
 
 /*LIST*/ 
 .issues-list .ui-content{background:#eeeeee; padding: 0;}
