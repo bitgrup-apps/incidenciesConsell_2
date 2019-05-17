@@ -1129,24 +1129,25 @@ var bitgrup = {
         },
 
         removeImg: function (numImg) {
-            numImg--;
+            var indexImg = numImg - 1;
             var imgs = bitgrup.issues.new_.imgs;
             //if exist img
             //bitgrup.log(imgs[numImg]);
-            if (imgs[numImg]) {
+            if (imgs[indexImg]) {
                 bitgrup.confirm('Està segur?', function (buttonIndex) {
                     if (buttonIndex == 1) {
                         //RESET ALL IMATGES
-                        bitgrup.pictures.setNoPicture(numImg + 1);
+                        bitgrup.pictures.setNoPicture(indexImg);
                         //Reorder imgs in array
-                        imgs.splice((numImg), 1);
+                        //imgs.splice((numImg), 1);
+                        var imgsNew = imgs.filter(Boolean);
                         //set img
-                        $(imgs).each(function (i) {
-                            if (imgs[i]) {
+                        $(imgsNew).each(function (i) {
+                            if (imgsNew[i]) {
                                 bitgrup.pictures.setPicture(imgs[i], (i + 1));
                             }
                         });
-                        bitgrup.issues.new_.imgs = imgs;
+                        bitgrup.issues.new_.imgs = imgsNew;
                         bitgrup.issues.new_.numImgs--;
                     }
                 });
