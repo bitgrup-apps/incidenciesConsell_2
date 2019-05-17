@@ -1140,12 +1140,12 @@ var bitgrup = {
                         debugger;
                         bitgrup.pictures.setNoPicture(numImg);
                         //Reorder imgs in array
-                        //imgs.splice((numImg), 1);
+                        imgs.splice((numImg), 1);
                         var imgsNew = imgs.filter(Boolean);
                         //set img
                         $(imgsNew).each(function (i) {
                             if (imgsNew[i]) {
-                                bitgrup.pictures.setPicture(imgs[i], (i + 1));
+                                bitgrup.pictures.setPicture(imgsNew[i], (i + 1));
                             }
                         });
                         bitgrup.issues.new_.imgs = imgsNew;
