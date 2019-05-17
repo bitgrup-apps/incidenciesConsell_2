@@ -1141,7 +1141,7 @@ var bitgrup = {
                             bitgrup.pictures.setNoPicture(i+1);
                         }
                         //Reorder imgs in array
-                        imgs.splice((numImg), 1);
+                        imgs.splice((indexImg), 1);
                         var imgsNew = imgs.filter(Boolean);
                         //set img
 //                        $(imgsNew).each(function (i) {
