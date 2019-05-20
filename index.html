@@ -89,7 +89,7 @@
             <div data-role="header" class="header">
                 <div class="row icons-header">
                     <div class="col-xs-3" ><p> </p></div>
-                    <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
+                    <div class="col-xs-6" onclick="bitgrup.home();"></div>
                     <div class="col-xs-3" ><a href="#home_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
@@ -117,7 +117,7 @@
         <!--###################             CONTACT                  ###########################-->
         <!--####################################################################################-->
         <div data-role="page" class="pagina" id="contact">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="contact_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
@@ -164,7 +164,7 @@
 
         <!--###################        LIST      ###########################-->
         <div data-role="page" class="page-issues issues-list pagina"   id="issues-list">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-list_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
@@ -188,7 +188,7 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-list_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
 
@@ -229,13 +229,13 @@
 
         <!--###################        CARD      ###########################-->
         <div data-role="page" class="page-issues pagina step-5 steps"   id="issues-card">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-card_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -253,7 +253,7 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-card_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
             <!--    TITLE -->
@@ -299,13 +299,13 @@
 
         <!--###################        STEP-1 (TYPE)       ###########################-->
         <div data-role="page" class="page-issues pagina step-1"   id="issues-step-1">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-step-1_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -323,7 +323,7 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-step-1_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
 
@@ -335,13 +335,13 @@
 
         <!--###################        STEP-2  (IMGS)      ###########################-->
         <div data-role="page" class="page-issues pagina step-2 steps"   id="issues-step-2">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-step-2_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -359,13 +359,13 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-step-2_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div>
             <!--    TITLE -->
             <div class="col-xs-12 sub-step">
                 <div class="row">
-                    <div class="col-xs-6"><h3>Nova incidència</h3></div>
+                    <div class="col-xs-6"><h3>Tipus d'incidència</h3></div>
                     <div class="col-xs-6" onclick="bitgrup.issues.new_.setLocation();"><h3 class="right">Següent</h3></div>
                 </div>
             </div>
@@ -396,13 +396,13 @@
 
         <!--###################        STEP-3  (MAP)      ###########################-->
         <div data-role="page" class="page-issues pagina step-3 steps"   id="issues-step-3">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-step-3_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -420,13 +420,13 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-step-3_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div>
             <!--    TITLE -->
             <div class="col-xs-12 sub-step">
                 <div class="row">
-                    <div class="col-xs-6"><h3>Lloc de la incidència</h3></div>
+                    <div class="col-xs-6"><h3>Localització</h3></div>
                     <div class="col-xs-6" onclick="bitgrup.changePage('issues-step-4')"><h3 class="right">Següent</h3></div>
                 </div>
             </div>
@@ -443,13 +443,13 @@
 
         <!--###################        STEP-4  (DESCRIPTION)      ###########################-->
         <div data-role="page" class="page-issues pagina step-4 steps"   id="issues-step-4">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-step-4_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -467,13 +467,13 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-step-4_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div>
             <!--    TITLE -->
             <div class="col-xs-12 sub-step">
                 <div class="row">
-                    <div class="col-xs-6"><h3>Dades de la incidència</h3></div>
+                    <div class="col-xs-6"><h3>Dades</h3></div>
                     <div class="col-xs-6" onclick="bitgrup.issues.new_.setData();"><h3 class="right">Següent</h3></div>
                 </div>
             </div>
@@ -489,13 +489,13 @@
 
         <!--###################        STEP-5  (ISSUE)      ###########################-->
         <div data-role="page" class="page-issues pagina step-5 steps"   id="issues-step-5">
-           <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+           <div data-role="panel" id="issues-step-5_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -513,13 +513,13 @@
                 <div class="row icons-header"> 
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#issues-step-5_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div>
             <!--    TITLE -->
             <div class="col-xs-12 sub-step">
                 <div class="row">
-                    <div class="col-xs-6"><h3>Resum de la incidència</h3></div>
+                    <div class="col-xs-6"><h3>Resum</h3></div>
                     <div class="col-xs-6" onclick="bitgrup.issues.new_.send();"><h3 class="right">Confirmar</h3></div>
                 </div>
             </div>
@@ -568,13 +568,13 @@
 
         <!--###################        LIST      ###########################-->
         <div data-role="page" class="page-news issues-list pagina"   id="news-list">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="news-list_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -592,7 +592,7 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#news-list_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
 
@@ -605,13 +605,13 @@
 
         <!--###################        CARD      ###########################-->
         <div data-role="page" class="page-news pagina news-card"   id="news-card">
-            <div data-role="panel" id="menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="news-card_menu" data-position="right" data-display="overlay" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-ttl">
                         <h3>Menú</h3>
                     </div>
                     <div class="col-xs-12 menu-item">
-                        <a href="#config" >Municipis</a>
+                        <a href="#config" onclick="bitgrup.entities.chooseEntity()">Municipis</a>
                     </div>
                     <div class="col-xs-12 menu-item">
                         <a href="#config" >Textes legals</a>
@@ -629,7 +629,7 @@
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#news-card_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
             </div> 
 

@@ -106,10 +106,42 @@ button{text-shadow:none !important;}
 #home_menu h3{color: #23a5e6;}
 #home_menu .menu-item {margin: 10px;}
 #home_menu .menu-close {margin: 20px 0px 10px 0px;}
-#menu {background: #fff;}
-#menu h3{color: #23a5e6;}
-#menu .menu-item {margin: 10px;}
-#menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-list_menu {background: #fff;}
+#issues-list_menu h3{color: #23a5e6;}
+#issues-list_menu .menu-item {margin: 10px;}
+#issues-list_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-card_menu {background: #fff;}
+#issues-card_menu h3{color: #23a5e6;}
+#issues-card_menu .menu-item {margin: 10px;}
+#issues-card_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-step-1_menu {background: #fff;}
+#issues-step-1_menu h3{color: #23a5e6;}
+#issues-step-1_menu .menu-item {margin: 10px;}
+#issues-step-1_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-step-2_menu {background: #fff;}
+#issues-step-2_menu h3{color: #23a5e6;}
+#issues-step-2_menu .menu-item {margin: 10px;}
+#issues-step-2_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-step-3_menu {background: #fff;}
+#issues-step-3_menu h3{color: #23a5e6;}
+#issues-step-3_menu .menu-item {margin: 10px;}
+#issues-step-3_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-step-4_menu {background: #fff;}
+#issues-step-4_menu h3{color: #23a5e6;}
+#issues-step-4_menu .menu-item {margin: 10px;}
+#issues-step-4_menu .menu-close {margin: 20px 0px 10px 0px;}
+#issues-step-5_menu {background: #fff;}
+#issues-step-5_menu h3{color: #23a5e6;}
+#issues-step-5_menu .menu-item {margin: 10px;}
+#issues-step-5_menu .menu-close {margin: 20px 0px 10px 0px;}
+#news-list-menu {background: #fff;}
+#news-list-menu h3{color: #23a5e6;}
+#news-list-menu .menu-item {margin: 10px;}
+#news-list-menu .menu-close {margin: 20px 0px 10px 0px;}
+#news-card_menu {background: #fff;}
+#news-card_menu h3{color: #23a5e6;}
+#news-card_menu .menu-item {margin: 10px;}
+#news-card_menu .menu-close {margin: 20px 0px 10px 0px;}
 
 
 /*######## HOME #############*/
@@ -139,10 +171,10 @@ button{text-shadow:none !important;}
 /*########################      CONFIG      ###############################*/
 #config .ui-content{height: 100%;}
 div#entities-list {margin-top: 20px;}
-#entities-list button{position: relative; font-size: 4vw; width: 100%; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
+#entities-list button{position: relative; font-size: 4.5vw; width: 100%; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
 /*#entities-list button::before{content: " "; position:absolute; left: 10px; top: 10px; width: 0; height: 0;border-right: 2vw solid transparent;  border-top: 0vw solid rgba(256,256,256,0.15); border-left: 33vw solid rgba(256,256,256,0.15); border-bottom: 34vw solid transparent;}*/
 #entities-list .pre-btn {background: #169fe6; float: left; width: 90%; text-align: center; border-radius: 50%; color: #fff; margin: 1px; font-size: 4vw;}
-#entities-list .menu-item-container {width: 100%; height: 25px;}
+#entities-list .menu-item-container {width: 100%; height: 25px; margin: 14px 0 14px 0;}
 #entities-list .menu-item-container:after {content:"";clear: both;}
 #entities-list .menu-item {width: 25px; text-align: center; min-height: 1px; display: inline-block; vertical-align: middle;}
 #entities-list .menu-item-button {width: calc(100% - 30px); padding-left: 5px; display: inline-block; vertical-align: middle;}
@@ -157,15 +189,15 @@ div#entities-list {margin-top: 20px;}
 .page-issues.steps .ui-content{background:#fff;padding: 0px;}
 .page-issues.steps .ui-content > div{padding:25px 25px 25px;}
 .page-issues.steps .ui-content > div:first-child{padding:23vw 25px 25px;}
-.page-issues .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 10px 25px;}
+.page-issues .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 20px 25px;}
 .page-issues .sub-step h3{margin:0;}
 .page-issues .sub-step h3.right{text-align: right;}
 
 /*LIST*/ 
-.issues-list .ui-content{background:#eeeeee; padding: 0;}
+.issues-list .ui-content{background:#eeeeee; padding: 20px 0px;}
 .issues-list .ui-content > div:nth-child(1){padding:10vh 20px 20px;margin-bottom: 12vw;background: #eee;height: 100%;}
 .issues-list .sub-step > div:last-child{background: #8acff2;}
-.issues-list .sub-step{padding: 0;}
+.issues-list .sub-step{padding: 20px 0px;}
 .issues-list .sub-step > div{padding: 6px 0 5px;cursor:pointer;}
 .issues-list .sub-step > div:active{opacity: 0.5;}
 .issues-list .list > .col-xs-12{margin-bottom: 15px;}
@@ -193,7 +225,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .issues-list .new-issue h3{margin: 7px 0;}
 .issues-list .new-issue .ico-next{height: 9vw;}
 .issues-list .new-issue #continue-issue{background: #e29665; display: none;}
-.issues-list .new-issue #new-reset-issue{background: #5bbced;}
+.issues-list .new-issue #new-reset-issue{background: #5bbced;padding: 20px 0px;}
 /*map*/
 #div-map{display: none;height: 100%;}
 .pgm-html-info-content-frame{width:200px !important;}
@@ -278,7 +310,7 @@ textarea#desc-issue.ui-input-text{background:#eeeeee; width: 100%; height: 40vh 
 .page-news.news-card .ui-content{background:#fff;}
 .page-news.news-card .imgs{margin-bottom: 20px;}
 .news-card .share{margin-bottom: 30px; position: relative;}
-.news-card .navigation{margin-bottom: 50px;margin-top: 16vw;}
+.news-card .navigation{margin-bottom: 50px;margin-top: 16vw; position: fixed; bottom: 0; left: 0; width: 100%; margin: 0;  padding: 0;}
 .news-card .navigation .ui-btn{width: 48%; float: left; text-align: left; padding: 11px 21px; background:#d2d2d2 ; border:1px solid #d2d2d2; font-size: 4vw; color: #4c4c4c;}
 .news-card .navigation .ui-btn:last-child{float:right; text-align: right;}
 
