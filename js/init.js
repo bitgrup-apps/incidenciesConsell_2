@@ -376,11 +376,11 @@ var bitgrup = {
                                 num_img++;
                                 if (num_img == 1) {
                                     html_img = html_img + '<div class="col-xs-6" style="background-image: url(\'' + imgs[j] + '\');">\n\
-                                                                <a data-fancybox="gallery_' + issue.ID + '" data-options={"arrows" : "true", "buttons" : ["close"]} href="' + imgs[j] + '">\n\
+                                                                <a data-fancybox="gallery_' + issue.ID + '" data-options=\'{"arrows" : "true", "buttons" : ["close"]}\' href="' + imgs[j] + '">\n\
                                                                     <i class="ico ico-plus"></i>\n\
                                                                 </a>';
                                 } else {
-                                    html_img = html_img + '<a data-fancybox="gallery_1" data-options={"arrows" : "true", "buttons" : ["close"]} href="' + imgs[j] + '"></a>';
+                                    html_img = html_img + '<a data-fancybox="gallery_1" data-options=\'{"arrows" : "true", "buttons" : ["close"]}\' href="' + imgs[j] + '"></a>';
                                 }
                             });
                             html_img = html_img + '</div>';
