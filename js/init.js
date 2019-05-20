@@ -219,7 +219,7 @@ var bitgrup = {
         finder: function () {
             debugger;
             $('.menu-item-container').hide();
-            var key = $('#key').val();
+            var key = $('#key').val().toLowerCase();
             
             $('.menu-item-container').each(function (i) {
                 if ($(this).data('nom').indexOf(key) !== -1 || $(this).data('nom-a').indexOf(key) !== -1) {
