@@ -108,7 +108,7 @@ var bitgrup = {
                             var n = entity.name.replace("Ajuntament de", "");
                             var n2 = n.replace("Ajuntament d'", "");
                             var name = n2.trim();
-                            html = html + '<div class="menu-item-container" id="' + name + '">\n\
+                            html = html + '<div class="menu-item-container" id="' + bitgrup.accentsTidy(name) + '" data-nom="' + bitgrup.accentsTidy(name) + '" data-nom-a="' + name + '">\n\
                                                 <div class="menu-item">\n\
                                                     <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
                                                 </div>\n\
@@ -217,11 +217,14 @@ var bitgrup = {
 
         finder: function () {
             debugger;
-            $('#entities-list').$('.menu-item-container').hide();
-            
+            $('.menu-item-container').hide();
             var key = $('#key').val();
             
-            $('#entities-list').$('.menu-item-container').find(key);
+            $('.menu-item-container').each(function (i) {
+                if ($(this).data('nom').indexOf(key) !== -1 || $(this).data('nom-a').indexOf(key) !== -1) {
+                    $(this).show();
+                }
+            });
             
         },
 
@@ -1399,6 +1402,23 @@ var bitgrup = {
     getTime: function(){
         var fecha = new Date();
         return ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
+    },
+    
+    accentsTidy = function(s){
+    var r=s.toLowerCase();
+        r = r.replace(new RegExp(/\s/g),"");
+        r = r.replace(new RegExp(/[àáâãäå]/g),"a");
+        r = r.replace(new RegExp(/æ/g),"ae");
+        r = r.replace(new RegExp(/ç/g),"c");
+        r = r.replace(new RegExp(/[èéêë]/g),"e");
+        r = r.replace(new RegExp(/[ìíîï]/g),"i");
+        r = r.replace(new RegExp(/ñ/g),"n");                
+        r = r.replace(new RegExp(/[òóôõö]/g),"o");
+        r = r.replace(new RegExp(/œ/g),"oe");
+        r = r.replace(new RegExp(/[ùúûü]/g),"u");
+        r = r.replace(new RegExp(/[ýÿ]/g),"y");
+        r = r.replace(new RegExp(/\W/g),"");
+    return r;
     }
 
 
