@@ -250,6 +250,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .page-issues.step-1 button{background: transparent;border: none;box-shadow: none;padding: 0;}
 .page-issues.step-1 button span{white-space: initial;display: inline-block; width: 100%; padding: 10px 10px 10px 10px; color: #fff; text-align: center; font-size: 3.2vw;}
 .page-issues.step-1 button img{width:70%;}
+.page-issues.step-1 h2{margin-top: 45px; font-size: 6.5vw;}
 /*.page-issues.step-1 button span::before{content: " "; position: absolute; top: 0.5vw; left:4.5vw; width: 20vw; height: 20vw; background-image: url('../icons/sprite.svg'); background-size: 130vw auto; background-repeat: no-repeat;}
 .page-issues.step-1 button span.type-1::before{background-position: -8.5vw -87vw;}
 .page-issues.step-1 button span.type-2::before{background-position: -36vw -87vw;}
