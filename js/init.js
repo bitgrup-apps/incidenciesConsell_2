@@ -1404,8 +1404,8 @@ var bitgrup = {
         return ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
     },
     
-    accentsTidy = function(s){
-    var r=s.toLowerCase();
+    accentsTidy: function(s){
+        var r=s.toLowerCase();
         r = r.replace(new RegExp(/\s/g),"");
         r = r.replace(new RegExp(/[àáâãäå]/g),"a");
         r = r.replace(new RegExp(/æ/g),"ae");
@@ -1418,7 +1418,7 @@ var bitgrup = {
         r = r.replace(new RegExp(/[ùúûü]/g),"u");
         r = r.replace(new RegExp(/[ýÿ]/g),"y");
         r = r.replace(new RegExp(/\W/g),"");
-    return r;
+        return r;
     }
 
 
