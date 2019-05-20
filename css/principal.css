@@ -154,7 +154,7 @@ button{text-shadow:none !important;}
 #home .btn-home .btn-news{background-image: url('../images/news-background.jpg');}
 #home .btn-home .btn-news span{background:rgba(0,0,0,0.7);}
 #home .btn-home button span::before{content: " "; position:absolute; left: 15px; top: 15px; width: 0; height: 0;border-right: 10vw solid transparent;    border-top: 7vw solid rgba(256,256,256,0.2);    border-left: 39vw solid rgba(256,256,256,0.2);    border-bottom: 25vw solid transparent;}
-#home .footer{position: fixed; bottom: 25px; width: calc(100% - 70px);}
+#home .footer{position: fixed; bottom: 10px; width: calc(100% - 70px);}
 #home .footer > div{padding:0 5px 0 0;}
 #home .footer > div:last-child{padding:0 0 0 5px;}
 #home .footer span{border-radius: 4px;text-shadow:none;display: inline-block; width: 100%; text-align: center;padding: 19vw 0 10px; background: #d2d2d2; color:#4c4c4c; font-size: 14px; font-weight: 400;}
@@ -173,6 +173,11 @@ button{text-shadow:none !important;}
 #config .ui-content{height: 100%;}
 #config .cercador {background: #169fe6; width: 130%; margin: 0px -30px;}
 #config .text-cercador {background: #169fe6; padding-bottom: 0px;}
+#config .ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset {background: #169fe6; padding-bottom: 0px;}
+#config ::-webkit-input-placeholder{ opacity: 1; color:white;}
+#config :-moz-placeholder {opacity: 1; color:white;}
+#config ::-moz-placeholder { opacity: 1; color:white;}
+#config :-ms-input-placeholder { opacity: 1; color:white;}
 #config #key {border: 1px solid white; border-radius: 15px 15px; color: white;}
 div#entities-list {margin-top: 20px;}
 #entities-list button{position: relative; font-size: 4.5vw; width: 100%; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
