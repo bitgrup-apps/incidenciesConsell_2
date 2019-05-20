@@ -108,7 +108,7 @@ var bitgrup = {
                             var n = entity.name.replace("Ajuntament de", "");
                             var n2 = n.replace("Ajuntament d'", "");
                             var name = n2.trim();
-                            html = html + '<div class="menu-item-container">\n\
+                            html = html + '<div class="menu-item-container" id="' + name + '">\n\
                                                 <div class="menu-item">\n\
                                                     <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
                                                 </div>\n\
@@ -213,6 +213,16 @@ var bitgrup = {
                 }
             });
             $('#type-list-issue').html(html);
+        },
+
+        finder: function () {
+            debugger;
+            $('#entities-list').$('.menu-item-container').hide();
+            
+            var key = $('#key').val();
+            
+            $('#entities-list').$('.menu-item-container').find(key);
+            
         },
 
         logOut: function () {

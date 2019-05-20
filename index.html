@@ -57,6 +57,17 @@
             <div data-role="content"  class="no-active transition" >
                 <!-- LOGO TIC --> 
                 <div class="col-xs-12"><i class="ico ico-logo"></i></div>
+                <!-- CERCADOR -->
+                <div class="col-xs-12 cercador">
+                    <form>
+                        <div class="col-xs-9">
+                            <input type="text" id="key" placeholder="Cerca de municipi">
+                        </div>
+                        <div class="col-xs-3" onclick="bitgrup.entities.finder()">
+                            <i class="ico ico-find"></i>
+                        </div>
+                    </form>
+                </div>
                 <!-- ENTITIES -->
                 <div class="col-xs-12" id="entities-list"></div>
             </div>
@@ -95,7 +106,10 @@
             </div> 
             <div data-role="content"  class="no-active transition" >
                 <div class="col-xs-12">
-                    <h4 id="nameEntity"></h4>
+                    <div class="col-xs-4 col-xs-offset-4" id="logo-entity"></div>
+                </div>
+                <div class="col-xs-12">
+                    <h4 id="nameEntity"></h4>d
                 </div>
                 <!-- ISSUES / NEWS -->
                 <div class="col-xs-12 btn-home">
