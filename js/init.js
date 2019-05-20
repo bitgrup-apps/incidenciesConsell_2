@@ -108,7 +108,8 @@ var bitgrup = {
                             var n = entity.name.replace("Ajuntament de", "");
                             var n2 = n.replace("Ajuntament d'", "");
                             var name = n2.trim();
-                            html = html + '<div class="menu-item-container" id="' + bitgrup.accentsTidy(name) + '" data-nom="' + bitgrup.accentsTidy(name) + '" data-nom-a="' + name + '">\n\
+                            var nameTidy = bitgrup.accentsTidy(name);
+                            html = html + '<div class="menu-item-container" data-nom="' + nameTidy + '" data-nom-a="' + name + '">\n\
                                                 <div class="menu-item">\n\
                                                     <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
                                                 </div>\n\
