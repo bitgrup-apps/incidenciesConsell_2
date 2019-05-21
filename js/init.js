@@ -1430,8 +1430,8 @@ var bitgrup = {
             Subject : "Contacte de l'APP Tic Mallorca",
             Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
         }).then(
-          $.mobile.changePage("#home", {transition: "slide", reverse: true}),
-          message => alert("Missatge enviat correctament.")
+          message => alert("Missatge enviat correctament."),
+          $.mobile.changePage("#home", {transition: "slide", reverse: true})
         );
     }
 };
