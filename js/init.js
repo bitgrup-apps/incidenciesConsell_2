@@ -1424,22 +1424,16 @@ var bitgrup = {
     },
     
     sendMail: function() {
-        var link = "mailto:allull@bitgrup.com"
-                + "&subject=" + escape("Contacte APP Tic Mallorca")
-                + "&body=" + escape('Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val());
-
-       window.location.href = link;
-        
-//        Email.send({
-//            SecureToken : "b1249062-be85-4aee-9477-669fa596c69c",
-//            To : 'allull@bitgrup.com',
-//            From : $('#mail').val(),
-//            Subject : "Contacte de l'APP Tic Mallorca",
-//            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
-//        }).then(
-//          message => alert("Missatge enviat correctament."),
-//          $.mobile.changePage("#home", {transition: "slide", reverse: true})
-//        );
+        Email.send({
+            SecureToken : "b1249062-be85-4aee-9477-669fa596c69c",
+            To : 'allull@bitgrup.com',
+            From : $('#mail').val(),
+            Subject : "Contacte de l'APP Tic Mallorca",
+            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
+        }).then(
+          message => alert("Missatge enviat correctament."),
+          $.mobile.changePage("#home", {transition: "slide", reverse: true})
+        );
     }
 };
 
