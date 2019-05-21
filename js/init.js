@@ -1420,10 +1420,20 @@ var bitgrup = {
         r = r.replace(new RegExp(/[ýÿ]/g),"y");
         r = r.replace(new RegExp(/\W/g),"");
         return r;
+    },
+    
+    sendMail: function() {
+        Email.send({
+            SecureToken : "b1249062-be85-4aee-9477-669fa596c69c",
+            To : 'allull@bitgrup.com',
+            From : $('#mail').val(),
+            Subject : "Contacte de l'APP Tic Mallorca",
+            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
+        }).then(
+          message => alert(message)
+        );
     }
-
-
-}
+};
 
 
 

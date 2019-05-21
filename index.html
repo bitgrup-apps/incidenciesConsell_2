@@ -37,6 +37,9 @@
 
         <!-- APP CSS -->
         <link href="css/principal.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- SMTJS EMAIL -->
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 
 
@@ -166,7 +169,7 @@
                         <input type="text" id="mail" class="contact-input" placeholder="E-mail">
                         <input type="text" id="telefon" class="contact-input" placeholder="Telèfon">
                         <textarea name="comentari" placeholder="Escriu el teu comentari..." id="comentari"></textarea>
-                        <button class="contact-btn">Confirmar</button>
+                        <button class="contact-btn" onclick="bitgrup.sendMail()">Confirmar</button>
                     </form>
                 </div>
             </div>
