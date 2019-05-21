@@ -1432,6 +1432,7 @@ var bitgrup = {
             Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
         }).then(
           message => alert("Missatge enviat correctament."),
+          $('#contacte')[0].reset(),
           $.mobile.changePage("#home", {transition: "slide", reverse: true})
         );
     }
