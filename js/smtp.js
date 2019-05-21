@@ -5,6 +5,7 @@ var Email = {
             a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send";
             var t = JSON.stringify(a);
             Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function(e) {
+                debugger;
                 n(e)
             })
         })
@@ -25,7 +26,6 @@ var Email = {
     },
     createCORSRequest: function(e, n) {
         var t = new XMLHttpRequest;
-        return false;
-//        return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t
+        return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t
     }
 };
