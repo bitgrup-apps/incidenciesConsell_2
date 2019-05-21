@@ -49,33 +49,6 @@
     <body> 
         <div id="loading" class="active"><button><i class="ico ico-refresh" onclick="window.location = 'index.html';"></i></button></div>
 
-
-
-
-        <!--####################################################################################-->
-        <!--#################              CONFIG                    ###########################-->
-        <!--####################################################################################-->
-
-        <div data-role="page"   id="config">
-            <div data-role="content"  class="no-active transition" >
-                <!-- LOGO TIC --> 
-                <div class="col-xs-12"><i class="ico ico-logo"></i></div>
-                <!-- CERCADOR -->
-                <div class="col-xs-12 cercador">
-                    <form>
-                        <div class="col-xs-9 text-cercador">
-                            <input type="text" id="key" placeholder="Cerca de municipi">
-                        </div>
-                        <div class="col-xs-3" onclick="bitgrup.entities.finder()">
-                            <i class="ico ico-find"></i>
-                        </div>
-                    </form>
-                </div>
-                <!-- ENTITIES -->
-                <div class="col-xs-12" id="entities-list"></div>
-            </div>
-        </div>
-
         <!--####################################################################################-->
         <!--###################              HOME                    ###########################-->
         <!--####################################################################################-->
@@ -127,6 +100,30 @@
                     <div class="col-xs-6" id="phone-entity"></div>
                 </div>
 
+            </div>
+        </div>
+        
+        <!--####################################################################################-->
+        <!--#################              CONFIG                    ###########################-->
+        <!--####################################################################################-->
+
+        <div data-role="page"   id="config">
+            <div data-role="content"  class="no-active transition" >
+                <!-- LOGO TIC --> 
+                <div class="col-xs-12"><i class="ico ico-logo"></i></div>
+                <!-- CERCADOR -->
+                <div class="col-xs-12 cercador">
+                    <form>
+                        <div class="col-xs-9 text-cercador">
+                            <input type="text" id="key" placeholder="Cerca de municipi">
+                        </div>
+                        <div class="col-xs-3" onclick="bitgrup.entities.finder()">
+                            <i class="ico ico-find"></i>
+                        </div>
+                    </form>
+                </div>
+                <!-- ENTITIES -->
+                <div class="col-xs-12" id="entities-list"></div>
             </div>
         </div>
         
