@@ -1425,8 +1425,8 @@ var bitgrup = {
     
     sendMail: function() {
         Email.send({
-            SecureToken : "b1249062-be85-4aee-9477-669fa596c69c",
-            To : 'allull@bitgrup.com',
+            SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
+            To : 'issue-app.ticmallorca.net',
             From : $('#mail').val(),
             Subject : "Contacte de l'APP Tic Mallorca",
             Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
