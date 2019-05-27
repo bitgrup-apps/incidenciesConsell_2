@@ -117,47 +117,49 @@ button{text-shadow:none !important;}
 .menu {background: linear-gradient(to bottom, rgba(43,72,105,1) 10%, rgba(46,164,224,1) 80%, rgba(46,164,224,1) 100%);}
 .menu {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b4869', endColorstr='#2ea4e0', GradientType=0 );}
 .menu span {color: #fff; padding-left: 40px; font-style: normal;}
+.menu .menu-close {margin: -10px 0px 20px -10px; background-color: #2687b9; width: 35px; height: 35px; border-radius: 5px;}
+.menu .menu-item {margin: 20px;}
 
-/*#home_menu {background: #fff;}*/
+/*#home_menu {background: #fff;}
 #home_menu h3{color: #23a5e6;}
 #home_menu .menu-item {margin: 20px;}
 #home_menu .menu-close {margin: -10px 0px 20px -10px; background-color: #2687b9; width: 35px; height: 35px; border-radius: 5px;}
-/*#issues-list_menu {background: #fff;}*/
+#issues-list_menu {background: #fff;}
 #issues-list_menu h3{color: #23a5e6;}
 #issues-list_menu .menu-item {margin: 10px;}
 #issues-list_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-card_menu {background: #fff;}*/
+#issues-card_menu {background: #fff;}
 #issues-card_menu h3{color: #23a5e6;}
 #issues-card_menu .menu-item {margin: 10px;}
 #issues-card_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-step-1_menu {background: #fff;}*/
+#issues-step-1_menu {background: #fff;}
 #issues-step-1_menu h3{color: #23a5e6;}
 #issues-step-1_menu .menu-item {margin: 10px;}
 #issues-step-1_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-step-2_menu {background: #fff;}*/
+#issues-step-2_menu {background: #fff;}
 #issues-step-2_menu h3{color: #23a5e6;}
 #issues-step-2_menu .menu-item {margin: 10px;}
 #issues-step-2_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-step-3_menu {background: #fff;}*/
+#issues-step-3_menu {background: #fff;}
 #issues-step-3_menu h3{color: #23a5e6;}
 #issues-step-3_menu .menu-item {margin: 10px;}
 #issues-step-3_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-step-4_menu {background: #fff;}*/
+#issues-step-4_menu {background: #fff;}
 #issues-step-4_menu h3{color: #23a5e6;}
 #issues-step-4_menu .menu-item {margin: 10px;}
 #issues-step-4_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#issues-step-5_menu {background: #fff;}*/
+#issues-step-5_menu {background: #fff;}
 #issues-step-5_menu h3{color: #23a5e6;}
 #issues-step-5_menu .menu-item {margin: 10px;}
 #issues-step-5_menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#news-list-menu {background: #fff;}*/
+#news-list-menu {background: #fff;}
 #news-list-menu h3{color: #23a5e6;}
 #news-list-menu .menu-item {margin: 10px;}
 #news-list-menu .menu-close {margin: 20px 0px 10px 0px;}
-/*#news-card_menu {background: #fff;}*/
+#news-card_menu {background: #fff;}
 #news-card_menu h3{color: #23a5e6;}
 #news-card_menu .menu-item {margin: 10px;}
-#news-card_menu .menu-close {margin: 20px 0px 10px 0px;}
+#news-card_menu .menu-close {margin: 20px 0px 10px 0px;}*/
 
 
 /*######## HOME #############*/
