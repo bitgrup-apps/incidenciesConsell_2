@@ -381,7 +381,7 @@ var bitgrup = {
                                                                     <i class="ico ico-plus"></i>\n\
                                                                 </a>';
                                 } else {
-                                    html_img = html_img + '<a data-fancybox="gallery_1" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + imgs[j] + '"></a>';
+                                    html_img = html_img + '<a data-fancybox="gallery_' + issue.ID + '" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + imgs[j] + '"></a>';
                                 }
                             });
                             html_img = html_img + '</div>';
