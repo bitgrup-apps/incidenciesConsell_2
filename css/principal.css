@@ -60,9 +60,9 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 .ico.ico-back {background-position: -60vw -28vw; background-size: 81vw auto;}
 .ico.ico-back-blau {background-position:-5vw -111vw;  background-size: 81vw auto;}
 .ico.ico-next {background-position: -72vw -28vw; background-size: 81vw auto;}
-.ico.ico-back-negre {background-position:-5vw -111vw; background-size: 81vw auto;}
-.ico.ico-next-negre {background-position:-5vw -111vw; background-size: 81vw auto;}
-.ico.ico-plus{background-position:-61vw -36vw;background-size: 100vw auto;}
+.ico.ico-back-negre {background-position:-43vw -103vw; background-size: 75vw auto; height: 7vw;}
+.ico.ico-next-negre {background-position:-30vw -103vw; background-size: 75vw auto; height: 7vw;}
+.ico.ico-plus{background-position:-61vw -36vw; background-size: 100vw auto;}
 .ico.ico-home{background-position: -18.5vw -24.5vw;background-size: 71vw auto;} 
 .ico.ico-twitter{background-position:-10.5vw -82vw;} 
 .ico.ico-facebook{background-position: -32vw -82vw;} 
@@ -339,7 +339,7 @@ textarea#desc-issue.ui-input-text{background:#eeeeee; width: 100%; height: 40vh 
 .page-news.news-card p{font-size: 4vw;  padding: 5px 0px;}
 .page-news.news-card .ui-content{background:#fff;}
 .page-news.news-card .imgs{margin-bottom: 20px;}
-.news-card .share{margin-bottom: 30px; position: relative;}
+.news-card .share{position: fixed; bottom: 0vh; top: 78vh; right: 0vw;}
 .news-card .navigation{margin-bottom: 50px;margin-top: 16vw; position: fixed; bottom: 0; left: 0; width: 100%; margin: 0;  padding: 0;}
 .news-card .navigation .ui-btn{width: 48%; float: left; text-align: left; padding: 11px 21px; background:#d2d2d2 ; border:1px solid #d2d2d2; font-size: 4vw; color: #4c4c4c;}
 .news-card .navigation .ui-btn:last-child{float:right; text-align: right;}
