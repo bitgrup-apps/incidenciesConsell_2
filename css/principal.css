@@ -57,10 +57,12 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 /*######## ICONS #############*/
 .ico{background-image: url('../icons/sprite.svg'); background-size: 200vw auto; background-repeat: no-repeat; height: 11vw; width: 11vw;display: inline-block;}
 .ico.ico-logo{background-image: url('../icons/logo.svg');background-size: 25vw;height: 21vw;width: 32vw;}
-.ico.ico-back{    background-position: -60vw -28vw;    background-size: 81vw auto; }
-.ico.ico-back-blau{    background-position:-5vw -111vw;    background-size: 81vw auto; }
-.ico.ico-next{    background-position: -72vw -28vw;    background-size: 81vw auto; }
-.ico.ico-plus{background-position:-61vw -36vw;background-size: 100vw auto; }
+.ico.ico-back {background-position: -60vw -28vw; background-size: 81vw auto;}
+.ico.ico-back-blau {background-position:-5vw -111vw;  background-size: 81vw auto;}
+.ico.ico-next {background-position: -72vw -28vw; background-size: 81vw auto;}
+.ico.ico-back-negre {background-position:-5vw -111vw; background-size: 81vw auto;}
+.ico.ico-next-negre {background-position:-5vw -111vw; background-size: 81vw auto;}
+.ico.ico-plus{background-position:-61vw -36vw;background-size: 100vw auto;}
 .ico.ico-home{background-position: -18.5vw -24.5vw;background-size: 71vw auto;} 
 .ico.ico-twitter{background-position:-10.5vw -82vw;} 
 .ico.ico-facebook{background-position: -32vw -82vw;} 
@@ -71,13 +73,13 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 .ico.ico-gallery{background-position: -28.5vw -108.1vw;height: 15vw;width: 14vw;background-size: 103vw auto;}
 .ico.ico-error{background-position: -114vw -135vw;background-size: 157vw auto;width: 18vw;height: 20vw;}
 .ico.ico-list{background-position: -7.5vw -26vw; background-size: 75vw auto;}
-.ico.ico-location{background-position: -69vw -11.5vw;  background-size: 81vw auto;}
-.ico.ico-logOut{background-position: -41vw -96vw;background-size: 80vw;}
-.ico.ico-trash{background-position: -23.5vw -97vw;height: 9vw;width: 9vw;background-size: 80vw auto;}
+.ico.ico-location {background-position: -69vw -11.5vw;  background-size: 81vw auto;}
+.ico.ico-logOut {background-position: -41vw -96vw;background-size: 80vw;}
+.ico.ico-trash {background-position: -23.5vw -97vw;height: 9vw;width: 9vw;background-size: 80vw auto;}
 .ico.ico-menu { background-position: -72.5vw -14vw; background-size: 100vw auto;}
-.ico.ico-find{background-position: -18.5vw -106vw; height: 12vw; width: 12vw; background-size: 80vw auto;}
-.before::before{position:absolute; background-position: -86.5vw -125.1vw; content: " ";background-image: url('../icons/sprite.svg'); background-size: 120vw auto; background-repeat: no-repeat;}
-.ico.ico-refresh{background-position:-172.5vw -253vw; width: 12vw; height: 12vw; }
+.ico.ico-find {background-position: -18.5vw -106vw; height: 12vw; width: 12vw; background-size: 80vw auto;}
+.before::before {position:absolute; background-position: -86.5vw -125.1vw; content: " ";background-image: url('../icons/sprite.svg'); background-size: 120vw auto; background-repeat: no-repeat;}
+.ico.ico-refresh {background-position:-172.5vw -253vw; width: 12vw; height: 12vw; }
 .ico-muni {background-image: url('../icons/icon-muni.png'); background-position: 5px -5px; background-repeat: no-repeat; background-size: 30px;}
 .ico-text {background-image: url('../icons/icon-text.png'); background-position: 5px -5px; background-repeat: no-repeat; background-size: 30px;}
 .ico-contact {background-image: url('../icons/icon-contact.png'); background-position: 5px -5px; background-repeat: no-repeat; background-size: 30px;}
