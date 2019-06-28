@@ -209,7 +209,7 @@ div#entities-list {margin-top: 20px;}
 
 
 /*########################      CONTACT      ###############################*/
-#contact .ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset { border-radius: 25px 25px 25px 25px; border: 1px solid lightgrey; background: #fff;}
+#contact .ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset {height: 300px;border-radius: 25px 25px 25px 25px; border: 1px solid lightgrey; background: #fff;}
 #contact button.ui-btn.ui-shadow.ui-corner-all {background: #169fe6; color: #fff;padding: 15px;width: 60%;position: absolute;left: 20%;}
 #contact .sub-step{background: #5bbced; left: 0; width: 100%;z-index: 9;padding: 10px 25px;}
 
