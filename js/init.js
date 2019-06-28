@@ -481,9 +481,10 @@ var bitgrup = {
                                 $(result_img).each(function (j) {
                                     num_img++;
                                     var img = result_img[j].BASE_64;
-                                    $('#issue-card-img-' + num_img).removeClass('before').addClass('img').css('background-image', 'url(\'' + img + '\')');
+                                    $('#issue-card-img-' + num_img).html('<a data-fancybox="gallery" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + img + '"><span class="img" style="background-image: url(\'' + img + '\')"><span></a>');
+//                                    $('#issue-card-img-' + num_img).removeClass('before').addClass('img').css('background-image', 'url(\'' + img + '\')');
                                     bitgrup.issues.getIssueFinally(num_imgs, num_img);
-                                    $('#fancy-' + num_img).html('<a data-fancybox="gallery" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + img + '"></a>');
+//                                    $('#fancy-' + num_img).html('<a data-fancybox="gallery" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + img + '"></a>');
                                 });
                             } else {
                                 bitgrup.issues.getIssueFinally(0, 0);
