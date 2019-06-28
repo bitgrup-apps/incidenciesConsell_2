@@ -403,8 +403,8 @@ var bitgrup = {
                         /*#################     DESCRIPTION        ####################*/
                         html = html + '\n\
                             <div class="col-xs-12 item-swipe">' + html_img + '\n\
-                                <div class="col-xs-6">\n\
-                                    <h5 onclick="bitgrup.issues.getIssue(' + issue.ID + ');">' + bitgrup.maxWords(issue.DESCRIPTION) + '</h5>\n\
+                                <div class="col-xs-6" onclick="bitgrup.issues.getIssue(' + issue.ID + ');">\n\
+                                    <h5>' + bitgrup.maxWords(issue.DESCRIPTION) + '</h5>\n\
                                     <p>' + issue.DATE + '</p>\n\
                                     <div class="traffic-light">\n\
                                         ' + html_status + '\n\
@@ -483,6 +483,7 @@ var bitgrup = {
                                     var img = result_img[j].BASE_64;
                                     $('#issue-card-img-' + num_img).removeClass('before').addClass('img').css('background-image', 'url(\'' + img + '\')');
                                     bitgrup.issues.getIssueFinally(num_imgs, num_img);
+                                    $('#issue-card-img-' + num_img).html('<a data-fancybox="gallery" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + img + '"></a>');
                                 });
                             } else {
                                 bitgrup.issues.getIssueFinally(0, 0);
@@ -1424,17 +1425,24 @@ var bitgrup = {
     },
     
     sendMail: function() {
-        Email.send({
-            SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
-            To : 'issue-app.ticmallorca.net',
-            From : $('#mail').val(),
-            Subject : "Contacte de l'APP Tic Mallorca",
-            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
-        }).then(
-          message => alert("Missatge enviat correctament."),
-          $('#contacte')[0].reset(),
-          $.mobile.changePage("#home", {transition: "slide", reverse: true})
-        );
+        var comment = $('#comentari').val();
+        var countComment = comment.length;
+        if (countComment > 19) {
+            Email.send({
+                SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
+                To : 'issue-app.ticmallorca.net',
+                From : $('#mail').val(),
+                Subject : "Contacte de l'APP Tic Mallorca",
+                Body : 'Comentari:  ' + $('#comentari').val()
+    //            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
+            }).then(
+              message => alert("Missatge enviat correctament."),
+              $('#contacte')[0].reset(),
+              $.mobile.changePage("#home", {transition: "slide", reverse: true})
+            );
+        } else {
+            bitgrup.alert('El comentari ha de tenir un mínim de 20 caràcters.');
+        }
     }
 };
 
