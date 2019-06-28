@@ -284,7 +284,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 /*STEP 2*/
 .pagina .new-img{padding-top: 50px; padding-bottom: 50px; background: #eeeeee;}
 .pagina .imgs > div span{ height: 37vw; display: inline-block; width: 100%;background:#eeeeee;background-size: cover; background-position: center;}
-.pagina .imgs > div span::before{height: 18vw;width: 18vw;left: calc(50% - 9vw); top:calc(50% - 9vw); background-position: -86.5vw -125.1vw;}
+.pagina .imgs > div span::before{height: 18vw;width: 18vw;left: calc(50% - 9vw); top:calc(50% - 9vw); background-position: -260vw -125.1vw;}
 .pagina .imgs > div span.remove::before{background-position: -24.5vw -112vw;height: 13vw;width: 12vw;right: 3px;top: 1px;left: initial;background-size: 92vw auto;}
 .pagina .imgs > div span.remove:active{opacity:0.5;}
 .pagina .imgs .img{background-size: cover; background-position: center;}
