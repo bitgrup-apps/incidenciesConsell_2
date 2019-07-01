@@ -1429,9 +1429,9 @@ var bitgrup = {
         if (countComment > 19) {
             Email.send({
 //                SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
-                SecureToken : "74670b71-26a0-49fc-886f-621437b320c0",
+                SecureToken : "9a125f90-4a2d-4304-8d52-8a11424c1298",
                 To : 'allull@bitgrup.com',
-                From : $('#mail').val(),
+                From : 'issue-app@ticmallorca.net',
                 Subject : "Contacte de l'APP Tic Mallorca",
                 Body : 'Comentari:  ' + $('#comentari').val()
     //            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
