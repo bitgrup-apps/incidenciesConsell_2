@@ -289,6 +289,7 @@ p.traffic-light-status{margin-bottom: 0;display: inline-block; width: 100%; font
 .pagina .imgs > div span.remove:active{opacity:0.5;}
 .pagina .imgs .img{background-size: cover; background-position: center;}
 .pagina .imgs > div{padding: 1px 3px;}
+.pagina .imgs > div a span span{display: none;}
 
 /*STEP 3 MAPA*/
 .map_canvas{width:100vw;height: 100%; min-height: 300px;}
