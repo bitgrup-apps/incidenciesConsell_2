@@ -1428,8 +1428,9 @@ var bitgrup = {
         var countComment = comment.length;
         if (countComment > 19) {
             Email.send({
-                SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
-                To : 'issue-app.ticmallorca.net',
+//                SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
+                SecureToken : "74670b71-26a0-49fc-886f-621437b320c0",
+                To : 'allull@bitgrup.com',
                 From : $('#mail').val(),
                 Subject : "Contacte de l'APP Tic Mallorca",
                 Body : 'Comentari:  ' + $('#comentari').val()
