@@ -30,6 +30,9 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:allowBackup="false"/>
+        </edit-config>
     </platform>
 	
     <!-- PREFERENCE -->
