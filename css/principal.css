@@ -87,7 +87,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 
 /*######## BOTONS #############*/
 button{text-shadow:none !important;}
-.transition{transition: all 0.8s ease-in-out;}
+.transition{transition: all 1s ease-in-out;}
 .ui-page-theme-a .ui-btn{padding:0; margin: 0; background: transparent; border: none; box-shadow: none;}
 .ui-page-theme-a button.ui-btn:active, .ui-page-theme-a button.ui-btn:focus, .ui-page-theme-a button.ui-btn:hover{box-shadow: none; outline: none;}
 
@@ -110,6 +110,7 @@ button{text-shadow:none !important;}
 
 /*######## MENU #############*/
 
+.menu {position: fixed;}
 .menu {background: rgba(43,72,105,1);}
 .menu {background: -moz-linear-gradient(top, rgba(43,72,105,1) 10%, rgba(46,164,224,1) 80%, rgba(46,164,224,1) 100%);}
 .menu {background: -webkit-gradient(left top, left bottom, color-stop(10%, rgba(43,72,105,1)), color-stop(80%, rgba(46,164,224,1)), color-stop(100%, rgba(46,164,224,1)));}
