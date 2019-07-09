@@ -166,7 +166,7 @@ button{text-shadow:none !important;}
 
 
 /*######## HOME #############*/
-#home .ui-content{height: 75vh;padding: 0px 35px;}
+#home .ui-content{height: 75vh;padding: 0px 35px; margin-top: 20px;}
 #home .btn-home button{ border-radius: 4px;background-position: center; background-repeat: no-repeat; background-size: cover; width:100%; padding: 0;margin-bottom: 12px; }
 #home .btn-home button span{padding:9vh 0; display: inline-block; width: 100%; text-align: center; color:#fff;font-family: 'Noto Serif', serif;font-weight: 700; font-size: 21px;}
 #home .btn-home .btn-incidencies{background-image: url('../images/issues-background.jpg');}
