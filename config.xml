@@ -63,6 +63,7 @@
     <plugin name="phonegap-plugin-push" >
         <variable name="FCM_VERSION" value="15.0.2" />
     </plugin>
+    <gap:plugin name="cordova-plugin-crypt-file" source="npm" />
     <gap:plugin name="cordova-plugin-screen-orientation"   source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-device"  source="npm" />
