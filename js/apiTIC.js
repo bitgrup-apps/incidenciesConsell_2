@@ -52,6 +52,7 @@ var api = {
         var day = today.getDate();
         var hours = today.getHours();
         var date = year.toString() + month.toString() + day.toString() + '.' + hours.toString();
+        debugger;
         var phrase = date + api.password + api.deviceId;
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST

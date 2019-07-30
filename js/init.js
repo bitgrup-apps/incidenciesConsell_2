@@ -1336,8 +1336,8 @@ var bitgrup = {
         var currentPage = $.mobile.activePage.attr("id");
         console.log(currentPage);
         if (currentPage == 'home') {
-            //bitgrup.entities.logOut();
-            //navigator.app.exitApp();
+            bitgrup.entities.logOut();
+            navigator.app.exitApp();
         } else if (currentPage == 'config') {
             $.mobile.changePage("#home", {transition: "slide", reverse: true});
         } else if (currentPage == 'issues-step-6') {
