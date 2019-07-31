@@ -284,7 +284,7 @@ var api = {
         $.ajax({
            type: 'POST',
            url: api.url + uri + '?token=' + data.token,
-           data: data.suggestion,
+           data: {suggestion: data.suggestion},
            dataType: "json",
            async: false,
            contentType: "application/json; charset=utf-8",
