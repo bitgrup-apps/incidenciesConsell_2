@@ -207,7 +207,7 @@ var api = {
             api.access(function(token) {
                 var data = {token: token, suggestion: suggestion};
                 try {
-                    api.sendAjaxSuggestion(data, 'POST', 'suggestion', function (resp) {
+                    api.sendAjaxSuggestion(data, 'suggestion', function (resp) {
                         callback(resp.message);
                     });
                 } catch (e) {
@@ -310,7 +310,6 @@ var api = {
         var json = JSON.stringify({issue: data.issue});
         $.ajax({
             type: 'POST',
-
             url: api.url + uri + '?token=' + data.token + '&entityId=' + data.entityId,
             data: json,
             dataType: "json",
