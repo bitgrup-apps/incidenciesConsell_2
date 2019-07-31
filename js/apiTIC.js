@@ -283,7 +283,7 @@ var api = {
     sendAjaxSuggestion: function (data, uri, callback) {
         $.ajax({
            type: 'POST',
-           url: api.url + uri + '?' + data.token,
+           url: api.url + uri + '?token=' + data.token,
            data: data.suggestion,
            dataType: "json",
            async: false,
