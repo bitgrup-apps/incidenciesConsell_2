@@ -211,7 +211,7 @@ var api = {
                         callback(resp.message);
                     });
                 } catch (e) {
-                    callback(false);
+                    callback("Ha ocorregut un error, intenta-ho una altra vegada.");
                 }
             });
         } catch (e) {

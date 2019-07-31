@@ -1426,8 +1426,10 @@ var bitgrup = {
         var comment = $('#comentari').val();
         var countComment = comment.length;
         if (countComment > 19) {
-            api.sendSuggestion(comment).then(
-              message => alert("Missatge enviat correctament."),
+            api.sendSuggestion(comment, function(resp) {
+                message => alert(resp);
+            }).then(
+              //message => alert("Missatge enviat correctament."),
               $('#contacte')[0].reset(),
               $.mobile.changePage("#home", {transition: "slide", reverse: true}));
         } else {
