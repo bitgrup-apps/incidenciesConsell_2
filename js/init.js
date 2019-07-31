@@ -217,7 +217,6 @@ var bitgrup = {
         },
 
         finder: function () {
-            debugger;
             $('.menu-item-container').hide();
             var key = $('#key').val().toLowerCase();
             
