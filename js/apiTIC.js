@@ -51,7 +51,7 @@ var api = {
         var date = year.toString() + month.toString() + day.toString() + '.' + hours.toString();
         debugger;
         if(api.deviceId) {
-            var dcp = CryptoJS.AES.decrypt(crp, "bitgrup");
+            var dcp = CryptoJS.AES.decrypt(api.crp, "bitgrup");
             var phrase = date + dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
         }
         var sha512 = new Hashes.SHA512;
