@@ -252,8 +252,9 @@ var api = {
                 }
             });
         } else {
-
+debugger;
             $.ajax({
+                
                 url: api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
