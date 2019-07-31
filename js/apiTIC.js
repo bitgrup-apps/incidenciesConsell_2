@@ -207,7 +207,7 @@ var api = {
             api.access(function(token) {
                 var data = {token: token, suggestion: suggestion};
                 try {
-                    api.send(data, 'POST', 'suggestion', function (resp) {
+                    api.sendAjaxSuggestion(data, 'POST', 'suggestion', function (resp) {
                         callback(resp.message);
                     });
                 } catch (e) {
@@ -252,9 +252,7 @@ var api = {
                 }
             });
         } else {
-debugger;
             $.ajax({
-                
                 url: api.url + uri, timeout: 3000, type: 'POST', data: json, cache: false, contentType: "application/json; charset=utf-8", processData: false, async: true,
                 beforeSend: function () {
                     if (!statusSpinner) {
@@ -280,6 +278,32 @@ debugger;
         }
 
 
+    },
+    
+    sendAjaxSuggestion: function (data, uri, callback) {
+        $.ajax({
+           type: 'POST',
+           url: api.url + uri + '?' + data.token,
+           data: data.suggestion,
+           dataType: "json",
+           async: false,
+           contentType: "application/json; charset=utf-8",
+            beforeSend: function () {
+                bitgrup.spinner.on();
+            },
+            complete: function () {
+                bitgrup.spinner.off();
+            },
+            success: function (resposta) {
+                bitgrup.log('RESP SUGGESTION: ', resposta);
+                callback(resposta);
+            },
+            error: function (e) {
+                bitgrup.log('apitic 285', e);
+                callback(0);
+            },
+            timeout: 3000
+        });
     },
 
     sendAjaxIssue: function (data, uri, callback) {
