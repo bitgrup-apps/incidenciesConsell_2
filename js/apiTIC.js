@@ -24,7 +24,6 @@ var api = {
         } catch (e) {
             api.errorApi(28);
         }
-
         //bitgrup.entities.chooseEntity();
     },
 
@@ -49,7 +48,6 @@ var api = {
         var day = today.getDate();
         var hours = today.getHours();
         var date = year.toString() + month.toString() + day.toString() + '.' + hours.toString();
-        debugger;
         if(api.deviceId) {
             var dcp = CryptoJS.AES.decrypt(api.crp, "bitgrup");
             var phrase = date + dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
@@ -197,6 +195,28 @@ var api = {
             bitgrup.log('api tic 190', e);
             api.errorApi(190);
             return false;
+        }
+    },
+
+    /*########################################################################
+     #######################    SUGGESTION    ################################
+     ########################################################################*/
+
+    sendSuggestion: function (suggestion, callback) {
+        try {
+            api.access(function(token) {
+                var data = {token: token, suggestion: suggestion};
+                try {
+                    api.send(data, 'POST', 'suggestion', function (resp) {
+                        callback(resp.message);
+                    });
+                } catch (e) {
+                    callback(false);
+                }
+            });
+        } catch (e) {
+            bitgrup.log('API TIC 192', e);
+            api.errorApi(192);
         }
     },
 

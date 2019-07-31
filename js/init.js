@@ -1422,22 +1422,14 @@ var bitgrup = {
         return r;
     },
     
-    sendMail: function() {
+    sendSuggestion: function() {
         var comment = $('#comentari').val();
         var countComment = comment.length;
         if (countComment > 19) {
-            Email.send({
-                SecureToken : "a012dbfd-5264-4d0c-97ad-d7d5dc2160cf",
-                To : 'issue-app@ticmallorca.net',
-                From : 'issue-app@ticmallorca.net',
-                Subject : "Contacte de l'APP Tic Mallorca",
-                Body : 'Comentari:  ' + $('#comentari').val()
-    //            Body : 'Nom: ' + $('#nom').val() + '<br> Llinatges: ' + $('#llinatges').val() + '<br> Telèfon: ' + $('#telefon').val() + '<br> Comentari:  ' + $('#comentari').val()
-            }).then(
+            api.sendSuggestion(comment).then(
               message => alert("Missatge enviat correctament."),
               $('#contacte')[0].reset(),
-              $.mobile.changePage("#home", {transition: "slide", reverse: true})
-            );
+              $.mobile.changePage("#home", {transition: "slide", reverse: true}));
         } else {
             bitgrup.alert('El comentari ha de tenir un mínim de 20 caràcters.');
         }
