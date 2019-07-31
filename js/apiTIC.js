@@ -281,10 +281,11 @@ var api = {
     },
     
     sendAjaxSuggestion: function (data, uri, callback) {
+        var json = JSON.stringify({suggestion: data.suggestion});
         $.ajax({
            type: 'POST',
            url: api.url + uri + '?token=' + data.token,
-           data: {suggestion: data.suggestion},
+           data: json,
            dataType: "json",
            async: false,
            contentType: "application/json; charset=utf-8",
