@@ -4,7 +4,7 @@
 var api = {
 
     url: 'https://issueapp.ticmallorca.net/rest/',
-    password: 'h^t2N6$ZtI5&T1xjxxv2uGZ7&wQT^aJW7CO329nBPbLHpSPj0U4FaEEG&wqqOtX9z@I2z*xP#5gQEQgIhVCv7p9o&XrV0e2YNbt',
+    crp: 'U2FsdGVkX1819EPP2GTpgJnW8al5o50QmtCWP1LWqBxqChyaOJtO2cVZS55chJwywBJXi9beWXEJBcNkaRS3I3B9Ui0gwIXqRWF/MR7GUrY0G7FPlcGNYUn96KHJfPw2gM2+Mf/mDgn5HE1BeqP+aNLwDudK/45JqD1UD9DC/48=',
     deviceId: null,
     token: null,
     entity: null,
@@ -53,7 +53,10 @@ var api = {
         var hours = today.getHours();
         var date = year.toString() + month.toString() + day.toString() + '.' + hours.toString();
         debugger;
-        var phrase = date + api.password + api.deviceId;
+        if(api.deviceId) {
+            var dcp = CryptoJS.AES.decrypt(crp, "bitgrup");
+            var phrase = date + dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
+        }
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
         //var deviceDT = {platform: 'Android', version: '5.1.1', manufacturer: 'samsung', network: 'wifi'};
