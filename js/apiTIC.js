@@ -1,6 +1,3 @@
-// JavaScript Document
-
-
 var api = {
 
     url: 'https://issueapp.ticmallorca.net/rest/',
