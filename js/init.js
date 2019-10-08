@@ -1429,6 +1429,7 @@ var bitgrup = {
                 message => alert(resp);
                 $('#contacte')[0].reset();
                 $.mobile.changePage("#home", {transition: "slide", reverse: true});
+                bitgrup.alert("Missatge enviat correctament");
             });
         } else {
             bitgrup.alert('El comentari ha de tenir un mínim de 20 caràcters.');
