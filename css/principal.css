@@ -304,7 +304,7 @@ textarea#desc-issue.ui-input-text{border-radius: 25px 25px 25px 25px !important;
 .page-news.news-card p{font-size: 4vw;  padding: 5px 0px;}
 .page-news.news-card .ui-content{background:#fff;}
 .page-news.news-card .imgs{margin-bottom: 20px;}
-.news-card .share{position: fixed; bottom: 0vh; top: 78vh; right: 0vw;}
+.news-card .share{position: fixed; bottom: 0vh; top: 78vh; right: 0vw; margin-top: 50px;}
 .news-card .navigation{margin-bottom: 50px;margin-top: 16vw; position: fixed; bottom: 0; left: 0; width: 100%; margin: 0;  padding: 0;}
 .news-card .navigation .ui-btn{width: 48%; float: left; text-align: left; padding: 11px 21px; background:#d2d2d2 ; border:1px solid #d2d2d2; font-size: 4vw; color: #4c4c4c;}
 .news-card .navigation .ui-btn:last-child{float:right; text-align: right;}
