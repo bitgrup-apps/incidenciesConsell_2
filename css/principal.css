@@ -199,6 +199,7 @@ button{text-shadow:none !important;}
 #config ::-moz-placeholder { opacity: 1; color:white;}
 #config :-ms-input-placeholder { opacity: 1; color:white;}
 #config #key {border: 1px solid white; border-radius: 15px 15px; color: white;font-family: Arial;}
+#config .nts {text-shadow: none;}
 div#entities-list {margin-top: 20px;}
 #entities-list button{position: relative; font-size: 4.5vw; width: 100%; white-space: initial; font-weight: 400; background: transparent; text-align: left;}
 /*#entities-list button::before{content: " "; position:absolute; left: 10px; top: 10px; width: 0; height: 0;border-right: 2vw solid transparent;  border-top: 0vw solid rgba(256,256,256,0.15); border-left: 33vw solid rgba(256,256,256,0.15); border-bottom: 34vw solid transparent;}*/
