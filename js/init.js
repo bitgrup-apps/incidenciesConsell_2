@@ -900,16 +900,16 @@ var bitgrup = {
             }
         },
 
-//        linkToPhonegap: function () {
-//            //canviam els links per window.load
-//            $('#card-news-description a').each(function () {
-//                var href = $(this).attr('href');
-//                $(this).attr('href', '#');
-//                $(this).click(function () {
-//                    bitgrup.carregaPagExt(href);
-//                });
-//            });
-//        },
+        linkToPhonegap: function () {
+            //canviam els links per window.load
+            $('#card-news-description a').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '#');
+                $(this).click(function () {
+                    bitgrup.carregaPagExt(href);
+                });
+            });
+        },
 
         initButtonShareAnimation: function () {
             var ul = $("#share"), li = $("#share li"), i = li.length, n = i - 1, r = 20;
