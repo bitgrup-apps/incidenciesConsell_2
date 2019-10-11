@@ -854,8 +854,7 @@ var bitgrup = {
             $('#card-news-title').html(new_.title);
             $('#card-news-description').html(new_.description);
             var img = (new_.img) ? new_.img : 'images/news-background-pred.jpg';
-            //$('#card-news-img').html('<img src="' + img + '" title="' + new_.title + '" alt="TIC"/>');
-            $('#card-news-img').html('<a data-fancybox="gallery" data-options=\'{"showNavArrows" : "true", "arrows" : "true", "buttons" : ["close"]}\' href="' + img + '"><span class="" style="background-image: url(\'' + img + '\')"><span></a>');
+            $('#card-news-img').html('<img src="' + img + '" title="' + new_.title + '" alt="TIC"/>');
             $('#card-news-twitter').data('url', 'https://twitter.com/home?status=' + new_.uri);
             $('#card-news-facebook').data('url', 'https://www.facebook.com/sharer/sharer.php?u=' + new_.uri);
             $('#card-news-whatsapp').data('url', 'whatsapp://send?text=' + new_.uri);
@@ -903,13 +902,13 @@ var bitgrup = {
 
         linkToPhonegap: function () {
             //canviam els links per window.load
-//            $('#card-news-description a').each(function () {
-//                var href = $(this).attr('href');
-//                $(this).attr('href', '#');
-//                $(this).click(function () {
-//                    bitgrup.carregaPagExt(href);
-//                });
-//            });
+            $('#card-news-description a').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '#');
+                $(this).click(function () {
+                    bitgrup.carregaPagExt(href);
+                });
+            });
         },
 
         initButtonShareAnimation: function () {
