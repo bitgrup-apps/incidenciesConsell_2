@@ -68,7 +68,7 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-device"  source="npm" />
     <gap:plugin name="cordova-plugin-spinner"  source="npm" />
-    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" />
+    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" spec="3.0.0" />
     <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="4.0.3"/>
     <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
     <gap:plugin name="cordova-plugin-file"  source="npm" />
