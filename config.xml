@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets" 
         xmlns:gap = "http://phonegap.com/ns/1.0"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
         version   = "1.0.2">  
@@ -30,6 +31,8 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        <custom-preference name="android-manifest/uses-permission/@android:name" value="android.permission.FOREGROUND_SERVICE" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
         </edit-config>
@@ -43,7 +46,7 @@
     <preference name="ChildBrowser" value="disable"/>
     <preference name="DisallowOverscroll" value="true" /> 
     <preference name="android-build-tool" value="gradle" /> 
-    <preference name="android-targetSdkVersion"  value="26" />
+    <preference name="android-targetSdkVersion"  value="28" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="deployment-target" value="7.0" />
     <preference name="UIWebViewBounce" value="false" />
@@ -73,6 +76,7 @@
     <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
     <gap:plugin name="cordova-plugin-file"  source="npm" />
     <gap:plugin name="cordova-plugin-network-information"  source="npm" />
+    <gap:plugin name="cordova-plugin-foreground-service"  source="npm" />
 	
 	
     <engine name="android" spec="~7.0.0" />
