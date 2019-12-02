@@ -4,7 +4,7 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "1.0.2">  
+        version   = "1.0.3">  
 	
 	
     <name>TIC Incidencies</name>
@@ -36,6 +36,12 @@
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
         </edit-config>
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <config-file parent="./" target="app/src/main/AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        </config-file>
     </platform>
 	
     <!-- PREFERENCE -->
