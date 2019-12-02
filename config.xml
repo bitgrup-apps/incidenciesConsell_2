@@ -44,7 +44,7 @@
     </platform>
 	
     <!-- PREFERENCE -->
-    <preference name="phonegap-version" value="cli-8.0.0" /> 
+    <preference name="phonegap-version" value="cli-8.1.1" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
@@ -56,7 +56,8 @@
     <preference name="deployment-target" value="7.0" />
     <preference name="UIWebViewBounce" value="false" />
 
-    
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     
 	   
     <!-- PLUGINS -->
