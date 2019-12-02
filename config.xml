@@ -32,6 +32,7 @@
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <custom-preference name="android-manifest/uses-permission/@android:name" value="android.permission.FOREGROUND_SERVICE" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
