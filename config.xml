@@ -61,7 +61,7 @@
     
 	   
     <!-- PLUGINS -->
-    <plugin name="cordova-plugin-googlemaps" spec="2.4.6">
+    <plugin name="cordova-plugin-googlemaps">
         <!--ANDROID PRODUCCIÓ -->
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
         <!--ANDROID TEST -->
