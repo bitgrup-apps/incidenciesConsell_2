@@ -31,9 +31,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
-        <custom-preference name="android-manifest/uses-permission/@android:name" value="android.permission.FOREGROUND_SERVICE" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
         </edit-config>
@@ -64,9 +62,9 @@
     <!-- PLUGINS -->
     <plugin name="cordova-plugin-googlemaps" spec="2.4.6">
         <!--ANDROID PRODUCCIÓ -->
-        <!--variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/-->
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
         <!--ANDROID TEST -->
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>
+        <!--<variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>-->
         <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
