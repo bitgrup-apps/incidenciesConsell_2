@@ -56,6 +56,10 @@ var bitgrup = {
         bitgrup.issues.init();
         //NEWS
         bitgrup.news.init();
+        //ENTITY
+        if(bitgrup.config.ENTITY_ID) {
+            bitgrup.entities.set
+        }
 
         //DATA BASE
         dataBase.init();
@@ -79,6 +83,7 @@ var bitgrup = {
                     api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
                         if (entity) {
                             if(entity[0].id){
+                                bitgrup.entities.setEntity(entity[0].id);
                                 bitgrup.entities.setEntityScreen(entity[0]);
                             }
                         } else {
