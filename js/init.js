@@ -56,10 +56,6 @@ var bitgrup = {
         bitgrup.issues.init();
         //NEWS
         bitgrup.news.init();
-        //ENTITY
-        if(bitgrup.config.ENTITY_ID) {
-            bitgrup.entities.set
-        }
 
         //DATA BASE
         dataBase.init();
