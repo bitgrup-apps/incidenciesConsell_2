@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets" 
         xmlns:gap = "http://phonegap.com/ns/1.0"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "0.3.3">  
-	
-	
+        version   = "1.0.4">  
+
     <name>TIC Incidencies</name>
     <description>Aplicació d'incidències per a la ciutadania</description>
     <author href="http://bitgrup.com" email="info@bitgrup.com">BITGRUP</author>
@@ -30,33 +30,41 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="google-services.json" target="app/google-services.json" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
         </edit-config>
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <config-file parent="./" target="app/src/main/AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        </config-file>
     </platform>
 	
     <!-- PREFERENCE -->
-    <preference name="phonegap-version" value="cli-8.0.0" /> 
+    <preference name="phonegap-version" value="cli-8.1.1" /> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
     <preference name="ChildBrowser" value="disable"/>
     <preference name="DisallowOverscroll" value="true" /> 
     <preference name="android-build-tool" value="gradle" /> 
-    <preference name="android-targetSdkVersion"  value="26" />
+    <preference name="android-targetSdkVersion"  value="28" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="deployment-target" value="7.0" />
     <preference name="UIWebViewBounce" value="false" />
 
-    
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     
 	   
     <!-- PLUGINS -->
-    <plugin name="cordova-plugin-googlemaps" spec="2.4.6">
+    <plugin name="cordova-plugin-googlemaps">
         <!--ANDROID PRODUCCIÓ -->
-        <!--variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/-->
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
         <!--ANDROID TEST -->
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>
+        <!--<variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>-->
         <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
@@ -68,11 +76,12 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-device"  source="npm" />
     <gap:plugin name="cordova-plugin-spinner"  source="npm" />
-    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" />
+    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" spec="3.0.0" />
     <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="4.0.3"/>
     <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
     <gap:plugin name="cordova-plugin-file"  source="npm" />
     <gap:plugin name="cordova-plugin-network-information"  source="npm" />
+    <gap:plugin name="cordova-plugin-foreground-service"  source="npm" />
 	
 	
     <engine name="android" spec="~7.0.0" />

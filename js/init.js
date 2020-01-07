@@ -79,6 +79,7 @@ var bitgrup = {
                     api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
                         if (entity) {
                             if(entity[0].id){
+                                bitgrup.entities.setEntity(entity[0].id);
                                 bitgrup.entities.setEntityScreen(entity[0]);
                             }
                         } else {

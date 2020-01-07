@@ -42,15 +42,9 @@ var api = {
 
     access: function (callback) {
         bitgrup.log('TOKEN INIT 48 ');
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var hours = today.getHours();
-        var date = year.toString() + month.toString() + day.toString() + '.' + hours.toString();
         if(api.deviceId) {
             var dcp = CryptoJS.AES.decrypt(api.crp, "bitgrup");
-            var phrase = date + dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
+            var phrase = dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
         }
         var sha512 = new Hashes.SHA512;
         // DEVICEDT de TEST
