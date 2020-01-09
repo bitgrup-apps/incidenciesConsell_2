@@ -4,7 +4,7 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "1.0.5">  
+        version   = "1.0.6">  
 
     <name>TIC Incidencies</name>
     <description>Aplicació d'incidències per a la ciutadania</description>
@@ -12,7 +12,7 @@
     
     <!-- IOS -->
     <platform name="ios">
-        <config-file parent="NSLocationAlwaysUsageDescription" platform="ios" target="*-Info.plist">
+        <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita la localització per indicar el lloc de la incidència.</string>
         </config-file> 
         <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
