@@ -795,7 +795,8 @@ var bitgrup = {
                         }
                         var img = $(this).find("ag\\:ag:image").text();
                         if (!img) {
-                            img = $(this).find('image').text();
+                            var aux = description.substr(description.indexOf('img src=\"'));
+                            img = aux.slice(0, aux.indexOf('\"'));
                         }
                         var pubDate = $(this).find("ag\\:timestamp").text();
                         if (!pubDate) {
