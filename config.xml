@@ -18,6 +18,9 @@
         <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita la localització per indicar el lloc de la incidència</string>
         </config-file>
+        <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist">
+            <string>Es necessita la localització per indicar el lloc de la incidència</string>
+        </edit-config>
         <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita l'accés a la càmara per poder capturar una imatge</string>
         </config-file>
@@ -52,7 +55,7 @@
     <preference name="android-build-tool" value="gradle" /> 
     <preference name="android-targetSdkVersion"  value="28" />
     <preference name="android-minSdkVersion" value="19" />
-    <preference name="deployment-target" value="7.0" />
+    <preference name="deployment-target" value="9.0" />
     <preference name="UIWebViewBounce" value="false" />
 
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo" />
@@ -60,7 +63,7 @@
     
 	   
     <!-- PLUGINS -->
-    <plugin name="cordova-plugin-googlemaps">
+    <plugin name="cordova-plugin-googlemaps" source="npm">
         <!--ANDROID PRODUCCIÓ -->
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
         <!--ANDROID TEST -->

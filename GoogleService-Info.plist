@@ -36,5 +36,7 @@
 	<string>1:499371677221:ios:f12433bc1f9642f1</string>
 	<key>DATABASE_URL</key>
 	<string>https://pushnotificacions-c1fff.firebaseio.com</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Es necessita la localització per indicar el lloc de la incidència.</string>
 </dict>
 </plist>
