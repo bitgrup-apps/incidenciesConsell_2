@@ -794,7 +794,7 @@ var bitgrup = {
                             description = $(this).find('description').text();
                         }
                         var img = $(this).find("ag\\:ag:image").text();
-                        if (!img) {
+                        if (!img && description.includes('img src=\"')) {
                             var aux = description.substr(description.indexOf('img src=\"') + 9);
                             img = aux.slice(0, aux.indexOf('\"'));
                         }
