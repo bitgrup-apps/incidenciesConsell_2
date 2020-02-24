@@ -316,7 +316,7 @@ var bitgrup = {
                 if (total) {
                     $(issuesStatus).each(function (n) {
                         var issue = issuesStatus[n];
-                        var dades = [issue.status, issue.description, issue.id, parseInt(bitgrup.config.ENTITY_ID)];
+                        var dades = [issue.status, issue.description, issue.issueId, parseInt(bitgrup.config.ENTITY_ID)];
                         dataBase.query('UPDATE ISSUES SET STATUS = ?, FEEDBACK = ? WHERE ID = ? AND FK_ENTITY = ?  ', dades, null);
                         if (n >= (total - 1)) {
                             callback();
@@ -454,6 +454,7 @@ var bitgrup = {
                         //DATA
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
+                        $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
                         $('#issue-card-description').html(issue.DESCRIPTION);
                         $('#issue-card-feedback').html(issue.FEEDBACK);
                         //STATUS
