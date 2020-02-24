@@ -605,7 +605,7 @@ var bitgrup = {
                 
                 $('#new-issue-type').html(bitgrup.issues.getNameType(bitgrup.issues.new_.type));
                 $('#new-issue-description').html(bitgrup.issues.new_.description);
-                $('#new-issue-address-aux').html(bitgrup.issues.new_.address_aux);
+                $('#new-issue-adress-aux').html(bitgrup.issues.new_.address_aux);
                 try {
                     $('#new-issue-adress').html(bitgrup.issues.new_.adress.adressa + ', ' + bitgrup.issues.new_.adress.poblacio + '<br>' + today + '<br>' + time);
                     bitgrup.changePage('issues-step-5');
