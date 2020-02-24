@@ -533,6 +533,7 @@ var bitgrup = {
             email: '',
             description: '',
             adress: null,
+            address_aux: null,
             location: null,
             maxImgs: 4,
             numImgs: 0,
@@ -586,15 +587,15 @@ var bitgrup = {
 
             setData: function () {
                 var desc = $('#desc-issue').val();
+                var address_aux = $('#address-aux').val();
                 var countDesc = desc.length;
                 if (countDesc > 19) {
-                    //bitgrup.issues.new_.email = email;
                     bitgrup.issues.new_.description = desc;
-                    bitgrup.issues.new_.setCard();
                 } else {
                     bitgrup.alert('La descripció ha de tenir un mínim de 20 caràcters.');
                 }
-
+                bitgrup.issues.new_.address_aux = address_aux;
+                bitgrup.issues.new_.setCard();
             },
 
             setCard: function () {
@@ -604,6 +605,7 @@ var bitgrup = {
                 
                 $('#new-issue-type').html(bitgrup.issues.getNameType(bitgrup.issues.new_.type));
                 $('#new-issue-description').html(bitgrup.issues.new_.description);
+                $('#new-issue-address-aux').html(bitgrup.issues.new_.address_aux);
                 try {
                     $('#new-issue-adress').html(bitgrup.issues.new_.adress.adressa + ', ' + bitgrup.issues.new_.adress.poblacio + '<br>' + today + '<br>' + time);
                     bitgrup.changePage('issues-step-5');
@@ -642,11 +644,11 @@ var bitgrup = {
                                 i++;
                             });
                             var locationDt = {latitude: bitgrup.issues.new_.location.lat, longitude: bitgrup.issues.new_.location.long, altitude: bitgrup.issues.new_.location.lat};
-                            var issueDt = {id: ID, category: bitgrup.issues.new_.type, date: new Date(), description: bitgrup.issues.new_.description, location: locationDt, image: imagesDt};
+                            var issueDt = {id: ID, category: bitgrup.issues.new_.type, date: new Date(), description: bitgrup.issues.new_.description, location: locationDt, image: imagesDt, address: bitgrup.issues.new_.address_aux};
                             api.sendIssue(bitgrup.config.ENTITY_ID, issueDt, function (idIssue) {
                                 if (idIssue) {
                                     //INSERT ISSUE
-                                    dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+                                    dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,ADDRESS_AUX,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
                                             [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
                                                 bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.adress.poblacio],
                                             function (result) {
