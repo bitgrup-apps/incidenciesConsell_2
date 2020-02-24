@@ -564,6 +564,8 @@ var bitgrup = {
                 bitgrup.issues.new_.imgs = new Array('', '', '', '');
                 bitgrup.issues.new_.description = '';
                 $('#desc-issue').val('');
+                $('#address-aux').val('');
+                bitgrup.issues.new_.address_aux = null;
                 bitgrup.issues.new_.adress = null;
                 bitgrup.issues.new_.location = null;
                 bitgrup.issues.new_.numImgs = 0;
