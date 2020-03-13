@@ -668,9 +668,11 @@ var bitgrup = {
                                                             }
                                                         }
                                                         bitgrup.issues.new_.sendOK();
+                                                        
                                                     });
                                                 } else {
                                                     bitgrup.issues.new_.sendNoOK();
+                                                    api.sendSuggestion("ERROR: Error insertant incidència a la BBDD.", null);
                                                 }
                                             }
                                     );

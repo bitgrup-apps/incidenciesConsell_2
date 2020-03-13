@@ -139,6 +139,7 @@ var api = {
         } catch (e) {
             bitgrup.log('apiTic 147', e);
             api.errorApi(147);
+            api.sendSuggestion("ERROR APP: " + e, null);
             return false;
         }
     },
