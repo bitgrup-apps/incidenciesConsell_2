@@ -652,7 +652,7 @@ var bitgrup = {
                                 if (idIssue) {
                                     //INSERT ISSUE
                                     dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,ADDRESS_AUX,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
-                                            [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
+                                            [parseInt(ID), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
                                                 bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.address_aux, bitgrup.issues.new_.adress.poblacio],
                                             function (result) {
                                                 if (result) {
