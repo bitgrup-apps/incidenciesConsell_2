@@ -64,6 +64,7 @@ var dataBase = {
                             }
                         },
                         function (transaction, error) {
+                            api.sendSuggestion('ERROR-DB-49: ' + sql + ' ---- ' + error.message);
                             //bitgrup.error_('ERROR-DB-49', '', sql + '----' + error.message);
                             console.log(sql, inputs, error);
                             callback(false);
