@@ -10,7 +10,12 @@ var api = {
     init: function () {
         try {
             if (bitgrup.production) {
-                api.deviceId = device.uuid;
+                if(api.getDeviceID()) {
+                    api.deviceId = api.getDeviceID();
+                } else {
+                    api.setDeviceID(device.uuid);
+                    api.deviceId = device.uuid;
+                }
                 if (api.deviceId) {
                     api.getConfig();
                 } else {
@@ -34,6 +39,20 @@ var api = {
         dataBase.query('SELECT * FROM CONFIG WHERE ID = ? ', [1], function (result) {
             bitgrup.entities.setConfig(result[0]);
         });
+    },
+    
+    getDeviceID: function () {
+        dataBase.query('SELECT DEVICE_ID FROM CONFIG WHERE ID = ? ', [1], function (result) {
+            if (result[0].DEVICE_ID) {
+                return result[0].DEVICE_ID;
+            } else {
+                return null;
+            }
+        });
+    },
+    
+    setDeviceID: function (id) {
+        dataBase.query('UPDATE CONFIG SET DEVICE_ID = ?', id);
     },
 
     setToken: function (token) {

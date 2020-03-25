@@ -26,7 +26,7 @@ var dataBase = {
         //CREATE TABLE PICTURES
         dataBase.query('CREATE TABLE IF NOT EXISTS PICTURES (ID unique, FK_ISSUE, BASE_64)');
         //CREATE TALBE CONFIG
-        dataBase.query('CREATE TABLE IF NOT EXISTS CONFIG (ID unique, ENTITY_ID, EMAIL)',null, function (result) {
+        dataBase.query('CREATE TABLE IF NOT EXISTS CONFIG (ID unique, ENTITY_ID, EMAIL, DEVICE_ID)', null, function (result) {
             dataBase.configInit();
         });
 
