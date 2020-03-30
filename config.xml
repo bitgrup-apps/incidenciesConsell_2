@@ -4,7 +4,7 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
-        version   = "1.0.15">  
+        version   = "1.0.16">  
 
     <name>TIC Incidencies</name>
     <description>Aplicació d'incidències per a la ciutadania</description>
