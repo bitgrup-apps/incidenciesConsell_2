@@ -46,12 +46,12 @@ var api = {
         });
     },
     
-    getDeviceID: function () {
+    getDeviceID: function (callback) {
         dataBase.query('SELECT DEVICE_ID FROM CONFIG WHERE ID = ? ', [1], function (result) {
             if (result[0].DEVICE_ID) {
-                return result[0].DEVICE_ID;
+                callback(result[0].DEVICE_ID);
             } else {
-                return null;
+                callback(null);
             }
         });
     },
