@@ -10,12 +10,17 @@ var api = {
     init: function () {
         try {
             if (bitgrup.production) {
-                if(api.getDeviceID()) {
-                    api.deviceId = api.getDeviceID();
-                } else {
-                    api.setDeviceID(device.uuid);
-                    api.deviceId = device.uuid;
-                }
+
+                api.getDeviceID(function(id) {
+                    if(id) {
+                        api.deviceId = id; 
+                    } else {
+                        api.setDeviceID(device.uuid, function() {
+                            api.deviceId = device.uuid;
+                        });
+                    }
+                });
+
                 if (api.deviceId) {
                     api.getConfig();
                 } else {
