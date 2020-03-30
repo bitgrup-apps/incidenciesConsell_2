@@ -56,8 +56,9 @@ var api = {
         });
     },
     
-    setDeviceID: function (id) {
+    setDeviceID: function (id, callback) {
         dataBase.query('UPDATE CONFIG SET DEVICE_ID = ?', id);
+        callback();
     },
 
     setToken: function (token) {
