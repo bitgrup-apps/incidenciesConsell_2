@@ -19,14 +19,16 @@ var api = {
                             api.deviceId = device.uuid;
                         });
                     }
+                    
+                    if (api.deviceId) {
+                        api.getConfig();
+                    } else {
+                        bitgrup.log('ERROR API-TEC 20: No tenemos deviceId');
+                        api.errorApi(21);
+                    }
                 });
 
-                if (api.deviceId) {
-                    api.getConfig();
-                } else {
-                    bitgrup.log('ERROR API-TEC 20: No tenemos deviceId');
-                    api.errorApi(21);
-                }
+                
             } else {
                 api.deviceId = '8b0e32cf46fcfb14';
                 api.getConfig();
