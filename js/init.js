@@ -248,7 +248,6 @@ var bitgrup = {
 
     issues: {
 
-        //types: ["Xarxa d'aigua", "Parcs infantils i mobiliari urbà", "Neteja i gestió de residus", "Enllumenat", "Obra i via pública", "Altres", "Suggeriments"],
         status: [{id: 1, name: 'Rebutjada', color: 'red'}, {id: 2, name: 'Pendent', color: 'yellow'}, {id: 3, name: 'En curs', color: 'orange'}, {id: 4, name: 'Resolta', color: 'green'}],
 
         init: function () {
@@ -652,7 +651,7 @@ var bitgrup = {
                                 if (idIssue) {
                                     //INSERT ISSUE
                                     dataBase.query('INSERT INTO ISSUES (ID,FK_ENTITY,TYPE,DESCRIPTION,DATE,HOUR,STATUS,LATITUDE,LONGITUDE,ADDRESS,ADDRESS_AUX,LOCATION) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
-                                            [parseInt(ID), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
+                                            [parseInt(idIssue), parseInt(bitgrup.config.ENTITY_ID), bitgrup.issues.new_.type, bitgrup.issues.new_.description, today, time, 1, bitgrup.issues.new_.location.lat, bitgrup.issues.new_.location.long,
                                                 bitgrup.issues.new_.adress.adressa, bitgrup.issues.new_.address_aux, bitgrup.issues.new_.adress.poblacio],
                                             function (result) {
                                                 if (result) {
