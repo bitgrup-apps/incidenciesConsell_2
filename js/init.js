@@ -1357,13 +1357,13 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        api.migrateDB(function() {
+        //api.migrateDB(function() {
             setTimeout(function(){
                 $('body .ui-content').removeClass('no-active');
                 $('#loading').removeClass('active');
                 bitgrup.spinner.off();
             }, 500);  
-        });
+        //});
     },
 
     maxWords: function (str) {
