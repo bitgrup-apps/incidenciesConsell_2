@@ -11,15 +11,15 @@ var api = {
         try {
             if (bitgrup.production) {
 
-                api.getDeviceID(function(id) {
-                    if(id) {
-                        api.deviceId = id; 
+                api.getDeviceID(function (id) {
+                    if (id) {
+                        api.deviceId = id;
                     } else {
-                        api.setDeviceID(device.uuid, function() {
+                        api.setDeviceID(device.uuid, function () {
                             api.deviceId = device.uuid;
                         });
                     }
-                    
+
                     if (api.deviceId) {
                         api.getConfig();
                     } else {
@@ -28,7 +28,7 @@ var api = {
                     }
                 });
 
-                
+
             } else {
                 api.deviceId = '8b0e32cf46fcfb14';
                 api.getConfig();
@@ -47,7 +47,7 @@ var api = {
             bitgrup.entities.setConfig(result[0]);
         });
     },
-    
+
     getDeviceID: function (callback) {
         dataBase.query('SELECT DEVICE_ID FROM CONFIG WHERE ID = ? ', [1], function (result) {
             if (result[0].DEVICE_ID) {
@@ -57,7 +57,7 @@ var api = {
             }
         });
     },
-    
+
     setDeviceID: function (id, callback) {
         dataBase.query('UPDATE CONFIG SET DEVICE_ID = ?', id);
         callback();
@@ -69,7 +69,7 @@ var api = {
 
     access: function (callback) {
         bitgrup.log('TOKEN INIT 48 ');
-        if(api.deviceId) {
+        if (api.deviceId) {
             var dcp = CryptoJS.AES.decrypt(api.crp, "bitgrup");
             var phrase = dcp.toString(CryptoJS.enc.Utf8) + api.deviceId;
         }
@@ -142,7 +142,6 @@ var api = {
         api.send(data, 'GET', 'issue/id', function (resp) {
             callback(resp);
         });
-
     },
 
     sendIssue: function (id, issueDt, callback) {
@@ -226,7 +225,7 @@ var api = {
 
     sendSuggestion: function (suggestion, callback) {
         try {
-            api.access(function(token) {
+            api.access(function (token) {
                 var data = {token: token, suggestion: suggestion};
                 try {
                     api.sendAjaxSuggestion(data, 'suggestion', function (resp) {
@@ -240,6 +239,60 @@ var api = {
             bitgrup.log('API TIC 192', e);
             api.errorApi(192);
         }
+    },
+
+    /*########################################################################
+     #######################    MIGRATE DB    ################################
+     ########################################################################*/
+
+    migrateDB: function (callback) {
+        dataBase.query('SELECT * FROM STATUS', '', function () {
+            if (result.length === 0 || !result[0].MIGRATED) {
+                //Borrar les incidencies de la BBDD local
+                dataBase.query('DELETE * FROM ISSUES', '', function () {
+                    dataBase.query('DELETE * FROM PICTURES', '', function () {
+                        //Recuperar el llistat d'incidències
+                        api.access(function (token) {
+                            var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
+                            var resp = api.send(data, 'GET', 'issue', function (resp) {
+                                $(resp).each(function (i) {
+                                    var issue = resp[i];
+                                    var dades = [issue.issueId, parseInt(bitgrup.config.ENTITY_ID), issue.status, issue.description];
+                                    dataBase.query('INSERT INTO ISSUES (ID, FK_ENTITY, STATUS, FEEDBACK) VALUES (?, ?, ?, ?)', dades, function () {
+                                        var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID;
+                                        var resp = api.send(data, 'GET', 'issue/' + issue.issueId, function (resp) {
+                                            $(resp).each(function (i) {
+                                                var details = resp[i];
+                                                var d = new Date(details.origin['created'] * 1000);
+                                                var day = ("0" + d.getDate()).slice(-2);
+                                                var month = ("0" + (d.getMonth() + 1)).slice(-2);
+                                                var year = d.getFullYear();
+                                                var date = day + '/' + month + '/' + year;
+                                                var hours = ("0" + d.getHours()).slice(-2);
+                                                var minutes = ("0" + d.getMinutes()).slice(-2);
+                                                var seconds = ("0" + d.getSeconds()).slice(-2);
+                                                var hour = hours + ':' + minutes + ':' + seconds;
+                                                var dada = [details.origin['categoryId'], details.origin['description'], date, hour, details.origin['latitude'], details.origin['longitude'], details.origin['address'], issue.issueId];
+                                                dataBase.query('UPDATE ISSUES SET TYPE = ?, DESCRIPTION = ?, DATE = ?, HOUR = ?, LATITUDE = ?, LONGITUDE = ?, ADDRESS = ? WHERE ID = ?', dada, function () {
+                                                    $(details.origin['image']).each(function (i) {
+                                                        var image = details.origin['image'][i];
+                                                        dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
+                                                            var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
+                                                            var d = [ID_P, issue.issueId, image.name];
+                                                            dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, BASE_64) VALUES (?,?,?)', d, null);
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            }
+        });
     },
 
     /*#######################    SEND    ##################################*/
@@ -301,16 +354,16 @@ var api = {
 
 
     },
-    
+
     sendAjaxSuggestion: function (data, uri, callback) {
         var json = JSON.stringify({suggestion: data.suggestion});
         $.ajax({
-           type: 'POST',
-           url: api.url + uri + '?token=' + data.token,
-           data: json,
-           dataType: "json",
-           async: false,
-           contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            url: api.url + uri + '?token=' + data.token,
+            data: json,
+            dataType: "json",
+            async: false,
+            contentType: "application/json; charset=utf-8",
             beforeSend: function () {
                 bitgrup.spinner.on();
             },

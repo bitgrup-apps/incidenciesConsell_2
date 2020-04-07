@@ -21,6 +21,8 @@ var dataBase = {
     },
 
     createTables: function () {
+        //CREATE TABLE STATUS
+        dataBase.query('CREATE TABLE IF NOT EXISTS STATUS (ID unique, MIGRATED)');
         //CREATE TABLE ISSUES
         dataBase.query('CREATE TABLE IF NOT EXISTS ISSUES (ID unique, FK_ENTITY, TYPE, DESCRIPTION, DATE, HOUR, STATUS, LATITUDE, LONGITUDE, ADDRESS, ADDRESS_AUX, LOCATION, FEEDBACK)');
         //CREATE TABLE PICTURES

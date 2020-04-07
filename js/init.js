@@ -35,13 +35,6 @@ var bitgrup = {
             }
         });
 
-        //NOTIFICACIONS
-        try {
-            //bitgrup.initPushNotification();
-        } catch (e) {
-            bitgrup.log('E INIT-95 INIT PUSH NOTIFICATION');
-        }
-
         //CARREGAR PAGINES EXTERNES
         $(document).bind("mobileinit", function () {
             $.support.cors = true;
@@ -1364,11 +1357,13 @@ var bitgrup = {
     },
 
     initScreen: function () {
-        setTimeout(function(){
-            $('body .ui-content').removeClass('no-active');
-            $('#loading').removeClass('active');
-            bitgrup.spinner.off();
-        }, 500);
+        api.migrateDB(function() {
+            setTimeout(function(){
+                $('body .ui-content').removeClass('no-active');
+                $('#loading').removeClass('active');
+                bitgrup.spinner.off();
+            }, 500);  
+        });
     },
 
     maxWords: function (str) {
