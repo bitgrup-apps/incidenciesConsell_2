@@ -246,7 +246,7 @@ var api = {
      ########################################################################*/
 
     migrateDB: function (callback) {
-        dataBase.query('SELECT * FROM STATUS', '', function () {
+        dataBase.query('SELECT * FROM STATUS', '', function (result) {
             if (result.length === 0 || !result[0].MIGRATED) {
                 //Borrar les incidencies de la BBDD local
                 dataBase.query('DELETE * FROM ISSUES', '', function () {
