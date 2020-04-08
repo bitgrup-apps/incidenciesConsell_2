@@ -255,45 +255,48 @@ var api = {
                         api.access(function (token) {
                             var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
                             var resp = api.send(data, 'GET', 'issue', function (resp) {
-                                $(resp).each(function (i) {
-                                    var issue = resp.data[i];
-                                    var dades = [issue.issueId, parseInt(bitgrup.config.ENTITY_ID), issue.status, issue.description];
-                                    dataBase.query('INSERT INTO ISSUES (ID, FK_ENTITY, STATUS, FEEDBACK) VALUES (?, ?, ?, ?)', dades, function () {
-                                        var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID;
-                                        var resp = api.send(data, 'GET', 'issue/' + issue.issueId, function (resp) {
-                                            $(resp).each(function (i) {
-                                                var details = resp.data[i];
-                                                var d = new Date(details.origin['created'] * 1000);
-                                                var day = ("0" + d.getDate()).slice(-2);
-                                                var month = ("0" + (d.getMonth() + 1)).slice(-2);
-                                                var year = d.getFullYear();
-                                                var date = day + '/' + month + '/' + year;
-                                                var hours = ("0" + d.getHours()).slice(-2);
-                                                var minutes = ("0" + d.getMinutes()).slice(-2);
-                                                var seconds = ("0" + d.getSeconds()).slice(-2);
-                                                var hour = hours + ':' + minutes + ':' + seconds;
-                                                var dada = [details.origin['category'], details.origin['description'], date, hour, details.origin['location'].latitude, details.origin['location'].longitude, details.origin['address'], issue.issueId];
-                                                dataBase.query('UPDATE ISSUES SET TYPE = ?, DESCRIPTION = ?, DATE = ?, HOUR = ?, LATITUDE = ?, LONGITUDE = ?, ADDRESS_AUX = ? WHERE ID = ?', dada, function () {
-                                                    $(details.origin['image']).each(function (i) {
-                                                        var image = details.origin['image'][i];
-                                                        dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
-                                                            var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
-                                                            var d = [ID_P, issue.issueId, image.data];
-                                                            dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, BASE_64) VALUES (?,?,?)', d, null);
+                                if (resp.size > 0) {
+                                    $(resp.data).each(function (i) {
+                                        var issue = resp.data[i];
+                                        var dades = [issue.issueId, parseInt(bitgrup.config.ENTITY_ID), issue.status, issue.description];
+                                        dataBase.query('INSERT INTO ISSUES (ID, FK_ENTITY, STATUS, FEEDBACK) VALUES (?, ?, ?, ?)', dades, function () {
+                                            var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID;
+                                            var resp = api.send(data, 'GET', 'issue/' + issue.issueId, function (resp) {
+                                                $(resp.data).each(function (i) {
+                                                    var details = resp.data[i];
+                                                    var d = new Date(details.origin['created'] * 1000);
+                                                    var day = ("0" + d.getDate()).slice(-2);
+                                                    var month = ("0" + (d.getMonth() + 1)).slice(-2);
+                                                    var year = d.getFullYear();
+                                                    var date = day + '/' + month + '/' + year;
+                                                    var hours = ("0" + d.getHours()).slice(-2);
+                                                    var minutes = ("0" + d.getMinutes()).slice(-2);
+                                                    var seconds = ("0" + d.getSeconds()).slice(-2);
+                                                    var hour = hours + ':' + minutes + ':' + seconds;
+                                                    var dada = [details.origin['category'], details.origin['description'], date, hour, details.origin['location'].latitude, details.origin['location'].longitude, details.origin['address'], issue.issueId];
+                                                    dataBase.query('UPDATE ISSUES SET TYPE = ?, DESCRIPTION = ?, DATE = ?, HOUR = ?, LATITUDE = ?, LONGITUDE = ?, ADDRESS_AUX = ? WHERE ID = ?', dada, function () {
+                                                        $(details.origin['image']).each(function (i) {
+                                                            var image = details.origin['image'][i];
+                                                            dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
+                                                                var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
+                                                                var d = [ID_P, issue.issueId, image.data];
+                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, BASE_64) VALUES (?,?,?)', d, null);
+                                                            });
                                                         });
                                                     });
                                                 });
                                             });
                                         });
                                     });
-                                });
-//                                dataBase.query('INSERT INTO STATUS (MIGRATED) VALUES(1)', '', null);
+                                }
                             });
                         });
                     });
                 });
+                dataBase.query('INSERT INTO STATUS (MIGRATED) VALUES(1)', '', null);
             }
         });
+        callback();
     },
 
     /*#######################    SEND    ##################################*/
