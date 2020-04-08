@@ -287,7 +287,7 @@ var api = {
                                         });
                                     });
                                 });
-                                dataBase.query('INSERT INTO STATUS (MIGRATED) VALUES(1)', '', null);
+//                                dataBase.query('INSERT INTO STATUS (MIGRATED) VALUES(1)', '', null);
                             });
                         });
                     });
