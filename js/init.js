@@ -6,7 +6,6 @@ var bitgrup = {
     lang: 'ca',
     config: null,
     production: 1,
-    
 
     /* ###########################################################################*/
     /* ################             INIT          ################################*/
@@ -71,7 +70,7 @@ var bitgrup = {
                     //CRIDAM PER RETORN DE LA INFORMACIÓ DE L'ENTITY
                     api.getEntity(parseInt(config.ENTITY_ID), function (entity) {
                         if (entity) {
-                            if(entity[0].id){
+                            if (entity[0].id) {
                                 bitgrup.entities.setEntity(entity[0].id);
                                 bitgrup.entities.setEntityScreen(entity[0]);
                             }
@@ -93,7 +92,7 @@ var bitgrup = {
 
         chooseEntity: function () {
             api.getEntities(function (entities) {
-                
+
                 try {
                     if (entities) {
                         var html = '';
@@ -116,7 +115,7 @@ var bitgrup = {
                         $('.pre-btn').hide();
                         $('.pre-btn').each(function () {
                             var letra = $(this).data("letra");
-                            $('.pre-btn[data-letra='+letra+']').first().show();
+                            $('.pre-btn[data-letra=' + letra + ']').first().show();
                         });
                         $.mobile.changePage("#config", {transition: "slide", reverse: true});
                         //TOT APUNT
@@ -126,7 +125,7 @@ var bitgrup = {
                         api.errorApi(104);
                     }
                 } catch (e) {
-                    bitgrup.log(e,'init ERROR 104: NO TENIM ENTITITES');
+                    bitgrup.log(e, 'init ERROR 104: NO TENIM ENTITITES');
                     api.errorApi(103);
                 }
             });
@@ -155,10 +154,10 @@ var bitgrup = {
                 $('#logo-entity').html('<img src="' + entity.image.data + '" title="' + entity.name + '" alt="TIC Incidències" />');
             }
             //name
-            if(entity.name){
+            if (entity.name) {
                 $('#nameEntity').html(entity.name);
             }
-            
+
             //phone
             if (entity.phone) {
                 $('#phone-entity').show();
@@ -213,13 +212,13 @@ var bitgrup = {
         finder: function () {
             $('.menu-item-container').hide();
             var key = $('#key').val().toLowerCase();
-            
+
             $('.menu-item-container').each(function (i) {
                 if ($(this).data('nom').indexOf(key) !== -1 || $(this).data('nom-a').indexOf(key) !== -1) {
                     $(this).show();
                 }
             });
-            
+
         },
 
         logOut: function () {
@@ -294,9 +293,12 @@ var bitgrup = {
             init: function () {
                 try {
                     bitgrup.spinner.on();
-                    api.getIssues(function () {
-                        bitgrup.issues.list.setList();
+                    api.migrateDB(function () {
+                        api.getIssues(function () {
+                            bitgrup.issues.list.setList();
+                        });
                     });
+
                 } catch (e) {
                     bitgrup.log('init 248', e);
                     bitgrup.spinner.off();
@@ -444,6 +446,12 @@ var bitgrup = {
                     var issue = result[0];
                     if (issue) {
                         //DATA
+                        if (!issue.LOCATION) {
+                            issue.LOCATION = ''
+                        }
+                        if (!issue.ADDRESS || issue.ADDRESS == 'N/A') {
+                            issue.ADDRESS = ''
+                        }
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
                         $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
@@ -532,26 +540,28 @@ var bitgrup = {
             numImgs: 0,
 
             init: function () {
-                if(bitgrup.issues.new_.description){
+                if (bitgrup.issues.new_.description) {
                     bitgrup.changePage('issues-step-5');
-                }else if(bitgrup.issues.new_.location){
+                } else if (bitgrup.issues.new_.location) {
                     bitgrup.changePage('issues-step-4');
-                }else if(bitgrup.issues.new_.numImgs){
+                } else if (bitgrup.issues.new_.numImgs) {
                     bitgrup.issues.new_.setLocation();
-                }else if(bitgrup.issues.new_.type){
+                } else if (bitgrup.issues.new_.type) {
                     bitgrup.changePage('issues-step-2');
-                }else{
+                } else {
                     bitgrup.changePage('issues-step-1');
                 }
-                setTimeout(function(){$('#continue-issue').show()},500);
+                setTimeout(function () {
+                    $('#continue-issue').show()
+                }, 500);
             },
-            
-            resetAndInit: function(){
-              bitgrup.issues.new_.reset();
-              bitgrup.issues.new_.init();
+
+            resetAndInit: function () {
+                bitgrup.issues.new_.reset();
+                bitgrup.issues.new_.init();
             },
-            
-            reset: function(){
+
+            reset: function () {
                 $('#continue-issue').hide();
                 bitgrup.issues.new_.type = 0;
                 bitgrup.issues.new_.imgs = new Array('', '', '', '');
@@ -594,10 +604,10 @@ var bitgrup = {
             },
 
             setCard: function () {
-                
+
                 var today = bitgrup.getToday();
                 var time = bitgrup.getTime();
-                
+
                 $('#new-issue-type').html(bitgrup.issues.getNameType(bitgrup.issues.new_.type));
                 $('#new-issue-description').html(bitgrup.issues.new_.description);
                 $('#new-issue-adress-aux').html(bitgrup.issues.new_.address_aux);
@@ -660,7 +670,7 @@ var bitgrup = {
                                                             }
                                                         }
                                                         bitgrup.issues.new_.sendOK();
-                                                        
+
                                                     });
                                                 } else {
                                                     bitgrup.issues.new_.sendNoOK();
@@ -959,7 +969,7 @@ var bitgrup = {
                     //CHANGE DIV MAP AND LOCATION
                     var div = document.getElementById(id);
                     bitgrup.mapa.map.setDiv(div);
-                    if(!bitgrup.issues.new_.location){
+                    if (!bitgrup.issues.new_.location) {
                         bitgrup.mapa.getLocation();
                     }
                 }
@@ -1111,7 +1121,7 @@ var bitgrup = {
             bitgrup.alert('No s\'ha pogut aconseguir la imatge');
         },
 
-                setPicture: function (imageData, num_imgs) {
+        setPicture: function (imageData, num_imgs) {
             bitgrup.pictures.getPictureOptions(imageData, function (result) {
                 result['name'] = 'img' + api.deviceId + num_imgs;
                 bitgrup.pictures.optionsArray.push(result);
@@ -1152,8 +1162,8 @@ var bitgrup = {
                     if (buttonIndex == 1) {
                         //RESET ALL IMATGES
                         //bitgrup.pictures.setNoPicture(numImg);
-                        for (var i=0;i<imgs.length;i++) {
-                            bitgrup.pictures.setNoPicture(i+1);
+                        for (var i = 0; i < imgs.length; i++) {
+                            bitgrup.pictures.setNoPicture(i + 1);
                         }
                         //Reorder imgs in array
                         imgs.splice((indexImg), 1);
@@ -1164,10 +1174,10 @@ var bitgrup = {
 //                                bitgrup.pictures.setPicture(imgsNew[i], (i + 1));
 //                            }
 //                        });
-                        for (var i=0;i<imgsNew.length;i++) {
+                        for (var i = 0; i < imgsNew.length; i++) {
                             //bitgrup.pictures.setPicture(imgsNew[i], i+1);
-                            var id = 'new-issue-img-' + (i+1);
-                            var id_card = 'new-issue-card-img-' + (i+1);
+                            var id = 'new-issue-img-' + (i + 1);
+                            var id_card = 'new-issue-card-img-' + (i + 1);
                             //get img
                             $('#' + id).addClass('remove');
                             $('#' + id).css('background-image', "url('" + imgsNew[i] + "')");
@@ -1351,18 +1361,18 @@ var bitgrup = {
             navigator.app.backHistory();
         }
     },
-    
-    backButton: function(){
-      window.history.back();  
+
+    backButton: function () {
+        window.history.back();
     },
 
     initScreen: function () {
         //api.migrateDB(function() {
-            setTimeout(function(){
-                $('body .ui-content').removeClass('no-active');
-                $('#loading').removeClass('active');
-                bitgrup.spinner.off();
-            }, 500);  
+        setTimeout(function () {
+            $('body .ui-content').removeClass('no-active');
+            $('#loading').removeClass('active');
+            bitgrup.spinner.off();
+        }, 500);
         //});
     },
 
@@ -1393,43 +1403,43 @@ var bitgrup = {
 
     log: function (str, data) {
         if (!bitgrup.production) {
-            console.log(str, data); 
+            console.log(str, data);
         }
     },
-    
-    getToday: function(date_){
+
+    getToday: function (date_) {
         var fecha = (date_) ? date_ : new Date();
         return ("0" + fecha.getDate()).slice(-2) + '/' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '/' + fecha.getFullYear();
-                
-    }, 
-    
-    getTime: function(){
+
+    },
+
+    getTime: function () {
         var fecha = new Date();
         return ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
     },
-    
-    accentsTidy: function(s){
-        var r=s.toLowerCase();
-        r = r.replace(new RegExp(/\s/g),"");
-        r = r.replace(new RegExp(/[àáâãäå]/g),"a");
-        r = r.replace(new RegExp(/æ/g),"ae");
-        r = r.replace(new RegExp(/ç/g),"c");
-        r = r.replace(new RegExp(/[èéêë]/g),"e");
-        r = r.replace(new RegExp(/[ìíîï]/g),"i");
-        r = r.replace(new RegExp(/ñ/g),"n");                
-        r = r.replace(new RegExp(/[òóôõö]/g),"o");
-        r = r.replace(new RegExp(/œ/g),"oe");
-        r = r.replace(new RegExp(/[ùúûü]/g),"u");
-        r = r.replace(new RegExp(/[ýÿ]/g),"y");
-        r = r.replace(new RegExp(/\W/g),"");
+
+    accentsTidy: function (s) {
+        var r = s.toLowerCase();
+        r = r.replace(new RegExp(/\s/g), "");
+        r = r.replace(new RegExp(/[àáâãäå]/g), "a");
+        r = r.replace(new RegExp(/æ/g), "ae");
+        r = r.replace(new RegExp(/ç/g), "c");
+        r = r.replace(new RegExp(/[èéêë]/g), "e");
+        r = r.replace(new RegExp(/[ìíîï]/g), "i");
+        r = r.replace(new RegExp(/ñ/g), "n");
+        r = r.replace(new RegExp(/[òóôõö]/g), "o");
+        r = r.replace(new RegExp(/œ/g), "oe");
+        r = r.replace(new RegExp(/[ùúûü]/g), "u");
+        r = r.replace(new RegExp(/[ýÿ]/g), "y");
+        r = r.replace(new RegExp(/\W/g), "");
         return r;
     },
-    
-    sendSuggestion: function() {
+
+    sendSuggestion: function () {
         var comment = $('#comentari').val();
         var countComment = comment.length;
         if (countComment > 19) {
-            api.sendSuggestion(comment, function(resp) {
+            api.sendSuggestion(comment, function (resp) {
                 message => alert(resp);
                 $('#contacte')[0].reset();
                 $.mobile.changePage("#home", {transition: "slide", reverse: true});
