@@ -283,6 +283,7 @@ var api = {
                                                                 dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, BASE_64) VALUES (?,?,?)', d, null);
                                                             });
                                                         });
+                                                        bitgrup.issues.list.setList();
                                                     });
                                                 });
                                             });
