@@ -246,11 +246,11 @@ var api = {
      ########################################################################*/
 
     migrateDB: function (callback) {
-        dataBase.query('SELECT * FROM STATUS', '', function (result) {
+        dataBase.query('SELECT * FROM STATUS WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function (result) {
             if (result.length === 0 || !result[0].MIGRATED) {
                 //Borrar les incidencies de la BBDD local
-                dataBase.query('DELETE FROM ISSUES', '', function () {
-                    dataBase.query('DELETE FROM PICTURES', '', function () {
+                dataBase.query('DELETE FROM ISSUES WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function () {
+                    dataBase.query('DELETE FROM PICTURES WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function () {
                         //Recuperar el llistat d'incidències
                         api.access(function (token) {
                             var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
@@ -279,8 +279,8 @@ var api = {
                                                             var image = details.origin['image'][i];
                                                             dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
                                                                 var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
-                                                                var d = [ID_P, issue.issueId, image.data];
-                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, BASE_64) VALUES (?,?,?)', d, null);
+                                                                var d = [ID_P, issue.issueId, bitgrup.config.ENTITY_ID, image.data];
+                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, FK_ENTITY, BASE_64) VALUES (?,?,?)', d, null);
                                                             });
                                                         });
                                                         bitgrup.issues.list.setList();
@@ -294,7 +294,7 @@ var api = {
                         });
                     });
                 });
-                dataBase.query('INSERT INTO STATUS (MIGRATED) VALUES(1)', '', null);
+                dataBase.query('INSERT INTO STATUS (FK_ENTITY, MIGRATED) VALUES(?, 1)', bitgrup.config.ENTITY_ID, null);
             }
         });
         callback();
