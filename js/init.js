@@ -453,9 +453,16 @@ var bitgrup = {
                             issue.ADDRESS = ''
                         }
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
-                        $('#issue-card-adress').html(issue.ADDRESS + ', ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
+                        $('#issue-card-adress').html(issue.ADDRESS + ' ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
                         $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
-                        $('#issue-card-description').html(issue.DESCRIPTION);
+                        if(issue.DESCRIPTION != 'N/A') {
+                            $('#issue-card-description').html(issue.DESCRIPTION);
+                        }
+                        if(!issue.FEEDBACK) {
+                            $('#lbl-feedback').hide();
+                        } else {
+                            $('#lbl-feedback').show();
+                        }
                         $('#issue-card-feedback').html(issue.FEEDBACK);
                         //STATUS
                         var status = bitgrup.issues.status;

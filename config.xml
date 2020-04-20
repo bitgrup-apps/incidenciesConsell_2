@@ -133,7 +133,7 @@
         <icon density="xhdpi" src="res/icons/android/drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="res/icons/android/drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="res/icons/android/drawable-xxxhdpi-icon.png" />
-        <splash density="land-ldpi" src="res/screens/android/drawable-land-ldpi-screen.png" />
+        <!-- <splash density="land-ldpi" src="res/screens/android/drawable-land-ldpi-screen.png" />
         <splash density="land-mdpi" src="res/screens/android/drawable-land-mdpi-screen.png" />
         <splash density="land-hdpi" src="res/screens/android/drawable-land-hdpi-screen.png" />
         <splash density="land-xhdpi" src="res/screens/android/drawable-land-xhdpi-screen.png" />
@@ -144,7 +144,7 @@
         <splash density="port-hdpi" src="res/screens/android/drawable-port-hdpi-screen.png" />
         <splash density="port-xhdpi" src="res/screens/android/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="res/screens/android/drawable-port-xxhdpi-screen.png" />
-        <splash density="port-xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
+        <splash density="port-xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" /> -->
     </platform>
     <platform name="ios">
         <icon height="57" platform="ios" src="res/icons/ios/icon.png" width="57" />
