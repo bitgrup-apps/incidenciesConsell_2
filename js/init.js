@@ -454,10 +454,10 @@ var bitgrup = {
                         }
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ' ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
+                        if(issue.ADDRESS_AUX != 'N/A') {
                         $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
-                        if(issue.DESCRIPTION != 'N/A') {
-                            $('#issue-card-description').html(issue.DESCRIPTION);
                         }
+                        $('#issue-card-description').html(issue.DESCRIPTION);
                         if(!issue.FEEDBACK) {
                             $('#lbl-feedback').hide();
                         } else {
