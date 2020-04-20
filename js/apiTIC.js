@@ -246,11 +246,11 @@ var api = {
      ########################################################################*/
 
     migrateDB: function (callback) {
-        dataBase.query('SELECT * FROM STATUS WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function (result) {
+        dataBase.query('SELECT * FROM STATUS WHERE FK_ENTITY = ?', [bitgrup.config.ENTITY_ID], function (result) {
             if (result.length === 0 || !result[0].MIGRATED) {
                 //Borrar les incidencies de la BBDD local
-                dataBase.query('DELETE FROM ISSUES WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function () {
-                    dataBase.query('DELETE FROM PICTURES WHERE FK_ENTITY = ?', bitgrup.config.ENTITY_ID, function () {
+                dataBase.query('DELETE FROM ISSUES WHERE FK_ENTITY = ?', [bitgrup.config.ENTITY_ID], function () {
+                    dataBase.query('DELETE FROM PICTURES WHERE FK_ENTITY = ?', [bitgrup.config.ENTITY_ID], function () {
                         //Recuperar el llistat d'incidències
                         api.access(function (token) {
                             var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
@@ -294,7 +294,7 @@ var api = {
                         });
                     });
                 });
-                dataBase.query('INSERT INTO STATUS (FK_ENTITY, MIGRATED) VALUES(?, 1)', bitgrup.config.ENTITY_ID, null);
+                dataBase.query('INSERT INTO STATUS (FK_ENTITY, MIGRATED) VALUES(?, 1)', [bitgrup.config.ENTITY_ID], null);
             }
         });
         callback();
