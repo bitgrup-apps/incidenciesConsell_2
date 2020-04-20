@@ -280,7 +280,7 @@ var api = {
                                                             dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
                                                                 var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
                                                                 var d = [ID_P, issue.issueId, bitgrup.config.ENTITY_ID, image.data];
-                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, FK_ENTITY, BASE_64) VALUES (?,?,?)', d, null);
+                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, FK_ENTITY, BASE_64) VALUES (?,?,?,?)', d, null);
                                                             });
                                                         });
                                                         bitgrup.issues.list.setList();
