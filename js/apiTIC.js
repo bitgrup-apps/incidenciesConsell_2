@@ -277,14 +277,11 @@ var api = {
                                                     dataBase.query('UPDATE ISSUES SET TYPE = ?, DESCRIPTION = ?, DATE = ?, HOUR = ?, LATITUDE = ?, LONGITUDE = ?, ADDRESS_AUX = ? WHERE ID = ?', dada, function () {
                                                         $(details.origin['image']).each(function (i) {
                                                             var image = details.origin['image'][i];
-                                                            dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
-                                                                var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
-                                                                var d = [ID_P, issue.issueId, bitgrup.config.ENTITY_ID, image.data];
-                                                                dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, FK_ENTITY, BASE_64) VALUES (?,?,?,?)', d, null);
-                                                            });
+                                                            var d = [ID_P, issue.issueId, bitgrup.config.ENTITY_ID, image.data];
+                                                            dataBase.query('INSERT INTO PICTURES (ID, FK_ISSUE, FK_ENTITY, BASE_64) VALUES (?,?,?,?)', d, null);
                                                         });
-                                                        bitgrup.issues.list.setList();
                                                     });
+                                                    bitgrup.issues.list.setList();
                                                 });
                                             });
                                         });
