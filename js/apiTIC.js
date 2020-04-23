@@ -291,7 +291,7 @@ var api = {
                         });
                     });
                 });
-                //dataBase.query('INSERT INTO STATUS (FK_ENTITY, MIGRATED) VALUES(?, 1)', [bitgrup.config.ENTITY_ID], null);
+                dataBase.query('INSERT INTO STATUS (FK_ENTITY, MIGRATED) VALUES(?, 1)', [bitgrup.config.ENTITY_ID], null);
             }
         });
         callback();
