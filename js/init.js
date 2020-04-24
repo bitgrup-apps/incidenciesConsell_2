@@ -479,9 +479,9 @@ var bitgrup = {
                         $('#issue-card-traffic-light').html(str_status + '<p class="traffic-light-status">' + status_name + '</p>');
                         //IMGS
                         var num_img = 0;
-//                        for (var i = 0; i < bitgrup.issues.new_.maxImgs; i++) {
-//                            $('#issue-card-img-' + (i + 1)).removeClass('img').addClass('before').css('background-image', 'none');
-//                        }
+                        for (var i = 1; i < 5; i++) {
+                            $('#issue-card-img-' + (i )).html('');
+                        }
 
                         dataBase.query('SELECT * FROM PICTURES WHERE FK_ISSUE = ? ', [issue.ID], function (result_img) {
                             var num_imgs = result_img.length;
