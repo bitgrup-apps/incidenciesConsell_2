@@ -666,13 +666,13 @@ var bitgrup = {
                                             function (result) {
                                                 if (result) {
                                                     //INSERT MARKER
-                                                    bitgrup.mapa.insertMarker({ID: idIssue, DESCRIPTION: bitgrup.issues.new_.description, LATITUDE: bitgrup.issues.new_.location.lat, LONGITUDE: bitgrup.issues.new_.location.long});
+                                                    bitgrup.mapa.insertMarker({ID: parseInt(idIssue), DESCRIPTION: bitgrup.issues.new_.description, LATITUDE: bitgrup.issues.new_.location.lat, LONGITUDE: bitgrup.issues.new_.location.long});
                                                     //INSERT PICTURES
                                                     dataBase.query('SELECT MAX(ID) AS LAST FROM PICTURES', null, function (result) {
                                                         var ID_P = (result[0].LAST) ? parseInt(result[0].LAST) + 1 : 1;
                                                         for (var i = 0; i < bitgrup.issues.new_.maxImgs; i++) {
                                                             if (bitgrup.issues.new_.imgs[i]) {
-                                                                dataBase.query('INSERT INTO PICTURES (ID,FK_ISSUE,FK_ENTITY,BASE_64) VALUES (?,?,?)', [ID_P, idIssue, bitgrup.config.ENTITY_ID, bitgrup.issues.new_.imgs[i]], function () {});
+                                                                dataBase.query('INSERT INTO PICTURES (ID,FK_ISSUE,FK_ENTITY,BASE_64) VALUES (?,?,?,?)', [ID_P, parseInt(idIssue), bitgrup.config.ENTITY_ID, bitgrup.issues.new_.imgs[i]], function () {});
                                                                 ID_P++;
                                                             }
                                                         }
