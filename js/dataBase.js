@@ -32,6 +32,7 @@ var dataBase = {
         dataBase.query('CREATE TABLE IF NOT EXISTS CONFIG (ID unique, ENTITY_ID, EMAIL, DEVICE_ID)', null, function (result) {
             dataBase.configInit();
         });
+        dataBase.query('ALTER TABLE CONFIG ADD DEVICE_ID');
 
     },
 
@@ -67,9 +68,11 @@ var dataBase = {
                             }
                         },
                         function (transaction, error) {
-                            api.sendSuggestion('ERROR-DB-49: ' + sql + ' ---- ' + error.message);
-                            //bitgrup.error_('ERROR-DB-49', '', sql + '----' + error.message);
-                            console.log(sql, inputs, error);
+                            if(!error.message.includes('duplicate column name')) {
+                                api.sendSuggestion('ERROR-DB-49: ' + sql + ' ---- ' + error.message);
+                                //bitgrup.error_('ERROR-DB-49', '', sql + '----' + error.message);
+                                console.log(sql, inputs, error);
+                            }
                             callback(false);
                         }
                 );
