@@ -53,6 +53,14 @@ var bitgrup = {
         dataBase.init();
     },
 
+    pressEnter: function(e) {
+        if (!e) e = window.event;
+        var keyCode = e.keyCode || e.which;
+        if (keyCode == '13') {
+            bitgrup.entities.finder();
+        }
+    },
+
     /* ########################################################################## */
     /* #################         CONFIG / ENTITIES          ##################### */
     /* ########################################################################## */
