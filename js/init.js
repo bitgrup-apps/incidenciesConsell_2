@@ -22,6 +22,7 @@ var bitgrup = {
             var keyCode = e.keyCode || e.which;
             if (keyCode == '13'){
                 bitgrup.entities.finder();
+                return false;
             }
         });
 
