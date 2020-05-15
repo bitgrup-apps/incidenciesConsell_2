@@ -17,6 +17,14 @@ var bitgrup = {
     onDeviceReady: function () {
         document.addEventListener("backbutton", bitgrup.back, false);
 
+        $('#key').on('keypress', function(e) {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13'){
+                bitgrup.entities.finder();
+            }
+        });
+
         bitgrup.initApp();
     },
 
