@@ -982,7 +982,7 @@ var bitgrup = {
                         'camera': {target: {lat: 39.625908, lng: 2.973964}, zoom: 15},
                         'backgroundColor': '#FFFFFF',
                         'mapType': plugin.google.maps.MapTypeId.ROADMAP,
-                        'controls': {'myLocation': true},
+                        'controls': {'myLocation': false, 'myLocationButton': false},
                         'gestures': {'scroll': true, 'tilt': true, 'rotate': true, 'zoom': true}
                     };
                     bitgrup.mapa.map = plugin.google.maps.Map.getMap(div, options);
