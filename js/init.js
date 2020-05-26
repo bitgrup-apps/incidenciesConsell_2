@@ -620,11 +620,11 @@ var bitgrup = {
                 var countDesc = desc.length;
                 if (countDesc > 19) {
                     bitgrup.issues.new_.description = desc;
+                    bitgrup.issues.new_.address_aux = address_aux;
+                    bitgrup.issues.new_.setCard();
                 } else {
                     bitgrup.alert('La descripció ha de tenir un mínim de 20 caràcters.');
                 }
-                bitgrup.issues.new_.address_aux = address_aux;
-                bitgrup.issues.new_.setCard();
             },
 
             setCard: function () {
