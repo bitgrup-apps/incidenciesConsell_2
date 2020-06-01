@@ -339,6 +339,7 @@ var bitgrup = {
             },
 
             setList: function () {
+                document.getElementById('issuesMap').style.pointerEvents = 'none';
                 var numIssues = 0;
                 var issues = new Array();
                 dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ORDER BY ID DESC', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
@@ -365,8 +366,9 @@ var bitgrup = {
                         bitgrup.issues.insertIssuesMap();
                         $('#div-list').html('<h4>No tens cap incidència!<br><small>Aquí veuràs una llista amb les teves incidències.</small></h4>');
                         bitgrup.spinner.off();
+                        document.getElementById('issuesMap').style.pointerEvents = 'auto';
                     }
-                });
+                })
             },
 
             getHtml: function (issues, issue_number, numIssues) {
@@ -428,6 +430,7 @@ var bitgrup = {
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
                     bitgrup.spinner.off();
+                    document.getElementById('issuesMap').style.pointerEvents = 'auto';
                 }
             },
 
