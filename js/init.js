@@ -361,7 +361,7 @@ var bitgrup = {
                                 bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
                             });
                         });
-                        setTimeout(document.getElementById('issuesMap').style.pointerEvents = 'auto', 2000);
+                        setTimeout(() => {document.getElementById('issuesMap').style.pointerEvents = 'auto'}, 2000);
                     } else {
                         bitgrup.issues.list.issues = new Array();
                         bitgrup.issues.insertIssuesMap();
@@ -430,7 +430,7 @@ var bitgrup = {
                     /*INSERT HTML*/
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
-                    setTimeout(bitgrup.spinner.off(), 2000);
+                    setTimeout(() => {bitgrup.spinner.off()}, 2000);
                 }
             },
 
