@@ -358,9 +358,10 @@ var bitgrup = {
                                 });
                                 issue.IMGS = imgs;
                                 issues.push(issue);
+                                bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
                             });
                         });
-                        bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
+                        document.getElementById('issuesMap').style.pointerEvents = 'auto';
                     } else {
                         bitgrup.issues.list.issues = new Array();
                         bitgrup.issues.insertIssuesMap();
@@ -430,7 +431,6 @@ var bitgrup = {
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
                     bitgrup.spinner.off();
-                    document.getElementById('issuesMap').style.pointerEvents = 'auto';
                 }
             },
 
