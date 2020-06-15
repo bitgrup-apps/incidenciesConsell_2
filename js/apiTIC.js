@@ -116,7 +116,6 @@ var api = {
 
     getIssues: function (callback) {
         try {
-            document.getElementById('issuesMap').style.pointerEvents = 'none';
             api.access(function (token) {
                 var data = 'token=' + token + '&' + 'entityId=' + bitgrup.config.ENTITY_ID + '&' + 'limit=' + api.issuesLimit;
                 var resp = api.send(data, 'GET', 'issue', function (resp) {
