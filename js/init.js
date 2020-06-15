@@ -38,7 +38,7 @@ var bitgrup = {
 
         //TORNADA ENRERA
         $(".pagina").on("swiperight", function () {
-            if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom') || !$('#oncpd-html').hasClass('page-map')) {
+            if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom') || !$(this).hasClass('page-map')) {
                 window.history.back();
                 
             }
@@ -1531,7 +1531,7 @@ var bitgrup = {
                 }
                // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
                 var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
-                console.log('pos: '+ item.LATITUDE);
+                
                 var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');">Veure</button></div></div>'].join("");
                  var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
 //                var marker = bitgrup.mapaInc.map.addMarker({
