@@ -1522,6 +1522,9 @@ var bitgrup = {
 //            });
 //        });
        bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
+       google.maps.event.addListener(map, "click", function (event) {
+            bitgrup.mapaInc.infowindow.close();
+        });
         var issues = bitgrup.issues.list.issues;
         $.each(issues, function(i,item){
             try {
