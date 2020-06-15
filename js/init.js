@@ -262,6 +262,7 @@ var bitgrup = {
         init: function () {
             //REFRESH
             $('#issues-list-content').xpull({callback: function () {
+                    document.getElementById('issuesMap').style.pointerEvents = 'none';
                     bitgrup.issues.list.init();
                     bitgrup.changePage('issues-list');
                 }});
