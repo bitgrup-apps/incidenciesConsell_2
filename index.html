@@ -89,7 +89,7 @@
                 </div>
                 <!-- ISSUES / NEWS -->
                 <div class="col-xs-12 btn-home">
-                    <button class="btn-incidencies" onclick="bitgrup.issues.list.toList();"><span>Incidències</span></button>
+                    <button class="btn-incidencies" onclick="bitgrup.issues.list.toList();bitgrup.mapaInc.initMap();"><span>Incidències</span></button>
                     <button class="btn-news" id="btn-home-news" onclick="bitgrup.news.list();"><span>Notícies</span></button>
                 </div>
                 <!-- FOOTER -->
@@ -203,7 +203,7 @@
             <!--    TITLE  -->
             <div class="col-xs-12 sub-step">
                 <div class="col-xs-6 text-center" onclick="bitgrup.issues.list.getList();"><i class="ico ico-list"></i></div>
-                <div class="col-xs-6 text-center" onclick="bitgrup.mapaInc.initMap();bitgrup.mapaInc.getMap();"><i class="ico ico-location" id="issuesMap"></i></div>
+                <div class="col-xs-6 text-center" onclick="bitgrup.mapaInc.getMap();"><i class="ico ico-location" id="issuesMap"></i></div>
             </div>
 
             <div data-role="content" id="issues-list-content">
