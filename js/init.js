@@ -40,7 +40,12 @@ var bitgrup = {
         $(".pagina").on("swiperight", function () {
             if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom')) {
                 window.history.back();
+                console.log('back');
             }
+        });
+        $('#map_canvas_list').on('swipe', function (event) {
+            $.event.special.swipe.horizontalDistanceThreshold(1000);
+            console.log('swipe');
         });
 
         //CARREGAR PAGINES EXTERNES
@@ -1542,10 +1547,7 @@ var bitgrup = {
             }
         });
 
-        $('#map_canvas_list').on('swiperight', function (event) {
-            $.event.special.swipe.horizontalDistanceThreshold(1000);
-            console.log('swipe');
-        });
+        
         
     }
     
