@@ -39,7 +39,7 @@ var bitgrup = {
         //TORNADA ENRERA
         $(".pagina").on("swiperight", function () {
             if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom')) {
-                window.history.back();
+              //  window.history.back();
             }
         });
 
