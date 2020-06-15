@@ -1555,8 +1555,8 @@ var bitgrup = {
     }
     
     , getMap: function() {
-        bitgrup.mapaInc.initMap();
-        $.mobile.changePage('#mapaInc', {transition: "slide", reverse: true});
+        
+        $.mobile.changePage('#mapaInc', {transition: "slide"});
     }
     
     }
