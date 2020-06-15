@@ -43,10 +43,10 @@ var bitgrup = {
                 console.log('back');
             }
         });
-        $('#map_canvas_list').on('swipe', function (event) {
-            $.event.special.swipe.horizontalDistanceThreshold(1000);
-            console.log('swipe');
-        });
+//        $('#map_canvas_list').on('swipe', function (event) {
+//            $.event.special.swipe.horizontalDistanceThreshold(1000);
+//            console.log('swipe');
+//        });
 
         //CARREGAR PAGINES EXTERNES
         $(document).bind("mobileinit", function () {
@@ -1529,7 +1529,8 @@ var bitgrup = {
                 if (device.platform === 'Android') {
                     var icon = 'icons/warning.png';
                 }
-                const POSITION = {"lat": item.LATITUDE, "lng": item.LONGITUDE};                
+                const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
+                console.log('pos: '+ POSITION);
                 var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');">Veure</button></div></div>'].join("");
                 
                 var marker = bitgrup.mapaInc.map.addMarker({
