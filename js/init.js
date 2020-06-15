@@ -1488,7 +1488,7 @@ var bitgrup = {
         initMap: function () {
 
         var map = new google.maps.Map(
-                document.getElementById('map_canvas_list'), {zoom: 15, center: bitgrup.mapaInc.pos});
+                document.getElementById('map_canvas_list'), {zoom: 10, center: bitgrup.mapaInc.pos});
 //        marcador = new google.maps.Marker({
 //            position: bitgrup.mapaInc.pos,
 //            map: map
@@ -1544,6 +1544,7 @@ var bitgrup = {
 
         $('#map_canvas_list').on('swiperight', function (event) {
             $.event.special.swipe.horizontalDistanceThreshold(1000);
+            console.log('swipe');
         });
         
     }
