@@ -1533,12 +1533,12 @@ var bitgrup = {
                 var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
                 console.log('pos: '+ item.LATITUDE);
                 var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');">Veure</button></div></div>'].join("");
-                
-                var marker = bitgrup.mapaInc.map.addMarker({
-                    position: pos,
-                    map: map,
-                   // icon: {url: icon}
-                });
+                 var marker = new google.maps.Marker({position: pos, map: map});
+//                var marker = bitgrup.mapaInc.map.addMarker({
+//                    position: pos,
+//                    map: map,
+//                   // icon: {url: icon}
+//                });
                 google.maps.event.addListener(marker, "click", function (e) {
                 bitgrup.mapaInc.infoWindow.close();
                 bitgrup.mapaInc.infoWindow.setContent(html);
