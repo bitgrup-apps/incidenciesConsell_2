@@ -1542,8 +1542,8 @@ var bitgrup = {
             }
         });
 
-        $('#mapa').on('swipe', function (event) {
-            $.event.special.swipe.horizontalDistanceThreshold(300);
+        $('#map_canvas_list').on('swipe', function (event) {
+            $.event.special.swipe.horizontalDistanceThreshold(1000);
         });
         
     }
