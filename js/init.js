@@ -1477,6 +1477,77 @@ var bitgrup = {
             bitgrup.alert('El comentari ha de tenir un mínim de 20 caràcters.');
         }
     }
+    
+    , mapaInc: {
+        
+        mapInc: null,
+        pos: {lat: 39.625908, lng: 2.973964},
+        marcador: '',
+        infowindow:'',
+        
+        initMap: function () {
+
+        var map = new google.maps.Map(
+                document.getElementById('map_canvas_list'), {zoom: 18, center: bitgrup.mapaInc.pos});
+//        marcador = new google.maps.Marker({
+//            position: bitgrup.mapaInc.pos,
+//            map: map
+//        });
+//        google.maps.event.addListener(map, 'click', function (event) {
+//            bitgrup.mapaInc.marcador.setMap(null);
+//            bitgrup.mapaInc.marcador = new google.maps.Marker({
+//                position: event.latLng,
+//                map: map
+//            });
+//            var request = {
+//                position: event.latLng
+//            };
+//            plugin.google.maps.Geocoder.geocode(request, function (results) {
+//
+//                if (results.length) {
+//                    var result = results[0];
+//                    bitgrup.adressa.adressa = result.thoroughfare;
+//                    bitgrup.adressa.poblacio = result.locality;
+//
+//
+//                } else {
+//                    console.log('E-202: NOT LENGHT MAPA');
+//                    errorMapa();
+//                }
+//            });
+//        });
+       bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
+        var issues = bitgrup.issues.list.issues;
+        $.each(issues, function(i,item){
+            try {
+                var icon = 'www/icons/warning.png';
+                if (device.platform === 'Android') {
+                    var icon = 'icons/warning.png';
+                }
+                const POSITION = {"lat": item.LATITUDE, "lng": item.LONGITUDE};                
+                var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');">Veure</button></div></div>'].join("");
+                
+                var marker = bitgrup.mapaInc.map.addMarker({
+                    position: POSITION,
+                    icon: {url: icon}
+                });
+                google.maps.event.addListener(marker, "click", function (e) {
+                bitgrup.mapaInc.infoWindow.close();
+                bitgrup.mapaInc.infoWindow.setContent(html);
+                bitgrup.mapaInc.infoWindow.open(map, marker);
+            });
+                                            
+            } catch (e) {
+
+            }
+        });
+
+        $('#mapa').on('swipe', function (event) {
+            $.event.special.swipe.horizontalDistanceThreshold(300);
+        });
+
+    }
+    }
 };
 
 

@@ -203,7 +203,7 @@
             <!--    TITLE  -->
             <div class="col-xs-12 sub-step">
                 <div class="col-xs-6 text-center" onclick="bitgrup.issues.list.getList();"><i class="ico ico-list"></i></div>
-                <div class="col-xs-6 text-center" onclick="bitgrup.issues.list.getMap();"><i class="ico ico-location" id="issuesMap"></i></div>
+                <div class="col-xs-6 text-center" onclick="bitgrup.mapaInc.initMap();"><i class="ico ico-location" id="issuesMap"></i></div>
             </div>
 
             <div data-role="content" id="issues-list-content">
@@ -697,7 +697,9 @@
         <script type="text/javascript">
                             bitgrup.initDevice();
         </script>
-
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDqxZYIMg9mxg867kh9CQ4zfwsxFUfxg0&libraries=geometry&sensor=false">       
+        </script>
     </body>
 
 </html>
