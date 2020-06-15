@@ -38,9 +38,9 @@ var bitgrup = {
 
         //TORNADA ENRERA
         $(".pagina").on("swiperight", function () {
-            if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom')) {
+            if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom') || !$('#oncpd-html').hasClass('page-map')) {
                 window.history.back();
-                console.log('back');
+                
             }
         });
 //        $('#map_canvas_list').on('swipe', function (event) {
