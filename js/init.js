@@ -1556,12 +1556,7 @@ var bitgrup = {
     
     , getMap: function() {
         bitgrup.mapaInc.initMap();
-        $('#div-list').fadeOut(300, function () {
-                    $('#div-map').fadeIn(300);
-//                    if (!bitgrup.mapa.init('map_canvas_list')) {
-//                        bitgrup.issues.list.getList();
-//                    }
-                });
+        $.mobile.changePage('#mapaInc', {transition: "slide", reverse: true});
     }
     
     }
