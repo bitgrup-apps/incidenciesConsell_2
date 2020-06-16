@@ -1544,7 +1544,7 @@ var bitgrup = {
 //                bitgrup.mapa.changeCamera(lat, long);
                 const NOVAPOSICIO = new plugin.google.maps.LatLng(lat, long);
                 bitgrup.mapa.getAdress(NOVAPOSICIO);
-                bitgrup.mapaInc.pos = NOVAPOSICIO;
+                bitgrup.mapaInc.pos = new google.maps.LatLng({lat: parseFloat(lat), lng: parseFloat(long)});
             //    bitgrup.issues.new_.location = {'lat': lat, 'long': long};
             });
         }
