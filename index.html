@@ -235,13 +235,29 @@
         </div>
 
         <!--############# MAPA INC #############-->
-        <div data-role="page" class="page-map pagina" id="mapaInc">            
+        <div data-role="page" class="page-map pagina" id="mapaInc">
+             <div data-role="panel" id="map_menu" data-position="right" data-display="overlay" data-theme="b" class="menu ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+                <div class="ui-panel-inner">
+                    <div class="col-xs-12 menu-close">
+                        <a href="#" data-rel="close"><i class="ico-close"><span> </span></i></a>
+                    </div>
+                    <div class="col-xs-12 menu-item">
+                        <a href="" onclick="bitgrup.entities.chooseEntity()"><i class="ico-muni"><span class="transition">Municipis</span></i></a>
+                    </div>
+                    <div class="col-xs-12 menu-item">
+                        <a href="#" onclick="window.open('https://www.ticmallorca.net/ca/avis-legal', '_system'); return false;"><i class="ico-text"><span class="transition">Textes legals</span></i></a>
+                    </div>
+                    <div class="col-xs-12 menu-item">
+                        <a href="" onclick="bitgrup.changePage('contact')" ><i class="ico-contact"><span class="transition">Suggerències</span></i></a>
+                    </div>
+                </div>
+            </div>
             <!--header-->
             <div data-role="header" class="header">
                 <div class="row icons-header">
                     <div class="col-xs-3" onclick="bitgrup.backButton();"><i class="ico ico-back"></i></div>
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
-                    <div class="col-xs-3" ><a href="#issues-list_menu"><i class="ico ico-menu"></i></a></div>
+                    <div class="col-xs-3" ><a href="#map_menu"><i class="ico ico-menu"></i></a></div>
                 </div>               
             </div>
             <div class="row">
