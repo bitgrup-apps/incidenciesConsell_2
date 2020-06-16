@@ -1499,7 +1499,7 @@ var bitgrup = {
         initMap: function () {
 
             var map = new google.maps.Map(
-                    document.getElementById('map_canvas_list'), {zoom: 10, center: bitgrup.mapaInc.pos});
+                    document.getElementById('map_canvas_list'), {zoom: 15, center: bitgrup.mapaInc.pos});
 
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
             google.maps.event.addListener(map, "click", function (event) {
@@ -1527,11 +1527,26 @@ var bitgrup = {
 
                 }
             });
+            var marcador = new google.maps.Marker({position: bitgrup.mapaInc.pos, map: map});
 
             $('#map_canvas_list').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
             });
 
+        }
+        
+       , getLocation: function () {
+            var option = {enableHighAccuracy: true};
+            plugin.google.maps.LocationService.getMyLocation(option, function (location) {
+                //CAMERA POSITION
+                var lat = location.latLng.lat;
+                var long = location.latLng.lng;
+//                bitgrup.mapa.changeCamera(lat, long);
+                const NOVAPOSICIO = new plugin.google.maps.LatLng(lat, long);
+                bitgrup.mapa.getAdress(NOVAPOSICIO);
+                bitgrup.mapaInc.pos = NOVAPOSICIO;
+            //    bitgrup.issues.new_.location = {'lat': lat, 'long': long};
+            });
         }
 
         , getMap: function () {
