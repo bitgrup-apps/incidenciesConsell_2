@@ -1535,7 +1535,7 @@ var bitgrup = {
                 marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
                 bitgrup.issues.new_.location = {'lat': event.latLng.lat, 'long': event.latLng.long};
-                console.log('LOC: ' +bitgrup.issues.new_.location);
+                console.log('LOC: ' +bitgrup.issues.new_.location.lat+ '/'+bitgrup.issues.new_.location.long);
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
