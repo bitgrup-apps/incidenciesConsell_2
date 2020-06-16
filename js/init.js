@@ -1503,7 +1503,7 @@ var bitgrup = {
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             var map = new google.maps.Map(
                     document.getElementById(mapa), {zoom: 15, center: posicio,disableDefaultUI: true});
-
+            map.setOptions({styles: styles['hide']});
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
             
             var issues = bitgrup.issues.list.issues;
