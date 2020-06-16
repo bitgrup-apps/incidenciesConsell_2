@@ -1528,9 +1528,11 @@ var bitgrup = {
                 }
             });
             var marcador = new google.maps.Marker({position: posicio, map: map});
+            bitgrup.mapa.getAdress(posicio);
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
+                bitgrup.mapa.getAdress(event.latLng);
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
