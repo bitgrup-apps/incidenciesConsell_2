@@ -1498,10 +1498,10 @@ var bitgrup = {
         lat: null,
         long: null,
 
-        initMap: function () {
+        initMap: function (mapa) {
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             var map = new google.maps.Map(
-                    document.getElementById('map_canvas_list'), {zoom: 15, center: posicio});
+                    document.getElementById(mapa), {zoom: 15, center: posicio});
 
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
             google.maps.event.addListener(map, "click", function (event) {
