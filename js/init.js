@@ -1505,23 +1505,12 @@ var bitgrup = {
                     document.getElementById(mapa), {zoom: 15, center: posicio, disableDefaultUI: true});
             var styleArray = [
                 {
-                    featureType: "all",
+                    featureType: "poi",
                     stylers: [
                         {visibility: "off"}
                     ]
-                },
-                {
-                    featureType: "road",
-                    stylers: [
-                        {visibility: "on"}
-                    ]
-                },
-                {
-                    featureType: "landscape",
-                    stylers: [
-                        {visibility: "on"}
-                    ]
                 }
+                
             ];
 
             map.setOptions({styles: styleArray});
