@@ -1533,9 +1533,11 @@ var bitgrup = {
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
+                var newLat = marcador.getPosition().lat();
+                var newLong = marcador.getPosition().long();
                 bitgrup.mapaInc.getAdress(event.latLng);
-                bitgrup.issues.new_.location = {lat: event.latLng.lat(), long: event.latLng.long()};
-                console.log('Lat: '+event.latLng.lat()+ ' Long:'+event.latLng.long())
+                bitgrup.issues.new_.location = {lat: newLat, long: newLong};
+                console.log('Lat: '+newLat+ ' Long:'+newLong);
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
