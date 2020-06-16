@@ -1504,9 +1504,7 @@ var bitgrup = {
                     document.getElementById(mapa), {zoom: 15, center: posicio});
 
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
-            google.maps.event.addListener(map, "click", function (event) {
-                bitgrup.mapaInc.infowindow.close();
-            });
+            
             var issues = bitgrup.issues.list.issues;
             $.each(issues, function (i, item) {
                 try {
@@ -1530,8 +1528,15 @@ var bitgrup = {
                 }
             });
             var marcador = new google.maps.Marker({position: posicio, map: map});
+            google.maps.event.addListener(map, "click", function (event) {
+                bitgrup.mapaInc.infowindow.close();
+                marcador.setPosition(event.latLng);
+            });
 
             $('#map_canvas_list').on('swipe', function (event) {
+                $.event.special.swipe.horizontalDistanceThreshold(400);
+            });
+            $('#map_canvas').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
             });
 
