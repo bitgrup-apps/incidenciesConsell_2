@@ -17,10 +17,11 @@ var bitgrup = {
     onDeviceReady: function () {
         document.addEventListener("backbutton", bitgrup.back, false);
 
-        $('#key').on('keypress', function(e) {
-            if (!e) e = window.event;
+        $('#key').on('keypress', function (e) {
+            if (!e)
+                e = window.event;
             var keyCode = e.keyCode || e.which;
-            if (keyCode == '13'){
+            if (keyCode == '13') {
                 bitgrup.entities.finder();
                 return false;
             }
@@ -40,7 +41,7 @@ var bitgrup = {
         $(".pagina").on("swiperight", function () {
             if (!$(this).hasClass('pinch-zoom-container') || !$('#oncpd-html').hasClass('zoom') || !$(this).hasClass('page-map')) {
                 window.history.back();
-                
+
             }
         });
 //        $('#map_canvas_list').on('swipe', function (event) {
@@ -67,8 +68,9 @@ var bitgrup = {
         dataBase.init();
     },
 
-    pressEnter: function(e) {
-        if (!e) e = window.event;
+    pressEnter: function (e) {
+        if (!e)
+            e = window.event;
         var keyCode = e.keyCode || e.which;
         if (keyCode == '13') {
             bitgrup.entities.finder();
@@ -367,7 +369,9 @@ var bitgrup = {
                                 bitgrup.issues.list.getHtml(issues, issue_number, numIssues);
                             });
                         });
-                        setTimeout(() => {document.getElementById('issuesMap').style.pointerEvents = 'auto'}, 2000);
+                        setTimeout(() => {
+                            document.getElementById('issuesMap').style.pointerEvents = 'auto'
+                        }, 2000);
                     } else {
                         bitgrup.issues.list.issues = new Array();
                         bitgrup.issues.insertIssuesMap();
@@ -436,7 +440,9 @@ var bitgrup = {
                     /*INSERT HTML*/
                     $('#div-list').html(html);
                     bitgrup.issues.list.getList();
-                    setTimeout(() => {bitgrup.spinner.off()}, 2000);
+                    setTimeout(() => {
+                        bitgrup.spinner.off()
+                    }, 2000);
                 }
             },
 
@@ -480,11 +486,11 @@ var bitgrup = {
                         }
                         $('#issue-card-type').html(bitgrup.issues.getNameType(issue.TYPE));
                         $('#issue-card-adress').html(issue.ADDRESS + ' ' + issue.LOCATION + '<br>' + issue.DATE + '<br>' + issue.HOUR);
-                        if(issue.ADDRESS_AUX != 'N/A') {
-                        $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
+                        if (issue.ADDRESS_AUX != 'N/A') {
+                            $('#issue-card-adress-aux').html(issue.ADDRESS_AUX);
                         }
                         $('#issue-card-description').html(issue.DESCRIPTION);
-                        if(!issue.FEEDBACK) {
+                        if (!issue.FEEDBACK) {
                             $('#lbl-feedback').hide();
                         } else {
                             $('#lbl-feedback').show();
@@ -506,7 +512,7 @@ var bitgrup = {
                         //IMGS
                         var num_img = 0;
                         for (var i = 1; i < 5; i++) {
-                            $('#issue-card-img-' + (i )).html('');
+                            $('#issue-card-img-' + (i)).html('');
                         }
 
                         dataBase.query('SELECT * FROM PICTURES WHERE FK_ISSUE = ? ', [issue.ID], function (result_img) {
@@ -1482,88 +1488,57 @@ var bitgrup = {
             bitgrup.alert('El comentari ha de tenir un mínim de 20 caràcters.');
         }
     }
-    
+
     , mapaInc: {
-        
+
         mapInc: null,
         pos: {lat: 39.625908, lng: 2.973964},
         marcador: '',
-        infowindow:'',
-        
+        infowindow: '',
+
         initMap: function () {
 
-        var map = new google.maps.Map(
-                document.getElementById('map_canvas_list'), {zoom: 10, center: bitgrup.mapaInc.pos});
-//        marcador = new google.maps.Marker({
-//            position: bitgrup.mapaInc.pos,
-//            map: map
-//        });
-//        google.maps.event.addListener(map, 'click', function (event) {
-//            bitgrup.mapaInc.marcador.setMap(null);
-//            bitgrup.mapaInc.marcador = new google.maps.Marker({
-//                position: event.latLng,
-//                map: map
-//            });
-//            var request = {
-//                position: event.latLng
-//            };
-//            plugin.google.maps.Geocoder.geocode(request, function (results) {
-//
-//                if (results.length) {
-//                    var result = results[0];
-//                    bitgrup.adressa.adressa = result.thoroughfare;
-//                    bitgrup.adressa.poblacio = result.locality;
-//
-//
-//                } else {
-//                    console.log('E-202: NOT LENGHT MAPA');
-//                    errorMapa();
-//                }
-//            });
-//        });
-       bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
-       google.maps.event.addListener(map, "click", function (event) {
-            bitgrup.mapaInc.infowindow.close();
-        });
-        var issues = bitgrup.issues.list.issues;
-        $.each(issues, function(i,item){
-            try {
-                var icon = 'www/icons/warning.png';
-                if (device.platform === 'Android') {
-                    var icon = 'icons/warning.png';
-                }
-               // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
-                var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
-                
-                var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
-                 var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
-//                var marker = bitgrup.mapaInc.map.addMarker({
-//                    position: pos,
-//                    map: map,
-//                   // icon: {url: icon}
-//                });
-                google.maps.event.addListener(marker, "click", function (e) {
+            var map = new google.maps.Map(
+                    document.getElementById('map_canvas_list'), {zoom: 10, center: bitgrup.mapaInc.pos});
+
+            bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
-                bitgrup.mapaInc.infowindow.setContent(html);
-                bitgrup.mapaInc.infowindow.open(map, marker);
             });
-                                            
-            } catch (e) {
+            var issues = bitgrup.issues.list.issues;
+            $.each(issues, function (i, item) {
+                try {
+                    var icon = 'www/icons/warning.png';
+                    if (device.platform === 'Android') {
+                        var icon = 'icons/warning.png';
+                    }
+                    // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
+                    var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
 
-            }
-        });
+                    var html = ['<div class="mapInfowindow"><b>' + bitgrup.maxWords(item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
+                    var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        bitgrup.mapaInc.infowindow.close();
+                        bitgrup.mapaInc.infowindow.setContent(html);
+                        bitgrup.mapaInc.infowindow.open(map, marker);
+                    });
 
-       $('#map_canvas_list').on('swipe', function (event) {
+                } catch (e) {
+
+                }
+            });
+
+            $('#map_canvas_list').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
-            }); 
-        
-    }
-    
-    , getMap: function() {
-        
-        $.mobile.changePage('#mapaInc', {transition: "slide"});
-    }
-    
+            });
+
+        }
+
+        , getMap: function () {
+
+            $.mobile.changePage('#mapaInc', {transition: "slide"});
+        }
+
     }
 };
 
