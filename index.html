@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no">
-        
+
         <title>TIC MALLORCA - Incidencies</title> 
 
         <!-- JQUERY -->
@@ -20,7 +20,7 @@
 
         <!-- CJS -->
         <script src="js/cjs/rollups/aes.js"></script>
-        
+
         <!-- FANCY BOX -->
         <link rel="stylesheet" href="js/fancy/jquery.fancybox.min.css" />
         <script src="js/fancy/jquery.fancybox.min.js"></script>
@@ -40,7 +40,7 @@
 
         <!-- APP CSS -->
         <link href="css/principal.css" rel="stylesheet" type="text/css"/>
-        
+
         <!-- SMTJS EMAIL -->
         <script src="https://smtpjs.com/v3/smtp.js"></script>
 
@@ -102,7 +102,7 @@
 
             </div>
         </div>
-        
+
         <!--####################################################################################-->
         <!--#################              CONFIG                    ###########################-->
         <!--####################################################################################-->
@@ -126,7 +126,7 @@
                 <div class="col-xs-12" id="entities-list"></div>
             </div>
         </div>
-        
+
         <!--####################################################################################-->
         <!--###################             CONTACT                  ###########################-->
         <!--####################################################################################-->
@@ -158,10 +158,10 @@
             <div data-role="content"  class="no-active transition" >
                 <div class="col-xs-10 col-xs-offset-1">
                     <form action="#home" id="contacte">
-<!--                        <input type="text" id="nom" class="contact-input" placeholder="Nom">
-                        <input type="text" id="llinatges" class="contact-input" placeholder="Llinatges">
-                        <input type="text" id="mail" class="contact-input" placeholder="E-mail">
-                        <input type="text" id="telefon" class="contact-input" placeholder="Telèfon">-->
+                        <!--                        <input type="text" id="nom" class="contact-input" placeholder="Nom">
+                                                <input type="text" id="llinatges" class="contact-input" placeholder="Llinatges">
+                                                <input type="text" id="mail" class="contact-input" placeholder="E-mail">
+                                                <input type="text" id="telefon" class="contact-input" placeholder="Telèfon">-->
                         <textarea name="comentari" placeholder="La teva suggerència (Entre 20 i 1000 caràcters)" maxlength="1000" rows="6" id="comentari"></textarea>
                         <button type="button" class="contact-btn" onclick="bitgrup.sendSuggestion()">Enviar</button>
                     </form>
@@ -215,9 +215,9 @@
 
 
                 <!-- MAP  -->
-<!--                <div class="col-xs-12 list" id="div-map">
-                    <div id="map_canvas_list" class="map_canvas"></div>
-                </div>-->
+                <!--                <div class="col-xs-12 list" id="div-map">
+                                    <div id="map_canvas_list" class="map_canvas"></div>
+                                </div>-->
             </div>
 
 
@@ -233,7 +233,7 @@
             </div>
 
         </div>
-        
+
         <!--############# MAPA INC #############-->
         <div data-role="page" class="page-map pagina" id="mapaInc">            
             <!--header-->
@@ -243,18 +243,21 @@
                     <div class="col-xs-6" onclick="bitgrup.home();"><i class="ico ico-home"></i></div>
                     <div class="col-xs-3" ><a href="#issues-list_menu"><i class="ico ico-menu"></i></a></div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-12 sub-step">
+                        <div class="col-xs-6 text-center" onclick="bitgrup.issues.list.getList();"><i class="ico ico-list"></i></div>
+                        <div class="col-xs-6 text-center" onclick="bitgrup.mapaInc.initMap('map_canvas_list');bitgrup.mapaInc.getMap();"><i class="ico ico-location" id="issuesMap"></i></div>
+                    </div>
+                </div>
             </div>
-             <div class="col-xs-12 sub-step">
-                <div class="col-xs-6 text-center" onclick="bitgrup.issues.list.getList();"><i class="ico ico-list"></i></div>
-                <div class="col-xs-6 text-center" onclick="bitgrup.mapaInc.initMap('map_canvas_list');bitgrup.mapaInc.getMap();"><i class="ico ico-location" id="issuesMap"></i></div>
-            </div>
+
             <div data-role="content" style="padding:0">
-              
+
                 <!-- MAP  -->
                 <div class="row">
-                <div class="col-xs-12">
-                    <div id="map_canvas_list" class="map_canvas"></div>
-                </div>
+                    <div class="col-xs-12">
+                        <div id="map_canvas_list" class="map_canvas"></div>
+                    </div>
                 </div>
             </div>           
 
@@ -315,7 +318,7 @@
                         <h6 id="lbl-feedback">Comentaris</h6>
                         <p id="issue-card-feedback"></p>
                     </div>
-                    
+
                     <!-- IMG -->
                     <div class="col-xs-12 imgs"  id="issue-card-imgs">
                         <div class="col-xs-6" id="issue-card-img-1"></div>
@@ -323,9 +326,9 @@
                         <div class="col-xs-6" id="issue-card-img-3"></div>
                         <div class="col-xs-6" id="issue-card-img-4"></div>
                     </div>
-                   
-                    
-                    
+
+
+
                     <!-- DELETE -->
                     <div class="col-xs-12">
                         <button class="btn trash" onclick="bitgrup.issues.deleteIssue();"><i class="ico ico-trash"></i></button>
@@ -525,7 +528,7 @@
 
         <!--###################        STEP-5  (ISSUE)      ###########################-->
         <div data-role="page" class="page-issues pagina step-5 steps"   id="issues-step-5">
-           <div data-role="panel" id="issues-step-5_menu" data-position="right" data-display="overlay" data-theme="b" class="menu ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
+            <div data-role="panel" id="issues-step-5_menu" data-position="right" data-display="overlay" data-theme="b" class="menu ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-b ui-panel-animate ui-panel-closed">
                 <div class="ui-panel-inner">
                     <div class="col-xs-12 menu-close">
                         <a href="#" data-rel="close"><i class="ico-close"><span> </span></i></a>
@@ -724,7 +727,7 @@
                             bitgrup.initDevice();
         </script>
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDqxZYIMg9mxg867kh9CQ4zfwsxFUfxg0&libraries=geometry&sensor=false">       
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDqxZYIMg9mxg867kh9CQ4zfwsxFUfxg0&libraries=geometry&sensor=false">
         </script>
     </body>
 
