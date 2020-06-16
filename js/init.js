@@ -1532,12 +1532,9 @@ var bitgrup = {
             bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
-                marcador.setPosition(event.latLng);
-                var newLat = marcador.getPosition().lat();
-                var newLong = marcador.getPosition().long();
+                marcador.setPosition(event.latLng);               
                 bitgrup.mapaInc.getAdress(event.latLng);
-                bitgrup.issues.new_.location = {lat: newLat, long: newLong};
-                console.log('Lat: '+newLat+ ' Long:'+newLong);
+                bitgrup.mapa.getLocation();
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
