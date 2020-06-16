@@ -1529,7 +1529,7 @@ var bitgrup = {
 
                 }
             });
-            var marcador = new google.maps.Marker({position: bitgrup.mapaInc.pos, map: map});
+            var marcador = new google.maps.Marker({position: posicio, map: map});
 
             $('#map_canvas_list').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
