@@ -1537,7 +1537,7 @@ var bitgrup = {
                 var newLat = parseFloat(event.latLng.lat());
                 var newLong = parseFloat(event.latLng.lng());
                 bitgrup.issues.new_.location = {'lat': newLat, 'long': newLong};
-                console.log('lat: '+newLat+' Long:'+newLong);
+                
                 
             });
 
