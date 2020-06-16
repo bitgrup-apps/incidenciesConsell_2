@@ -347,7 +347,7 @@ var bitgrup = {
             },
 
             setList: function () {
-                document.getElementById('issuesMap').style.pointerEvents = 'none';
+               // document.getElementById('issuesMap').style.pointerEvents = 'none';
                 var numIssues = 0;
                 var issues = new Array();
                 dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ORDER BY ID DESC', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
@@ -374,10 +374,10 @@ var bitgrup = {
                         }, 2000);
                     } else {
                         bitgrup.issues.list.issues = new Array();
-                        bitgrup.issues.insertIssuesMap();
+                       // bitgrup.issues.insertIssuesMap();
                         $('#div-list').html('<h4>No tens cap incidència!<br><small>Aquí veuràs una llista amb les teves incidències.</small></h4>');
                         bitgrup.spinner.off();
-                        document.getElementById('issuesMap').style.pointerEvents = 'auto';
+                      //  document.getElementById('issuesMap').style.pointerEvents = 'auto';
                     }
                 })
             },
