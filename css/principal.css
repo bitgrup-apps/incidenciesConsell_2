@@ -185,6 +185,7 @@ textarea#comentari.ui-input-text{border-radius: 25px 25px 25px 25px !important; 
 .page-issues .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 20px 25px;}
 .page-issues .sub-step h3{margin:0;}
 .page-issues .sub-step h3.right{text-align: right;}
+.page-map .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 20px 25px;}
 
 /*LIST*/ 
 .issues-list .ui-content{background:#eeeeee; padding: 20px 0px;}
