@@ -1529,10 +1529,12 @@ var bitgrup = {
             });
             var marcador = new google.maps.Marker({position: posicio, map: map});
             bitgrup.mapaInc.getAdress(posicio);
+            bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
+                bitgrup.issues.new_.location = {'lat': event.latLng.lat, 'long': event.latLng.long};
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
