@@ -311,7 +311,7 @@ var bitgrup = {
             issues: null,
 
             toList: function () {
-                //bitgrup.issues.list.init();
+                bitgrup.issues.list.init();
                 bitgrup.changePage('issues-list');
             },
 
