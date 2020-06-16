@@ -1515,6 +1515,12 @@ var bitgrup = {
                     stylers: [
                         {visibility: "on"}
                     ]
+                },
+                {
+                    featureType: "landscape",
+                    stylers: [
+                        {visibility: "on"}
+                    ]
                 }
             ];
 
