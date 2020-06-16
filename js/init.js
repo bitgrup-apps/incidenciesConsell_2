@@ -1495,11 +1495,13 @@ var bitgrup = {
         pos: {lat: 39.625908, lng: 2.973964},
         marcador: '',
         infowindow: '',
+        lat: null,
+        long: null,
 
         initMap: function () {
-
+            var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             var map = new google.maps.Map(
-                    document.getElementById('map_canvas_list'), {zoom: 15, center: bitgrup.mapaInc.pos});
+                    document.getElementById('map_canvas_list'), {zoom: 15, center: posicio});
 
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
             google.maps.event.addListener(map, "click", function (event) {
@@ -1537,16 +1539,11 @@ var bitgrup = {
         
        , getLocation: function () {
             var option = {enableHighAccuracy: true};
-            plugin.google.maps.LocationService.getMyLocation(option, function (location) {
-                //CAMERA POSITION
-                var lat = location.latLng.lat;
-                var long = location.latLng.lng;
-//                bitgrup.mapa.changeCamera(lat, long);
-                const NOVAPOSICIO = new plugin.google.maps.LatLng(lat, long);
-                bitgrup.mapa.getAdress(NOVAPOSICIO);
-                bitgrup.mapaInc.pos = new google.maps.LatLng({lat: parseFloat(lat), lng: parseFloat(long)});
-            //    bitgrup.issues.new_.location = {'lat': lat, 'long': long};
-            });
+        plugin.google.maps.LocationService.getMyLocation(option, function (location) {
+
+            bitgrup.mapaInc.lat = location.latLng.lat;
+            bitgrup.mapaInc.long = location.latLng.lng;
+        });
         }
 
         , getMap: function () {
