@@ -1528,11 +1528,11 @@ var bitgrup = {
                 }
             });
             var marcador = new google.maps.Marker({position: posicio, map: map});
-            bitgrup.mapa.getAdress(posicio);
+            bitgrup.mapaInc.getAdress(posicio);
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
-                bitgrup.mapa.getAdress(event.latLng);
+                bitgrup.mapaInc.getAdress(event.latLng);
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
@@ -1556,6 +1556,21 @@ var bitgrup = {
         , getMap: function () {
 
             $.mobile.changePage('#mapaInc', {transition: "slide"});
+        }
+        
+        ,getAdress: function (posicio) {            
+            var request = {'position': posicio};
+            var adressa = {'adressa': null, 'poblacio': null};
+            plugin.google.maps.Geocoder.geocode(request, function (results) {
+                if (results.length) {
+                    var result = results[0];                                       
+                    adressa.adressa = result.thoroughfare;
+                    adressa.poblacio = result.locality;
+                } else {
+                    bitgrup.alert("No es pot aconseguir la vostra ubicació");
+                }
+            });
+            bitgrup.issues.new_.adress = adressa;
         }
 
     }
