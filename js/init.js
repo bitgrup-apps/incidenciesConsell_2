@@ -1536,7 +1536,7 @@ var bitgrup = {
                 bitgrup.mapaInc.getAdress(event.latLng);
                 var newLat = parseFloat(event.latLng.lat());
                 var newLong = parseFloat(event.latLng.long());
-                bitgrup.issues.new_.location = {'lat': newLat, 'long': newLong};
+                bitgrup.issues.new_.location = event.latLng;
                 console.log('lat: '+newLat+' Long:'+newLong);
                 
             });
