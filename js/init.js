@@ -1501,7 +1501,7 @@ var bitgrup = {
         initMap: function (mapa) {
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             var map = new google.maps.Map(
-                    document.getElementById(mapa), {zoom: 15, center: posicio});
+                    document.getElementById(mapa), {zoom: 15, center: posicio,disableDefaultUI: true});
 
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
             
