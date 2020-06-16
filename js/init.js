@@ -347,7 +347,7 @@ var bitgrup = {
             },
 
             setList: function () {
-               // document.getElementById('issuesMap').style.pointerEvents = 'none';
+                // document.getElementById('issuesMap').style.pointerEvents = 'none';
                 var numIssues = 0;
                 var issues = new Array();
                 dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ORDER BY ID DESC', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
@@ -374,10 +374,10 @@ var bitgrup = {
                         }, 2000);
                     } else {
                         bitgrup.issues.list.issues = new Array();
-                       // bitgrup.issues.insertIssuesMap();
+                        // bitgrup.issues.insertIssuesMap();
                         $('#div-list').html('<h4>No tens cap incidència!<br><small>Aquí veuràs una llista amb les teves incidències.</small></h4>');
                         bitgrup.spinner.off();
-                      //  document.getElementById('issuesMap').style.pointerEvents = 'auto';
+                        //  document.getElementById('issuesMap').style.pointerEvents = 'auto';
                     }
                 })
             },
@@ -450,7 +450,7 @@ var bitgrup = {
 //                $('#div-map').fadeOut(300, function () {
 //                    $('#div-list').fadeIn(300);
 //                });
-                  $.mobile.changePage('#issues-list',{transition: "slide"});
+                $.mobile.changePage('#issues-list', {transition: "slide"});
 
             },
             getMap: function () {
@@ -1502,24 +1502,25 @@ var bitgrup = {
         initMap: function (mapa) {
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             var map = new google.maps.Map(
-                    document.getElementById(mapa), {zoom: 15, center: posicio,disableDefaultUI: true});
-             var styles = {
-        default: null,
-        hide: [
-          {
-            featureType: 'poi.business',
-            stylers: [{visibility: 'off'}]
-          },
-          {
-            featureType: 'transit',
-            elementType: 'labels.icon',
-            stylers: [{visibility: 'off'}]
-          }
-        ]
-      };
-            map.setOptions({styles: styles['hide']});
+                    document.getElementById(mapa), {zoom: 15, center: posicio, disableDefaultUI: true});
+            var styleArray = [
+                {
+                    featureType: "all",
+                    stylers: [
+                        {visibility: "off"}
+                    ]
+                },
+                {
+                    featureType: "road",
+                    stylers: [
+                        {visibility: "on"}
+                    ]
+                }
+            ];
+
+            map.setOptions({styles: styleArray});
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
-            
+
             var issues = bitgrup.issues.list.issues;
             $.each(issues, function (i, item) {
                 try {
@@ -1547,13 +1548,13 @@ var bitgrup = {
             bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
             google.maps.event.addListener(map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
-                marcador.setPosition(event.latLng);               
+                marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
                 var newLat = parseFloat(event.latLng.lat());
                 var newLong = parseFloat(event.latLng.lng());
                 bitgrup.issues.new_.location = {'lat': newLat, 'long': newLong};
-                
-                
+
+
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
@@ -1564,27 +1565,27 @@ var bitgrup = {
             });
 
         }
-        
-       , getLocation: function () {
+
+        , getLocation: function () {
             var option = {enableHighAccuracy: true};
             plugin.google.maps.LocationService.getMyLocation(option, function (location) {
 
-            bitgrup.mapaInc.lat = location.latLng.lat;
-            bitgrup.mapaInc.long = location.latLng.lng;
-        });
+                bitgrup.mapaInc.lat = location.latLng.lat;
+                bitgrup.mapaInc.long = location.latLng.lng;
+            });
         }
 
         , getMap: function () {
 
             $.mobile.changePage('#mapaInc', {transition: "slide"});
         }
-        
-        ,getAdress: function (posicio) {            
+
+        , getAdress: function (posicio) {
             var request = {'position': posicio};
             var adressa = {'adressa': null, 'poblacio': null};
             plugin.google.maps.Geocoder.geocode(request, function (results) {
                 if (results.length) {
-                    var result = results[0];                                       
+                    var result = results[0];
                     adressa.adressa = result.thoroughfare;
                     adressa.poblacio = result.locality;
                 } else {

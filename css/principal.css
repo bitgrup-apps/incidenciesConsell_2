@@ -187,6 +187,9 @@ textarea#comentari.ui-input-text{border-radius: 25px 25px 25px 25px !important; 
 .page-issues .sub-step h3.right{text-align: right;}
 .page-map .sub-step{background: #5bbced; position: fixed; top: 13.5vw; left: 0; width: 100%;z-index: 9;padding: 20px 25px;}
 .page-map .sub-step > div:last-child{background: #8acff2;}
+.page-map .sub-step{padding: 0px 0px;}
+.page-map .sub-step > div{padding: 15px 0 15px;cursor:pointer;}
+.page-map .sub-step > div:active{opacity: 0.5;}
 
 /*LIST*/ 
 .issues-list .ui-content{background:#eeeeee; padding: 20px 0px;}
