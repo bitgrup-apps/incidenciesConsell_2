@@ -1534,8 +1534,8 @@ var bitgrup = {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
-                bitgrup.issues.new_.location = {'lat': event.latLng.lat, 'long': event.latLng.long};
-                console.log('LOC: ' +bitgrup.issues.new_.location.lat+ '/'+bitgrup.issues.new_.location.long);
+                bitgrup.issues.new_.location = {'lat': event.latLng.latitude, 'long': event.latLng.longitude};
+                
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
