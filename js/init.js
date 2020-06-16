@@ -1534,8 +1534,8 @@ var bitgrup = {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);               
                 bitgrup.mapaInc.getAdress(event.latLng);
-                var newLat = floatval(event.latLng.lat());
-                var newLong = floatval(event.latLng.long());
+                var newLat = parseFloat(event.latLng.lat());
+                var newLong = parseFloat(event.latLng.long());
                 bitgrup.issues.new_.location = {'lat': newLat, 'long': newLong};
                 console.log('lat: '+newLat+' Long:'+newLong);
                 
