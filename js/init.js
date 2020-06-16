@@ -624,9 +624,9 @@ var bitgrup = {
 
             setLocation: function () {
                 bitgrup.changePage('issues-step-3');
-                if (!bitgrup.mapa.init('map_canvas')) {
-                    bitgrup.changePage('issues-step-2');
-                }
+//                if (!bitgrup.mapa.init('map_canvas')) {
+//                    bitgrup.changePage('issues-step-2');
+//                }
             },
 
             setData: function () {
