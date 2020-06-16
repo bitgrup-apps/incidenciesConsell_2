@@ -131,7 +131,7 @@ var bitgrup = {
                                                     <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
                                                 </div>\n\
                                                 <div class="menu-item-button">\n\
-                                                    <button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\')">' + name + ' </button>\n\
+                                                    <button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\');bitgrup.issues.list.init();">' + name + ' </button>\n\
                                                 </div>\n\
                                             </div>';
                         });
@@ -311,7 +311,7 @@ var bitgrup = {
             issues: null,
 
             toList: function () {
-                bitgrup.issues.list.init();
+                //bitgrup.issues.list.init();
                 bitgrup.changePage('issues-list');
             },
 
@@ -447,9 +447,10 @@ var bitgrup = {
             },
 
             getList: function () {
-                $('#div-map').fadeOut(300, function () {
-                    $('#div-list').fadeIn(300);
-                });
+//                $('#div-map').fadeOut(300, function () {
+//                    $('#div-list').fadeIn(300);
+//                });
+                  $.mobile.changePage('#issues-list',{transition: "slide"});
 
             },
             getMap: function () {
