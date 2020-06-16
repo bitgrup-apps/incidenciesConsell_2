@@ -1534,7 +1534,7 @@ var bitgrup = {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);               
                 bitgrup.mapaInc.getAdress(event.latLng);
-                bitgrup.mapa.getLocation();
+                console.log('lat: '+ event.latLng.lat);
             });
 
             $('#map_canvas_list').on('swipe', function (event) {
@@ -1548,7 +1548,7 @@ var bitgrup = {
         
        , getLocation: function () {
             var option = {enableHighAccuracy: true};
-        plugin.google.maps.LocationService.getMyLocation(option, function (location) {
+            plugin.google.maps.LocationService.getMyLocation(option, function (location) {
 
             bitgrup.mapaInc.lat = location.latLng.lat;
             bitgrup.mapaInc.long = location.latLng.lng;
