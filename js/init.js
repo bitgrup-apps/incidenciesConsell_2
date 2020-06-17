@@ -1573,8 +1573,11 @@ var bitgrup = {
         }
 
         , getMap: function () {
-            bitgrup.mapaInc.paintMarcadors();
+            
             $.mobile.changePage('#mapaInc', {transition: "slide"});
+                        setTimeout(() => {
+                            bitgrup.mapaInc.paintMarcadors();
+                        }, 1000);
         }
 
         , getAdress: function (posicio) {
