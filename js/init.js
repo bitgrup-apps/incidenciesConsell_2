@@ -131,7 +131,7 @@ var bitgrup = {
                                                     <p class="pre-btn" data-letra="' + name[0] + '">' + name[0] + '</p>\n\
                                                 </div>\n\
                                                 <div class="menu-item-button">\n\
-                                                    <button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\');">' + name + ' </button>\n\
+                                                    <button class="btn" onclick="bitgrup.entities.setEntity(\'' + entity.id + '\');bitgrup.mapaInc.getLocation();">' + name + ' </button>\n\
                                                 </div>\n\
                                             </div>';
                         });
