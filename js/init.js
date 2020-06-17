@@ -353,6 +353,7 @@ var bitgrup = {
                 dataBase.query('SELECT * FROM ISSUES WHERE FK_ENTITY = ? ORDER BY ID DESC', [parseInt(bitgrup.config.ENTITY_ID)], function (result) {
                     numIssues = result.length;
                     if (numIssues) {
+                        bitgrup.issues.list.getList();
                         var issue_number = 0;
                         $(result).each(function (i) {
                             issue_number++;
@@ -388,7 +389,7 @@ var bitgrup = {
                 if (issue_number >= numIssues) {
                     bitgrup.issues.list.issues = issues;
                     bitgrup.issues.insertIssuesMap();
-                    bitgrup.issues.list.getList();
+                    
                     $(issues).each(function (i) {
                         var issue = issues[i];
                         var html_img = '';
