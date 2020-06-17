@@ -443,7 +443,7 @@ var bitgrup = {
                     bitgrup.issues.list.getList();
                     setTimeout(() => {
                         bitgrup.spinner.off()
-                    }, 3000);
+                    }, 2000);
                 }
             },
 
@@ -1553,9 +1553,10 @@ var bitgrup = {
 
         , getMap: function () {
             
-            $.mobile.changePage('#mapaInc', {transition: "slide"});
+            
                         setTimeout(() => {
                             bitgrup.mapaInc.paintMarcadors();
+                            $.mobile.changePage('#mapaInc', {transition: "slide"});
                         }, 1000);
         }
 
