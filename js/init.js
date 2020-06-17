@@ -388,6 +388,7 @@ var bitgrup = {
                 if (issue_number >= numIssues) {
                     bitgrup.issues.list.issues = issues;
                     bitgrup.issues.insertIssuesMap();
+                    bitgrup.issues.list.getList();
                     $(issues).each(function (i) {
                         var issue = issues[i];
                         var html_img = '';
@@ -443,7 +444,7 @@ var bitgrup = {
                     
                     setTimeout(() => {
                         bitgrup.spinner.off();
-                        bitgrup.issues.list.getList();
+                        
                     }, 2000);
                 }
             },
