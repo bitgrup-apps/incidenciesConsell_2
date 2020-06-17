@@ -440,7 +440,7 @@ var bitgrup = {
 
                     /*INSERT HTML*/
                     $('#div-list').html(html);
-                    bitgrup.issues.list.getList();
+                    
                     setTimeout(() => {
                         bitgrup.spinner.off()
                     }, 2000);
