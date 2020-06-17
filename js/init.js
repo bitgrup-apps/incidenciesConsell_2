@@ -1499,10 +1499,11 @@ var bitgrup = {
         infowindow: '',
         lat: null,
         long: null,
+        map: null,
 
         initMap: function (mapa) {
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
-            var map = new google.maps.Map(
+            bitgrup.mapaInc.map = new google.maps.Map(
                     document.getElementById(mapa), {zoom: 15, center: posicio, disableDefaultUI: true});
             var styleArray = [
                 {
@@ -1517,32 +1518,32 @@ var bitgrup = {
             map.setOptions({styles: styleArray});
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
 
-            var issues = bitgrup.issues.list.issues;
-            $.each(issues, function (i, item) {
-                try {
-                    var icon = 'www/icons/warning.png';
-                    if (device.platform === 'Android') {
-                        var icon = 'icons/warning.png';
-                    }
-                    // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
-                    var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
-
-                    var html = ['<div class="mapInfowindow"><b>' + (item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
-                    var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        bitgrup.mapaInc.infowindow.close();
-                        bitgrup.mapaInc.infowindow.setContent(html);
-                        bitgrup.mapaInc.infowindow.open(map, marker);
-                    });
-
-                } catch (e) {
-
-                }
-            });
-            var marcador = new google.maps.Marker({position: posicio, map: map});
+//            var issues = bitgrup.issues.list.issues;
+//            $.each(issues, function (i, item) {
+//                try {
+//                    var icon = 'www/icons/warning.png';
+//                    if (device.platform === 'Android') {
+//                        var icon = 'icons/warning.png';
+//                    }
+//                    // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
+//                    var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
+//
+//                    var html = ['<div class="mapInfowindow"><b>' + (item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
+//                    var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
+//                    google.maps.event.addListener(marker, "click", function (e) {
+//                        bitgrup.mapaInc.infowindow.close();
+//                        bitgrup.mapaInc.infowindow.setContent(html);
+//                        bitgrup.mapaInc.infowindow.open(map, marker);
+//                    });
+//
+//                } catch (e) {
+//
+//                }
+//            });
+            var marcador = new google.maps.Marker({position: posicio, map: bitgrup.mapaInc.map});
             bitgrup.mapaInc.getAdress(posicio);
             bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
-            google.maps.event.addListener(map, "click", function (event) {
+            google.maps.event.addListener(bitgrup.mapainc.map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
@@ -1572,7 +1573,7 @@ var bitgrup = {
         }
 
         , getMap: function () {
-
+            bitgrup.mapaInc.paintMarcadors();
             $.mobile.changePage('#mapaInc', {transition: "slide"});
         }
 
@@ -1589,6 +1590,31 @@ var bitgrup = {
                 }
             });
             bitgrup.issues.new_.adress = adressa;
+        }
+        
+        ,paintMarcadors: function() {
+            var issues = bitgrup.issues.list.issues;
+            $.each(issues, function (i, item) {
+                try {
+                    var icon = 'www/icons/warning.png';
+                    if (device.platform === 'Android') {
+                        var icon = 'icons/warning.png';
+                    }
+                    // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
+                    var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
+
+                    var html = ['<div class="mapInfowindow"><b>' + (item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
+                    var marker = new google.maps.Marker({position: pos, map: bitgrup.mapaInc.map, icon: {url: icon}});
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        bitgrup.mapaInc.infowindow.close();
+                        bitgrup.mapaInc.infowindow.setContent(html);
+                        bitgrup.mapaInc.infowindow.open(map, marker);
+                    });
+
+                } catch (e) {
+
+                }
+            });
         }
 
     }
