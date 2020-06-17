@@ -1502,6 +1502,7 @@ var bitgrup = {
         map: null,
 
         initMap: function (mapa) {
+            if(bitgrup.mapaInc.map == null){
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             bitgrup.mapaInc.map = new google.maps.Map(
                     document.getElementById(mapa), {zoom: 15, center: posicio, disableDefaultUI: true});
@@ -1518,28 +1519,6 @@ var bitgrup = {
             bitgrup.mapaInc.map.setOptions({styles: styleArray});
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
 
-//            var issues = bitgrup.issues.list.issues;
-//            $.each(issues, function (i, item) {
-//                try {
-//                    var icon = 'www/icons/warning.png';
-//                    if (device.platform === 'Android') {
-//                        var icon = 'icons/warning.png';
-//                    }
-//                    // const POSITION = {lat: item.LATITUDE, lng: item.LONGITUDE};
-//                    var pos = new google.maps.LatLng({lat: parseFloat(item.LATITUDE), lng: parseFloat(item.LONGITUDE)});
-//
-//                    var html = ['<div class="mapInfowindow"><b>' + (item.DESCRIPTION) + '</b><div><button type="buttton" onclick="bitgrup.issues.getIssue(' + item.ID + ');bitgrup.mapaInc.infowindow.close();">Veure</button></div></div>'].join("");
-//                    var marker = new google.maps.Marker({position: pos, map: map, icon: {url: icon}});
-//                    google.maps.event.addListener(marker, "click", function (e) {
-//                        bitgrup.mapaInc.infowindow.close();
-//                        bitgrup.mapaInc.infowindow.setContent(html);
-//                        bitgrup.mapaInc.infowindow.open(map, marker);
-//                    });
-//
-//                } catch (e) {
-//
-//                }
-//            });
             var marcador = new google.maps.Marker({position: posicio, map: bitgrup.mapaInc.map});
             bitgrup.mapaInc.getAdress(posicio);
             bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
@@ -1560,7 +1539,7 @@ var bitgrup = {
             $('#map_canvas').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
             });
-
+            }
         }
 
         , getLocation: function () {
