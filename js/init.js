@@ -442,7 +442,8 @@ var bitgrup = {
                     $('#div-list').html(html);
                     
                     setTimeout(() => {
-                        bitgrup.spinner.off()
+                        bitgrup.spinner.off();
+                        bitgrup.issues.list.getList();
                     }, 2000);
                 }
             },
