@@ -1552,12 +1552,12 @@ var bitgrup = {
         }
 
         , getMap: function () {
-            
-            
-                        setTimeout(() => {
-                            bitgrup.mapaInc.paintMarcadors();
-                            $.mobile.changePage('#mapaInc', {transition: "slide"});
-                        }, 1000);
+            bitgrup.mapaInc.paintMarcadors();
+            $.mobile.changePage('#mapaInc', {transition: "slide"});
+//                        setTimeout(() => {
+//                            
+//                            
+//                        }, 1000);
         }
 
         , getAdress: function (posicio) {
