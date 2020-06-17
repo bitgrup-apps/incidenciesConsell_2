@@ -1515,7 +1515,7 @@ var bitgrup = {
                 
             ];
 
-            map.setOptions({styles: styleArray});
+            bitgrup.mapaInc.map.setOptions({styles: styleArray});
             bitgrup.mapaInc.infowindow = new google.maps.InfoWindow();
 
 //            var issues = bitgrup.issues.list.issues;
@@ -1608,7 +1608,7 @@ var bitgrup = {
                     google.maps.event.addListener(marker, "click", function (e) {
                         bitgrup.mapaInc.infowindow.close();
                         bitgrup.mapaInc.infowindow.setContent(html);
-                        bitgrup.mapaInc.infowindow.open(map, marker);
+                        bitgrup.mapaInc.infowindow.open(bitgrup.mapaInc.map, marker);
                     });
 
                 } catch (e) {
