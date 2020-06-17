@@ -1543,7 +1543,7 @@ var bitgrup = {
             var marcador = new google.maps.Marker({position: posicio, map: bitgrup.mapaInc.map});
             bitgrup.mapaInc.getAdress(posicio);
             bitgrup.issues.new_.location = {'lat': bitgrup.mapaInc.lat, 'long': bitgrup.mapaInc.long};
-            google.maps.event.addListener(bitgrup.mapainc.map, "click", function (event) {
+            google.maps.event.addListener(bitgrup.mapaInc.map, "click", function (event) {
                 bitgrup.mapaInc.infowindow.close();
                 marcador.setPosition(event.latLng);
                 bitgrup.mapaInc.getAdress(event.latLng);
