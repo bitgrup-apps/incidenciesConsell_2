@@ -56,7 +56,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 
 /*######## ICONS #############*/
 .ico{background-image: url('../icons/sprite.svg'); background-size: 200vw auto; background-repeat: no-repeat; height: 11vw; width: 11vw;display: inline-block;}
-.ico.ico-logo{background-image: url('../icons/logo.svg');background-size: 25vw;height: 21vw;width: 32vw;}
+.ico.ico-logo{background-image: url('../icons/logo.svg');background-size: 25vw;height: 19vw;width: 30vw;}
 .ico.ico-back {background-position: -60vw -28vw; background-size: 81vw auto;}
 .ico.ico-back-blau {background-position:-5vw -111vw;  background-size: 81vw auto;}
 .ico.ico-next {background-position: -72vw -28vw; background-size: 81vw auto;}
