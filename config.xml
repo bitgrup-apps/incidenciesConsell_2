@@ -6,7 +6,7 @@
         id        = "com.incidenciesTIC.bitgrup"
         version   = "1.0.23">  
 
-    <name>TIC Incidencies</name>
+    <name>El teu ajuntament</name>
     <description>Aplicació d'incidències per a la ciutadania</description>
     <author href="http://bitgrup.com" email="info@bitgrup.com">BITGRUP</author>
     
@@ -74,17 +74,17 @@
     <plugin name="phonegap-plugin-push" >
         <variable name="FCM_VERSION" value="15.0.2" />
     </plugin>
-    <gap:plugin name="cordova-plugin-crypt-file" source="npm" />
-    <gap:plugin name="cordova-plugin-screen-orientation"   source="npm" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="cordova-plugin-device"  source="npm" />
-    <gap:plugin name="cordova-plugin-spinner"  source="npm" />
-    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" spec="3.0.0" />
-    <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="4.0.3"/>
-    <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
-    <gap:plugin name="cordova-plugin-file"  source="npm" />
-    <gap:plugin name="cordova-plugin-network-information"  source="npm" />
-    <gap:plugin name="cordova-plugin-foreground-service"  source="npm" />
+    <plugin name="cordova-plugin-crypt-file" source="npm" />
+    <plugin name="cordova-plugin-screen-orientation"   source="npm" />
+    <plugin name="cordova-plugin-whitelist" source="npm" />
+    <plugin name="cordova-plugin-device"  source="npm" />
+    <plugin name="cordova-plugin-spinner"  source="npm" />
+    <plugin name="cordova-plugin-inappbrowser"  source="npm" />
+    <plugin name="cordova-plugin-camera"  source="npm" />
+    <plugin name="cordova-plugin-dialogs"  source="npm" />
+    <plugin name="cordova-plugin-file"  source="npm" />
+    <plugin name="cordova-plugin-network-information"  source="npm" />
+    <plugin name="cordova-plugin-foreground-service"  source="npm" />
 	
 	
     <engine name="android" spec="~7.0.0" />

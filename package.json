@@ -1,0 +1,19 @@
+{
+  "name": "el_teu_ajuntament",
+  "version": "1.0.24",
+  "description": "Aplicació d'incidències per a la ciutadania",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitgrup-apps/incidenciesConsell_2.git"
+  },
+  "author": "BITGRUP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitgrup-apps/incidenciesConsell_2/issues"
+  },
+  "homepage": "https://github.com/bitgrup-apps/incidenciesConsell_2#readme"
+}
