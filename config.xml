@@ -6,7 +6,7 @@
         id        = "com.incidenciesTIC.bitgrup"
         version   = "1.0.23">  
 
-    <name>TIC Incidencies</name>
+    <name>El teu Ajuntament</name>
     <description>Aplicació d'incidències per a la ciutadania</description>
     <author href="http://bitgrup.com" email="info@bitgrup.com">BITGRUP</author>
     
