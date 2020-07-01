@@ -32,7 +32,7 @@
     <!-- ANDROID -->
     <platform name="android">
         <allow-intent href="market:*" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
+        <resource-file src="www/google-services.json" target="app/google-services.json" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
