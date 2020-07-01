@@ -22,7 +22,7 @@ a:active{opacity:0.6;}
 ::-webkit-input-placeholder{color:#999;}:-moz-placeholder{color:#999; opacity: 1;}::-moz-placeholder {color:#999;opacity: 1;}:-ms-input-placeholder { color:#999;}
 
 /*######## LOADING #############*/
-#loading{position:fixed; z-index:10; display:none; width:100%; height:100%; background-image:url('../icons/SplashScreenTICMallorca.png'); background-position:center center; background-repeat:no-repeat; background-size: cover;}
+#loading{position:fixed; z-index:10; display:none; width:100%; height:100%; background-image:url('../icons/splash2.png'); background-position:center center; background-repeat:no-repeat; background-size: cover;}
 #loading.active{display: block;}
 #home .ui-content.no-active{opacity: 0;} 
 #loading button{position: absolute; top: 30px; width:100%; text-align: right; background:transparent; left:0; border: none; display: none;padding-right: 10px;}
@@ -56,7 +56,7 @@ textarea.ui-input-text:-moz-placeholder{color: #6f6f6f;} textarea.ui-input-text:
 
 /*######## ICONS #############*/
 .ico{background-image: url('../icons/sprite.svg'); background-size: 200vw auto; background-repeat: no-repeat; height: 11vw; width: 11vw;display: inline-block;}
-.ico.ico-logo{background-image: url('../icons/logo.svg');background-size: 19vw;height: 21vw;width: 32vw;}
+.ico.ico-logo{background-image: url('../icons/logo2.svg');background-size: 19vw;height: 21vw;width: 32vw;}
 .ico.ico-back {background-position: -60vw -28vw; background-size: 81vw auto;}
 .ico.ico-back-blau {background-position:-5vw -111vw;  background-size: 81vw auto;}
 .ico.ico-next {background-position: -72vw -28vw; background-size: 81vw auto;}
