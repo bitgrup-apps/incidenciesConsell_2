@@ -1,0 +1,7 @@
+{
+    "name": "el_teu_ajuntament",
+    "type": "custom",
+    "integrations": {
+      "cordova": {}
+    }
+  }
