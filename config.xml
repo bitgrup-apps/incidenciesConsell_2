@@ -84,7 +84,7 @@
 	
 	
     <engine name="android" spec="~7.0.0" />
-    <engine name="ios" spec="~4.5.4" />
+    <engine name="ios" spec="~5.1.1" />
   
     <feature name='Device'>
         <param name='android-package' value='org.apache.cordova.device.Device' />
