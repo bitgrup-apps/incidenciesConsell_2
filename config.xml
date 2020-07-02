@@ -76,8 +76,8 @@
     <plugin name="cordova-plugin-camera"  source="npm" />
     <plugin name="cordova-plugin-dialogs"  source="npm" />
     <plugin name="cordova-plugin-file"  source="npm" />
-    <!--plugin name="cordova-plugin-network-information"  source="npm" />
-    <plugin name="cordova-plugin-foreground-service"  source="npm" /-->
+    <plugin name="cordova-plugin-network-information"  source="npm" />
+    <plugin name="cordova-plugin-foreground-service"  source="npm" />
 	
 	
     <engine name="android" spec="~7.0.0" />
