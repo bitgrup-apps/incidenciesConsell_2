@@ -63,17 +63,13 @@
     
 	   
     <!-- PLUGINS -->
-    <plugin name="cordova-plugin-googlemaps" spec="2.6.2" source="npm">
-        <!--ANDROID PRODUCCIÓ -->
+    <!--plugin name="cordova-plugin-googlemaps" spec="2.6.2" source="npm">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
-        <!--ANDROID TEST -->
-        <!--<variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>-->
-        <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
-    <!--plugin name="phonegap-plugin-push" >
+    <plugin name="phonegap-plugin-push" >
         <variable name="FCM_VERSION" value="15.0.2" />
-    </plugin-->
+    </plugin>
     <plugin name="cordova-plugin-crypt-file" source="npm" />
     <plugin name="cordova-plugin-screen-orientation"   source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" />
@@ -84,7 +80,7 @@
     <plugin name="cordova-plugin-dialogs"  source="npm" />
     <plugin name="cordova-plugin-file"  source="npm" />
     <plugin name="cordova-plugin-network-information"  source="npm" />
-    <plugin name="cordova-plugin-foreground-service"  source="npm" />
+    <plugin name="cordova-plugin-foreground-service"  source="npm" /-->
 	
 	
     <engine name="android" spec="~7.0.0" />
