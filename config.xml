@@ -71,9 +71,9 @@
         <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
-    <plugin name="phonegap-plugin-push" >
+    <!--plugin name="phonegap-plugin-push" >
         <variable name="FCM_VERSION" value="15.0.2" />
-    </plugin>
+    </plugin-->
     <plugin name="cordova-plugin-crypt-file" source="npm" />
     <plugin name="cordova-plugin-screen-orientation"   source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" />
@@ -94,8 +94,8 @@
         <param name='android-package' value='org.apache.cordova.device.Device' />
         <param name='ios-package' value='Device'/>
     </feature> 
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
+    <!--feature name="http://api.phonegap.com/1.0/geolocation"/-->
+    <!--feature name="http://api.phonegap.com/1.0/file"/-->
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
