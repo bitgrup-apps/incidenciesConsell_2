@@ -22,7 +22,7 @@ a:active{opacity:0.6;}
 ::-webkit-input-placeholder{color:#999;}:-moz-placeholder{color:#999; opacity: 1;}::-moz-placeholder {color:#999;opacity: 1;}:-ms-input-placeholder { color:#999;}
 
 /*######## LOADING #############*/
-#loading{position:fixed; z-index:10; display:none; width:100%; height:100%; background-image:url('../icons/splash2.png'); background-position:center center; background-repeat:no-repeat; background-size: cover;}
+#loading{position:fixed; z-index:10; display:none; width:100%; height:100%; background-image:url('../icons/splashdef.png'); background-position:center center; background-repeat:no-repeat; background-size: cover;}
 #loading.active{display: block;}
 #home .ui-content.no-active{opacity: 0;} 
 #loading button{position: absolute; top: 30px; width:100%; text-align: right; background:transparent; left:0; border: none; display: none;padding-right: 10px;}
