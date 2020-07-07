@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns = "http://www.w3.org/ns/widgets" 
-        xmlns:gap = "http://phonegap.com/ns/1.0"
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        android-versionCode="13" ios-CFBundleVersion="0.1.3"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:android   = "http://schemas.android.com/apk/res/android"
         id        = "com.incidenciesTIC.bitgrup"
         version   = "1.0.25">  
 
@@ -18,9 +17,9 @@
         <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita la localització per indicar el lloc de la incidència</string>
         </config-file>
-        <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist">
+        <config-file target="NSLocationAlwaysUsageDescription" file="*-Info.plist">
             <string>Es necessita la localització per indicar el lloc de la incidència</string>
-        </edit-config>
+        </config-file>
         <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>Es necessita l'accés a la càmara per poder capturar una imatge</string>
         </config-file>
@@ -32,7 +31,7 @@
     <!-- ANDROID -->
     <platform name="android">
         <allow-intent href="market:*" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
+        <resource-file src="www/google-services.json" target="app/google-services.json" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
@@ -46,7 +45,7 @@
     </platform>
 	
     <!-- PREFERENCE -->
-    <preference name="phonegap-version" value="cli-9.0.0" /> 
+    <!--preference name="phonegap-version" value="cli-9.0.0" /--> 
     <preference name="orientation" value="portrait" /> 
     <preference name="stay-in-webview" value="false" />
     <preference name="CameraUsesGeolocation" value="false" />
@@ -57,6 +56,7 @@
     <preference name="android-minSdkVersion" value="19" />
     <preference name="deployment-target" value="9.0" />
     <preference name="UIWebViewBounce" value="false" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
@@ -64,38 +64,31 @@
 	   
     <!-- PLUGINS -->
     <plugin name="cordova-plugin-googlemaps" spec="2.6.2" source="npm">
-        <!--ANDROID PRODUCCIÓ -->
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo"/>
-        <!--ANDROID TEST -->
-        <!--<variable name="API_KEY_FOR_ANDROID" value="AIzaSyAREoVMJ9y3SfWnV1Pn9smtAUT08NFZgzw"/>-->
-        <!-- IOS -->
         <variable name="API_KEY_FOR_IOS" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
     </plugin>
-    <plugin name="phonegap-plugin-push" >
-        <variable name="FCM_VERSION" value="15.0.2" />
-    </plugin>
-    <gap:plugin name="cordova-plugin-crypt-file" source="npm" />
-    <gap:plugin name="cordova-plugin-screen-orientation"   source="npm" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="cordova-plugin-device"  source="npm" />
-    <gap:plugin name="cordova-plugin-spinner"  source="npm" />
-    <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" spec="3.0.0" />
-    <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="4.0.3"/>
-    <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
-    <gap:plugin name="cordova-plugin-file"  source="npm" />
-    <gap:plugin name="cordova-plugin-network-information"  source="npm" />
-    <gap:plugin name="cordova-plugin-foreground-service"  source="npm" />
+    <plugin name="cordova-plugin-crypto-file" source="npm" />
+    <plugin name="cordova-plugin-screen-orientation"   source="npm" />
+    <plugin name="cordova-plugin-whitelist" source="npm" />
+    <plugin name="cordova-plugin-device"  source="npm" />
+    <plugin name="cordova-plugin-spinner"  source="npm" />
+    <plugin name="cordova-plugin-inappbrowser"  source="npm" />
+    <plugin name="cordova-plugin-camera"  source="npm" />
+    <plugin name="cordova-plugin-dialogs"  source="npm" />
+    <plugin name="cordova-plugin-file"  source="npm" />
+    <plugin name="cordova-plugin-network-information"  source="npm" />
+    <plugin name="cordova-plugin-foreground-service"  source="npm" />
 	
 	
     <engine name="android" spec="~7.0.0" />
-    <engine name="ios" spec="~4.5.4" />
+    <engine name="ios" spec="~5.1.1" />
   
     <feature name='Device'>
         <param name='android-package' value='org.apache.cordova.device.Device' />
         <param name='ios-package' value='Device'/>
     </feature> 
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
+    <!--feature name="http://api.phonegap.com/1.0/geolocation"/-->
+    <!--feature name="http://api.phonegap.com/1.0/file"/-->
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
@@ -173,7 +166,7 @@
         <icon height="29" platform="ios" src="res/icons/ios/icon-small.png" width="29" />
         <icon height="58" platform="ios" src="res/icons/ios/icon-small@2x.png" width="58" />
         <icon height="87" platform="ios" src="res/icons/ios/icon-small@3x.png" width="87" />
-        <icon height="1024" platform="ios" src="icons/icon.png" width="1024" />
+        <icon height="1024" platform="ios" src="res/icons/ios/icon-1024.png" width="1024" />
         <splash height="1136" platform="ios" src="res/screens/ios/Default-568h@2x~iphone.png" width="640" />
         <splash height="1334" platform="ios" src="res/screens/ios/Default-667h.png" width="750" />
         <splash height="2208" platform="ios" src="res/screens/ios/Default-736h.png" width="1242" />
