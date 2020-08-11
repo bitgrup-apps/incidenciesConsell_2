@@ -12,19 +12,19 @@
     <!-- IOS -->
     <platform name="ios">
         <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Es necessita la localització per indicar el lloc de la incidència.</string>
+            <string>Es necessita la seva localització per poder indicar la posició de la incidència.</string>
         </config-file> 
         <config-file parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Es necessita la localització per indicar el lloc de la incidència</string>
+            <string>Es necessita la seva localització per poder indicar la posició de la incidència.</string>
         </config-file>
         <config-file target="NSLocationAlwaysUsageDescription" file="*-Info.plist">
-            <string>Es necessita la localització per indicar el lloc de la incidència</string>
+            <string>Es necessita la seva localització per poder indicar la posició de la incidència.</string>
         </config-file>
         <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Es necessita l'accés a la càmara per poder capturar una imatge</string>
+            <string>Es necessita l'accés a la càmara per poder capturar una imatge de l'incidència.</string>
         </config-file>
         <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Es necessita l'accés a la llibreria per poder seleccionar una imatge</string>
+            <string>Es necessita l'accés a la llibreria per poder seleccionar una imatge de l'incidència.</string>
         </config-file>              
     </platform>
     
