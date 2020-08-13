@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android-versionCode="13" ios-CFBundleVersion="0.1.3"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         id        = "com.incidenciesTIC.bitgrup"
@@ -29,17 +30,17 @@
     </platform>
     
     <!-- ANDROID -->
-    <platform name="android" xmlns:android="http://schemas.android.com/apk/res/android">
+    <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="www/google-services.json" target="app/google-services.json" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
-        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge" xmlns:android="http://schemas.android.com/apk/res/android">
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:allowBackup="false"/>
         </edit-config>
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:usesCleartextTraffic="true" />
         </edit-config>
-        <config-file parent="./" target="app/src/main/AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
+        <config-file parent="./" target="app/src/main/AndroidManifest.xml">
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
         </config-file>
     </platform>
