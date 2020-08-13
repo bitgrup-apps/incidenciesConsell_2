@@ -29,18 +29,18 @@
     </platform>
     
     <!-- ANDROID -->
-    <platform name="android">
+    <platform name="android" xmlns:android="http://schemas.android.com/apk/res/android">
         <allow-intent href="market:*" />
         <resource-file src="www/google-services.json" target="app/google-services.json" />
-        <uses-library name="org.apache.http.legacy" required="false" />
-        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application allowBackup="false"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:allowBackup="false"/>
         </edit-config>
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application usesCleartextTraffic="true" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:usesCleartextTraffic="true" />
         </edit-config>
         <config-file parent="./" target="app/src/main/AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
-            <uses-permission name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
         </config-file>
     </platform>
 	
