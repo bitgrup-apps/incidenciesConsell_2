@@ -32,15 +32,15 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <resource-file src="www/google-services.json" target="app/google-services.json" />
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <uses-library name="org.apache.http.legacy" required="false" />
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application android:allowBackup="false"/>
+            <application allowBackup="false"/>
         </edit-config>
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:usesCleartextTraffic="true" />
+            <application usesCleartextTraffic="true" />
         </edit-config>
         <config-file parent="./" target="app/src/main/AndroidManifest.xml" xmlns:android="http://schemas.android.com/apk/res/android">
-            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission name="android.permission.FOREGROUND_SERVICE" />
         </config-file>
     </platform>
 	
