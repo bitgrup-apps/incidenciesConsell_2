@@ -58,6 +58,7 @@
     <preference name="deployment-target" value="8.0" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="ShowSplashScreenSpinner" value="false"/>
 
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAbCsdbOZ31x79tk8PDVHsW3AL_zgNseGo" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB7g2Ackb5PebwE30QwAqAzPMGo1r4HnFQ" />
