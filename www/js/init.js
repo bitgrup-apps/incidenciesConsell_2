@@ -1509,6 +1509,7 @@ var bitgrup = {
         initMap: function (mapa) {
             if(bitgrup.mapaInc.map == null){
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
+            console.log('lat: '+posicio.lat + ' lng: '+posicio.lng);
             bitgrup.mapaInc.map = new google.maps.Map(
                     document.getElementById(mapa), {zoom: 15, center: posicio, disableDefaultUI: true});
             var styleArray = [
@@ -1553,6 +1554,7 @@ var bitgrup = {
 
                 bitgrup.mapaInc.lat = location.latLng.lat;
                 bitgrup.mapaInc.long = location.latLng.lng;
+                console.log('getLocation');
             });
         }
 
@@ -1571,12 +1573,14 @@ var bitgrup = {
             plugin.google.maps.Geocoder.geocode(request, function (results) {
                 if (results.length) {
                     var result = results[0];
+                    console.log('get adress : ' +result.locality);
                     adressa.adressa = result.thoroughfare;
                     adressa.poblacio = result.locality;
                 } else {
                     bitgrup.alert("No es pot aconseguir la vostra ubicació");
                 }
             });
+            
             bitgrup.issues.new_.adress = adressa;
         }
         
