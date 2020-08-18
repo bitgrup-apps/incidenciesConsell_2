@@ -1507,7 +1507,7 @@ var bitgrup = {
         map: null,
 
         initMap: function (mapa) {
-            if(bitgrup.mapaInc.map == null){
+           // if(bitgrup.mapaInc.map == null){
             var posicio = {"lat": bitgrup.mapaInc.lat, "lng": bitgrup.mapaInc.long};
             console.log('lat: '+posicio.lat + ' lng: '+posicio.lng);
             bitgrup.mapaInc.map = new google.maps.Map(
@@ -1545,7 +1545,7 @@ var bitgrup = {
             $('#map_canvas').on('swipe', function (event) {
                 $.event.special.swipe.horizontalDistanceThreshold(400);
             });
-            }
+          //  }
         }
 
         , getLocation: function () {
