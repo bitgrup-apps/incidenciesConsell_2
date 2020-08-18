@@ -1302,8 +1302,9 @@ var bitgrup = {
     },
 
     carregaPagExt: function (url) {
-        //var ref = window.open(url, '_system', 'location=no');
-        const browser = this.inAppBrowser.create(url, '_system');
+        //var ref = window.open(url, '_system', 'location=yes');
+        var ref = cordova.InAppBrowser.open(url, '_blank','location=yes');
+        
     },
 
     alert: function (msg, callback) {
