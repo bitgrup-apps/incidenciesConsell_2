@@ -1303,7 +1303,7 @@ var bitgrup = {
 
     carregaPagExt: function (url) {
         //var ref = window.open(url, '_system', 'location=no');
-        let browser = new InAppBrowser(url,'_blank');
+        const browser = this.inAppBrowser.create(url, '_system');
     },
 
     alert: function (msg, callback) {
