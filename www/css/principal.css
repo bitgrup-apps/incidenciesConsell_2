@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700');
 
-body{height:100%; font-family: 'Noto Serif', serif; text-shadow:none !important; font-size: 4vw; color: #0362d1;}
+body{height:100%; font-family: 'Noto Serif', serif; text-shadow:none !important; font-size: 4vw; color: #0362d1;padding-top: env(safe-area-inset-top, 12px);}
 
 /*### BOOTSTRAP ####*/
 img{width:100%;}
