@@ -4,10 +4,10 @@
 
 body{height:100%; font-family: 'Noto Serif', serif; text-shadow:none !important; font-size: 4vw; color: #0362d1;}
 body{
-    padding-top: constant(safe-area-inset-top, 12px); 
+    padding-top: constant(safe-area-inset-top); 
 
   /* iOS Safari 11.4+, Safari 11.1+, Chrome 69+, Opera 56+ */
-  padding-top: env(safe-area-inset-top, 12px); 
+    padding-top: env(safe-area-inset-top); 
 }
 
 /*### BOOTSTRAP ####*/
@@ -364,7 +364,7 @@ textarea#address-aux.ui-input-text{border-radius: 25px 25px 25px 25px !important
 
     #config .cercador {background: #169fe6; width: 130%; margin: 0px -86px;}
     #entities-list .pre-btn {background: #169fe6; float: left; width: 165%; text-align: center; border-radius: 50%; color: #fff; margin-top: 10px;margin-bottom:10px; font-size: 4vw;}
-    #entities-list .menu-item-button {width:auto;padding-left: 5px; display: inline-block; vertical-align: middle;}
+    #entities-list .menu-item-button {width:auto;padding-left: 15px; display: inline-block; vertical-align: middle;}
     
     
      
