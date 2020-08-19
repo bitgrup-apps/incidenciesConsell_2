@@ -2,13 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700');
 
-body{height:100%; font-family: 'Noto Serif', serif; text-shadow:none !important; font-size: 4vw; color: #0362d1;}
-body{
-    padding-top: constant(safe-area-inset-top); 
+body{height:100%; font-family: 'Noto Serif', serif; text-shadow:none !important; font-size: 4vw; color: #0362d1;padding-top: constant(safe-area-inset-top);padding-top: env(safe-area-inset-top);}
 
-  /* iOS Safari 11.4+, Safari 11.1+, Chrome 69+, Opera 56+ */
-    padding-top: env(safe-area-inset-top); 
-}
 
 /*### BOOTSTRAP ####*/
 img{width:100%;}
