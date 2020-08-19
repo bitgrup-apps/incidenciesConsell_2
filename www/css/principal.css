@@ -355,6 +355,10 @@ textarea#address-aux.ui-input-text{border-radius: 25px 25px 25px 25px !important
     /*HOME*/
     #home .ui-content {height: calc(100% - 18vh);}
     
+
+    #config .cercador {background: #169fe6; width: 130%; margin: 0px -86px;}
+    #entities-list .pre-btn {background: #169fe6; float: left; width: 165%; text-align: center; border-radius: 50%; color: #fff; margin-top: 10px;margin-bottom:10px; font-size: 4vw;}
+    #entities-list .menu-item-button {width: 100%; padding-left: 5px; display: inline-block; vertical-align: middle;}
     
     
      
